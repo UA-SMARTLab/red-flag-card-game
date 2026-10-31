@@ -64,6 +64,16 @@ async function run() {
     if (!head || !head.classList.contains("r-" + ref)) fail(`${q.id}: result shows ${head && head.className}, expected r-${ref}`);
     if (w.eval("stats.score") - before !== SC[ref]) fail(`${q.id}: score changed by ${w.eval("stats.score") - before}, expected ${SC[ref]}`);
     if ($$("#panel .pick.res").length !== 4 || !$("#panel .pick.chosen")) fail(`${q.id}: the four cards don't show the result`);
+    // On a right-to-left (Arabic) page a negative score must still read "-2", not "2-".
+    if (SC[ref] < 0 && !out.rtlChecked) {
+      out.rtlChecked = true; d.documentElement.dir = "rtl";
+      for (const e of $$("#panel .pts, #s-score, #panel .badge bdi").filter(e => /^[-−]\d/.test(e.textContent))) {
+        const t = e.firstChild, a = d.createRange(), b = d.createRange();
+        a.setStart(t, 0); a.setEnd(t, 1); b.setStart(t, 1); b.setEnd(t, 2);
+        if (a.getBoundingClientRect().left > b.getBoundingClientRect().left) fail(`rtl: ${e.className || e.id || e.tagName} shows "${e.textContent}" with its sign on the right`);
+      }
+      d.documentElement.dir = "ltr";
+    }
     if (q.best[0] !== "sound" && !$("#panel .case a[href^='https://']")) fail(`${q.id}: no real case with a source link`);
     // bonus check: pick the key check
     const opt = $(`#review [data-k="${q.check}"]`);

@@ -33,5 +33,7 @@ red flag and the kit mark. App accent #B42318 (dark theme #FF8A7A).
 - Local server: `.claude/launch.json` serves `app/` on 127.0.0.1:8792.
 
 ## Status
-- English only so far; the i18n structure is in place (`i18n/`), add fr/nl/de/ar as in Methodical.
-- Local repository only: no GitHub repo yet, nothing published. Open items: `NIGHT-LOG.md` and `DESIGN.md` §8.
+- Five languages (en, fr, nl, de, ar), as in Methodical; each `i18n/<code>/GLOSSARY.md` holds the term decisions.
+  When English card text changes, update every language and rerun `tools/check_cards.py` (it checks all print sheets).
+- Public: github.com/UA-SMARTLab/red-flag-card-game, played at ua-smartlab.github.io/red-flag-card-game/app/.
+  Open items: `DESIGN.md` §8.

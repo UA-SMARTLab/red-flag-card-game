@@ -131,8 +131,9 @@ answers). Difficulty: ★ 14, ★★ 34, ★★★ 12; the sound claims spread �
 
 ## 8. Open questions and next steps
 1. **Play-test** at the table: is the race in Mode 1 too fast for ★★★ claims? A short reading pause may be needed.
-2. **Translations** (fr, nl, de, ar) with the kit's glossary and review process; the i18n structure is ready, and
-   claim picture labels are translatable per claim.
+2. **Translations** (fr, nl, de, ar): done 2026-10-31, each with an independent methodologist review. Still open: a
+   native-speaking methodologist should settle the questions at the end of each `i18n/<code>/GLOSSARY.md`; numbers
+   drawn on claim charts by `tools/art_claims.py` keep a decimal point in every language.
 3. **More claims** for the Flags that are best only once, and claims from engineering and LCA (the lab's own field).
 4. **Decide publication**: GitHub repo under UA-SMARTLab (private first), and a hosted copy like Methodical's.
 5. Consider a key reference for each Check (for example the CONSORT or PRISMA item behind "Find the preregistration").

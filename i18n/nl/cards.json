@@ -1,0 +1,1150 @@
+{
+ "meta": {
+  "tagline": "Vind de redeneerfout in een onderzoeksbewering, of noem de bewering steekhoudend.",
+  "families": {
+   "cause": {
+    "name": "Oorzaak",
+    "text": "Fouten bij het afleiden van oorzaak en gevolg uit data."
+   },
+   "sample": {
+    "name": "Steekproef",
+    "text": "Fouten over wie of wat onderzocht is, en hoe ver het resultaat reikt."
+   },
+   "numbers": {
+    "name": "Cijfers",
+    "text": "Fouten bij het lezen van statistiek, risico's en grafieken."
+   },
+   "practice": {
+    "name": "Werkwijze",
+    "text": "Fouten in hoe het onderzoek geanalyseerd, gemeten en gerapporteerd is."
+   }
+  }
+ },
+ "claims": {
+  "C01": {
+   "title": "Chocolade voor genieën",
+   "field": "Voeding",
+   "text": "Landen die meer chocolade per inwoner eten, winnen meer Nobelprijzen per inwoner. Chocolade versterkt de hersenen, dus eet er meer van.",
+   "why": "Een correlatie op landniveau wordt opgerekt tot een causale claim over individuele hersenen. Welvaart kan beide sturen, en de data zeggen niets over of de laureaten chocolade aten.",
+   "traps": {
+    "shared-trend": "Dit zijn landen vergeleken op één moment, geen twee reeksen die over de jaren verschuiven.",
+    "small-sample": "Het probleem is niet het aantal landen; zelfs met 200 zou het verband geen oorzaak aantonen."
+   },
+   "labels": {
+    "CHOCOLATE / PERSON": "CHOCOLADE / INWONER",
+    "NOBELS / PERSON": "NOBELPRIJZEN / INWONER"
+   }
+  },
+  "C02": {
+   "title": "Ontbijt en cijfers",
+   "field": "Onderwijs",
+   "text": "Leerlingen die elke dag ontbijten, halen betere cijfers dan leerlingen die het ontbijt overslaan. Scholen moeten ontbijt serveren om de cijfers op te krikken.",
+   "why": "Het is aannemelijk dat gezinsroutine, inkomen en tijd van de ouders zowel het ontbijt als de cijfers beïnvloeden. Een trial met schoolontbijt zou het beleid zelf toetsen.",
+   "traps": {
+    "reverse-causation": "Goede cijfers doen kinderen waarschijnlijk niet ontbijten; de grotere zorg is een gemeenschappelijke oorzaak.",
+    "ecological": "De data gaan over individuele leerlingen, niet over schoolgemiddelden."
+   },
+   "labels": {
+    "MEAN GRADE": "GEMIDDELD CIJFER",
+    "BREAKFAST": "ONTBIJT",
+    "NO BREAKFAST": "GEEN ONTBIJT"
+   }
+  },
+  "C03": {
+   "title": "Stil en somber",
+   "field": "Psychologie",
+   "text": "In een eenmalige enquête bij 5.000 volwassenen waren de minst actieve mensen het meest depressief. Inactiviteit veroorzaakt depressie.",
+   "why": "Depressie ondermijnt energie en motivatie, dus weinig beweging kan een symptoom zijn in plaats van een oorzaak. Een momentopname kan niet zeggen wat eerst kwam.",
+   "traps": {
+    "ecological": "Elk punt is een persoon; het verband is op individueel niveau gemeten.",
+    "small-sample": "5.000 mensen is ruim genoeg om het verband te schatten; het probleem is de richting."
+   },
+   "labels": {
+    "STEPS / DAY": "STAPPEN / DAG",
+    "DEPRESSION SCORE": "DEPRESSIESCORE"
+   }
+  },
+  "C04": {
+   "title": "Smartphones en bijziendheid",
+   "field": "Volksgezondheid",
+   "text": "Van 2000 tot 2020 stegen smartphonebezit en bijziendheid bij tieners allebei jaar na jaar (r = 0,96). Smartphones ruïneren de ogen van kinderen.",
+   "why": "Twee reeksen die allebei stijgen, correleren bijna perfect, of ze nu verband houden of niet. Bijziendheid nam al toe vóór de smartphone; vergelijk liever veranderingen, of individuen.",
+   "traps": {
+    "regression-mean": "Niets werd gekozen omdat het extreem was; beide reeksen klimmen gestaag.",
+    "small-sample": "De fout is niet het aantal jaren, maar dat twee willekeurige stijgende reeksen correleren."
+   },
+   "labels": {
+    "YEAR": "JAAR",
+    "%": "%",
+    "PHONES": "SMARTPHONES",
+    "MYOPIA": "BIJZIENDHEID"
+   }
+  },
+  "C05": {
+   "title": "Rokers gespaard",
+   "field": "Geneeskunde",
+   "text": "Bij patiënten die met een luchtwegvirus in het ziekenhuis werden opgenomen, hadden rokers minder vaak intensieve zorg nodig dan niet-rokers. Roken beschermt misschien tegen ernstige ziekte.",
+   "why": "Ziekenhuisopname wordt veroorzaakt door rookgerelateerde ziekte én door ernstige infectie. Onder de opgenomen patiënten liggen rokers er vaker om andere redenen, dus lijken ze minder ziek.",
+   "traps": {
+    "reverse-causation": "Intensieve zorg nodig hebben kan iemand niet vóór de opname tot roker maken.",
+    "relative-risk": "De percentages staan erbij; het probleem is wie in de steekproef terechtkwam."
+   },
+   "labels": {
+    "% NEEDING ICU": "% NAAR IC",
+    "SMOKERS": "ROKERS",
+    "NON-SMOKERS": "NIET-ROKERS"
+   }
+  },
+  "C06": {
+   "title": "Lengte doet er niet toe",
+   "field": "Sport",
+   "text": "Bij profbasketballers scoren langere spelers niet meer punten dan kleinere. Lengte doet er in basketbal niet toe.",
+   "why": "Spelers halen de competitie door lang te zijn of door uitzonderlijk goed te spelen. Selecteren op dat gemeenschappelijke gevolg verbergt het effect van lengte bij wie geselecteerd is.",
+   "traps": {
+    "ecological": "De data gaan over individuele spelers.",
+    "reverse-causation": "Punten scoren maakt spelers niet langer."
+   },
+   "labels": {
+    "HEIGHT": "LENGTE",
+    "POINTS": "PUNTEN"
+   }
+  },
+  "C07": {
+   "title": "Triomf van de transplantatie",
+   "field": "Geneeskunde",
+   "text": "Gerekend vanaf de dag dat ze op de wachtlijst kwamen, leefden patiënten die een harttransplantatie kregen veel langer dan wie er nooit een kreeg. Transplantaties werken.",
+   "why": "Om een transplantatie te krijgen moest je de wachttijd overleven, en die wachttijd werd aan de transplantatiegroep toegerekend. De tijd moet gesplitst worden op de dag van de operatie.",
+   "traps": {
+    "regression-mean": "Patiënten werden niet gekozen om een extreme waarde die later terugviel."
+   },
+   "labels": {
+    "MONTHS ALIVE": "MAANDEN IN LEVEN",
+    "TRANSPLANT": "TRANSPLANTATIE",
+    "NO TRANSPLANT": "GEEN TRANSPLANTATIE"
+   }
+  },
+  "C08": {
+   "title": "Statines en overleving",
+   "field": "Farmaco-epidemiologie",
+   "text": "Patiënten telden als statinegebruiker als ze binnen twee jaar na de diagnose een recept ophaalden; gevolgd vanaf de diagnose hadden gebruikers 30% minder sterfte. Statines verlagen de sterfte met 30%.",
+   "why": "Wie stierf voor hij een recept ophaalde, was automatisch niet-gebruiker. Gebruikers overleefden gegarandeerd tot ze hun eerste recept ophaalden.",
+   "traps": {
+    "lead-time": "De diagnosedatum is voor beide groepen dezelfde; de bias komt uit hoe gebruikers gedefinieerd zijn.",
+    "relative-risk": "De absolute overleving staat erbij; de fout zit in hoe de tijd is ingedeeld."
+   },
+   "labels": {
+    "YEARS": "JAREN",
+    "% ALIVE": "% LEVEND",
+    "USERS": "GEBRUIKERS",
+    "NON-USERS": "NIET-GEBRUIKERS"
+   }
+  },
+  "C09": {
+   "title": "Een app voor iedereen",
+   "field": "Technologie",
+   "text": "Onze app groeide in zes maanden van 1.000 naar 64.000 gebruikers door elke maand te verdubbelen. In dit tempo gebruikt de hele planeet hem binnen twee jaar.",
+   "why": "Exponentiële groei verzadigt altijd. Een trend over zes maanden zegt niets over een bereik dat miljoenen keren groter is.",
+   "traps": {
+    "small-sample": "Zes datapunten beschrijven het verleden goed; de fout is ze ver vooruit te projecteren.",
+    "regression-mean": "De groei werd niet gekozen omdat ze extreem was; ze kan gewoon niet exponentieel blijven."
+   },
+   "labels": {
+    "MONTH": "MAAND",
+    "THOUSANDS": "DUIZENDEN",
+    "USERS": "GEBRUIKERS"
+   }
+  },
+  "C10": {
+   "title": "Meer is beter",
+   "field": "Farmacologie",
+   "text": "In een trial met doses van 10 tot 40 mg verlaagde elke extra 10 mg de bloeddruk met 4 mmHg. Dus 100 mg zou hem met 40 mmHg moeten verlagen.",
+   "why": "Dosis-responscurves vlakken meestal af en bijwerkingen nemen toe. Boven 40 mg zijn er helemaal geen data.",
+   "traps": {
+    "surrogate": "Bloeddruk is de uitkomst waarover de bewering gaat; het probleem is het dosisbereik.",
+    "model-to-human": "De trial was bij mensen."
+   },
+   "labels": {
+    "DOSE (MG)": "DOSIS (MG)",
+    "MMHG": "MMHG",
+    "DROP": "DALING"
+   }
+  },
+  "C11": {
+   "title": "Groene thee geneest",
+   "field": "Oncologie",
+   "text": "Een stof uit groene thee deed tumoren bij muizen met 60% krimpen. Groene thee drinken bestrijdt kanker.",
+   "why": "Muizen, gezuiverde stoffen en hoge doses staan ver af van mensen die thee drinken. De meeste van zulke aanwijzingen sneuvelen in trials bij mensen.",
+   "traps": {
+    "trivial-effect": "60% krimp bij muizen is niet klein; de sprong is van muis naar mens.",
+    "correlation-causation": "De muizenstudie was een experiment, dus een oorzaak bij muizen is plausibel."
+   },
+   "labels": {
+    "TEA": "THEE",
+    "BEATS": "VERSLAAT",
+    "CANCER": "KANKER"
+   }
+  },
+  "C12": {
+   "title": "Laptops tillen scores op",
+   "field": "Onderwijs",
+   "text": "Scholen met meer laptops per leerling hebben hogere gemiddelde toetsscores. Dus leerlingen die laptops gebruiken, scoren hoger.",
+   "why": "Een verband op schoolniveau zegt niets over welke leerlingen laptops gebruiken of hoe zij scoren. Rijkere scholen hebben misschien gewoon allebei.",
+   "traps": {
+    "simpsons": "Er worden geen subgroepen gerapporteerd; het probleem is de sprong van scholen naar leerlingen.",
+    "small-sample": "Het gaat om het niveau van de data, niet om het aantal scholen."
+   },
+   "labels": {
+    "LAPTOPS / PUPIL": "LAPTOPS / LEERLING",
+    "SCHOOL MEAN SCORE": "GEMIDDELDE SCHOOLSCORE"
+   }
+  },
+  "C13": {
+   "title": "Stoppen om te winnen",
+   "field": "Bedrijfskunde",
+   "text": "We bestudeerden 30 van de meest succesvolle start-ups; de meeste waren opgericht door mensen die hun universitaire studie afbraken. Afhaken kweekt succes.",
+   "why": "Alleen winnaars werden bestudeerd. Talloze afhakers wier start-up mislukte, zijn onzichtbaar, dus de data kunnen niet tonen wat succes voorspelt.",
+   "traps": {
+    "small-sample": "Zelfs 3.000 winnaars zouden misleiden; het zijn de mislukkingen die ontbreken, niet de aantallen.",
+    "regression-mean": "Niemand werd gekozen om een extreme waarde die later terugviel."
+   },
+   "labels": {
+    "FOUNDERS": "OPRICHTERS",
+    "DROPPED OUT": "AFGEHAAKT",
+    "GRADUATED": "AFGESTUDEERD"
+   }
+  },
+  "C14": {
+   "title": "Fondsen verslaan de markt",
+   "field": "Financiën",
+   "text": "De fondsen in de huidige database brachten over 15 jaar gemiddeld 9% per jaar op, meer dan de 7% van de markt. Actieve fondsen zijn hun kosten waard.",
+   "why": "Fondsen die slecht presteerden, werden gesloten of fuseerden en verdwenen uit de huidige database, dus het gemiddelde beschrijft alleen de overlevers.",
+   "traps": {
+    "regression-mean": "Fondsen werden niet gekozen om één extreem jaar; de gesloten fondsen ontbreken.",
+    "trivial-effect": "Twee procentpunt per jaar loopt door rente-op-rente flink op; het probleem is welke fondsen meetellen."
+   },
+   "labels": {
+    "% A YEAR": "% PER JAAR",
+    "FUNDS": "FONDSEN",
+    "MARKET": "MARKT"
+   }
+  },
+  "C15": {
+   "title": "Lezers staan erachter",
+   "field": "Arbeid",
+   "text": "Een online peiling bij 50.000 van onze lezers toont dat 72% vindt dat een vierdaagse werkweek werkt. Het publiek staat erachter.",
+   "why": "Lezers van één medium die er zelf voor kiezen online te stemmen, zijn niet het publiek. Een grote zelfgeselecteerde steekproef blijft vertekend.",
+   "traps": {
+    "small-sample": "50.000 is een enorme steekproef; omvang verandert niets aan wie ervoor koos te antwoorden.",
+    "trivial-effect": "72% is geen klein verschil; het probleem is wie antwoordde."
+   },
+   "labels": {
+    "% OF READERS": "% VAN DE LEZERS",
+    "YES": "JA",
+    "NO": "NEE"
+   }
+  },
+  "C16": {
+   "title": "Geboren voor eerlijkheid",
+   "field": "Psychologie",
+   "text": "In een laboratoriumspel gaven 120 psychologiestudenten in Ohio geld op om de verdeling eerlijk te houden. Mensen zijn van nature geprogrammeerd op eerlijkheid.",
+   "why": "Studenten van één universiteit in één land onderbouwen een bewering over hen, niet over alle mensen. Eerlijkheidsnormen in zulke spellen verschillen sterk tussen samenlevingen.",
+   "traps": {
+    "model-to-human": "De deelnemers zijn mensen; de kloof ligt tussen één groep mensen en alle mensen.",
+    "small-sample": "120 deelnemers kunnen het effect in die groep tonen; de sprong is die naar 'mensen'."
+   },
+   "labels": {
+    "N = 120": "N = 120"
+   }
+  },
+  "C17": {
+   "title": "Kies ziekenhuis A",
+   "field": "Gezondheidszorg",
+   "text": "Ziekenhuis A: 90% van de chirurgische patiënten overleeft. Ziekenhuis B: 85%. Ziekenhuis B krijgt de meeste hoogrisicopatiënten van de regio. Kies A.",
+   "why": "Als één ziekenhuis de patiënten met het hoogste risico behandelt, kan zijn totale cijfer lager liggen, ook als het binnen elke risicogroep beter doet. Vergelijk binnen risicogroepen.",
+   "traps": {
+    "base-rate": "Hier wordt geen test of zeldzame aandoening geïnterpreteerd.",
+    "chart-distortion": "De grafiek is eerlijk getekend vanaf nul; het probleem is dat verschillende casemixen vergeleken worden."
+   },
+   "labels": {
+    "% SURVIVE": "% OVERLEEFT",
+    "HOSPITAL A": "ZIEKENHUIS A",
+    "HOSPITAL B": "ZIEKENHUIS B"
+   }
+  },
+  "C18": {
+   "title": "Keuze bij nierstenen",
+   "field": "Urologie",
+   "text": "Behandeling X had een hoger succespercentage dan Y bij kleine én bij grote stenen. In totaal had Y het hogere succespercentage, dus Y is de betere behandeling.",
+   "why": "X werd vooral gebruikt bij moeilijkere, grote stenen. Binnen elke steengrootte wint X; het gepoolde percentage vermengt moeilijkheid met behandeling.",
+   "traps": {
+    "subgroup": "Splitsen naar steengrootte is hier de juiste analyse, geen visexpeditie.",
+    "multiple-tests": "Er worden maar twee strata vergeleken, en beide wijzen dezelfde kant op."
+   },
+   "labels": {
+    "% SUCCESS": "% SUCCES",
+    "X SMALL": "X KLEIN",
+    "Y SMALL": "Y KLEIN",
+    "X LARGE": "X GROOT",
+    "Y LARGE": "Y GROOT"
+   }
+  },
+  "C19": {
+   "title": "Coaching werkt",
+   "field": "Onderwijs",
+   "text": "De 20 scholen met de slechtste toetsscores kregen een coachingprogramma. Het jaar daarop stegen hun scores met 8 punten. Het programma werkt.",
+   "why": "Scholen die gekozen zijn om een uitzonderlijk slecht jaar, doen het volgend jaar sowieso vaak beter. Zonder vergelijkbare onbehandelde scholen kan de stijging niet aan de coaching worden toegeschreven.",
+   "traps": {
+    "survivorship": "Alle 20 scholen worden gevolgd; geen enkele valt uit."
+   },
+   "labels": {
+    "YEAR": "JAAR",
+    "POINTS": "PUNTEN",
+    "SCORE": "SCORE"
+   }
+  },
+  "C20": {
+   "title": "Flitspalen",
+   "field": "Verkeer",
+   "text": "Flitspalen werden geplaatst op de 50 plekken met de meeste ongevallen vorig jaar. Het jaar erna daalden de ongevallen daar met 40%. De flitspalen verminderen ongevallen met 40%.",
+   "why": "Plekken die gekozen zijn om een piekjaar, zouden het volgend jaar ook zonder flitspaal minder ongevallen hebben. Een deel van de 40% is regressie naar het gemiddelde.",
+   "traps": {
+    "relative-risk": "De aantallen per plek staan erbij; het probleem is hoe de plekken gekozen zijn.",
+    "unrepresentative": "De flitspalen zijn bedoeld voor plekken met veel ongevallen; het probleem is de vergelijking in de tijd."
+   },
+   "labels": {
+    "CRASHES / SITE": "ONGEVALLEN / PLEK",
+    "BEFORE": "VOOR",
+    "AFTER": "NA"
+   }
+  },
+  "C21": {
+   "title": "Kankerdorp",
+   "field": "Epidemiologie",
+   "text": "Het dorp met het hoogste cijfer voor een zeldzame kanker in het land heeft maar 900 inwoners (2 gevallen). Iets in dat dorp moet die kanker veroorzaken.",
+   "why": "Twee gevallen op 900 mensen geven een cijfer van 220 per 100.000. Onder duizenden kleine dorpen zullen er enkele door toeval bovenaan staan.",
+   "traps": {
+    "ecological": "De bewering gaat over het dorp zelf, niet over individuen erin.",
+    "relative-risk": "De absolute cijfers staan erbij; het probleem is hoe onstabiel ze zijn in een piepklein dorp."
+   },
+   "labels": {
+    "RATE PER 100,000": "PER 100.000",
+    "TOWN": "DORP",
+    "NATIONAL": "NATIONAAL"
+   }
+  },
+  "C22": {
+   "title": "Kleine scholen winnen",
+   "field": "Onderwijs",
+   "text": "De meeste scholen in de top 50 van de nationale ranglijst zijn kleine scholen. Grote scholen opsplitsen in kleine zal de resultaten verbeteren.",
+   "why": "De gemiddelden van kleine scholen schommelen meer, dus die bevolken zowel de top als de staart van elke ranglijst. Kijk ook naar de laatste 50.",
+   "traps": {
+    "survivorship": "Er ontbreken geen scholen in de ranglijst.",
+    "weird": "Het gaat niet om het soort school in de steekproef, maar om hoeveel kleine scholen variëren."
+   },
+   "labels": {
+    "TOP 50": "TOP 50"
+   }
+  },
+  "C23": {
+   "title": "Herken de terrorist",
+   "field": "Veiligheid",
+   "text": "Een gezichtsscansysteem markeert 99% van de bekende verdachten en maar 1% van de andere reizigers. Dus wie het op de luchthaven markeert, is vrijwel zeker een verdachte.",
+   "why": "Per miljoen reizigers worden zo'n 10.000 onschuldigen gemarkeerd, tegenover een handvol echte verdachten.",
+   "traps": {
+    "trivial-effect": "De nauwkeurigheid is hoog; het probleem is hoe zeldzaam verdachten zijn.",
+    "single-study": "Hier rust niets op één studie; de fout is negeren hoe zeldzaam verdachten zijn."
+   },
+   "labels": {
+    "99% ACCURATE": "99% JUIST"
+   }
+  },
+  "C24": {
+   "title": "Positieve test",
+   "field": "Screening",
+   "text": "Een test vindt 95% van de kankers en markeert ten onrechte 5% van de gezonde mensen. Eén op 200 gescreende mensen heeft de kanker. Je test positief, dus je hebt hem met zo'n 95% kans.",
+   "why": "Per 10.000 gescreenden: 48 terecht-positieven en ongeveer 500 fout-positieven. Een positieve uitslag betekent ongeveer 9% kans op kanker.",
+   "traps": {
+    "lead-time": "Er wordt geen overlevingscijfer geïnterpreteerd.",
+    "relative-risk": "Er wordt geen relatief risico genoemd."
+   },
+   "labels": {
+    "+": "+"
+   }
+  },
+  "C25": {
+   "title": "Eén procent kans",
+   "field": "Psychologie",
+   "text": "Ons experiment gaf p = 0,01, dus er is maar 1% kans dat het effect niet echt is.",
+   "why": "p is de kans op zo extreme data als er geen effect is, niet de kans dat er geen effect is. Die hangt ook af van de voorafkans dat er een effect is.",
+   "traps": {
+    "trivial-effect": "We kennen de effectgrootte niet; de fout zit in het lezen van de p-waarde.",
+    "not-significant": "Het resultaat is significant; de misvatting loopt de andere kant op."
+   },
+   "labels": {
+    "p = 0.01": "p = 0,01"
+   }
+  },
+  "C26": {
+   "title": "DNA-match",
+   "field": "Forensisch onderzoek",
+   "text": "Het DNA van de verdachte komt overeen met het plaats-delictspoor. Slechts 1 op een miljoen mensen zou toevallig matchen, dus de kans dat hij onschuldig is, is 1 op een miljoen.",
+   "why": "In een stad van 5 miljoen zouden zo'n vijf mensen toevallig matchen. P(match | onschuldig) is niet P(onschuldig | match).",
+   "traps": {
+    "small-sample": "De matchkans is niet onstabiel; ze wordt binnenstebuiten gekeerd.",
+    "trivial-effect": "De match is sterk bewijs; de fout zit in het omdraaien van de kans."
+   },
+   "labels": {
+    "1 IN 1,000,000": "1 OP 1.000.000"
+   }
+  },
+  "C27": {
+   "title": "Pijnstiller faalt",
+   "field": "Geneeskunde",
+   "text": "In een trial met 60 patiënten verlaagde de nieuwe pijnstiller de pijn met 1,5 punt op een schaal van 10 (95%-BI −0,2 tot 3,2; niet significant). Het middel werkt niet.",
+   "why": "Het interval loopt van geen effect tot een groot effect. Een kleine trial die een groot voordeel niet kan uitsluiten, heeft niet aangetoond dat het middel faalt.",
+   "traps": {
+    "trivial-effect": "De schatting is niet verwaarloosbaar klein; ze is onzeker.",
+    "p-hacking": "Er is geen teken van flexibele analyse; het probleem is de conclusie."
+   },
+   "labels": {
+    "PAIN REDUCTION": "PIJNVERMINDERING"
+   }
+  },
+  "C28": {
+   "title": "Klikken voor de winst",
+   "field": "Technologie",
+   "text": "Bij 40 miljoen gebruikers verhoogde de nieuwe knopkleur het aantal klikken van 3,00% naar 3,02% (p < 0,001). Een groot succes voor het designteam.",
+   "why": "Met tientallen miljoenen gebruikers is een verschil van 0,02 procentpunt 'significant' maar nauwelijks van belang. Vraag hoe groot, in eenheden die tellen.",
+   "traps": {
+    "small-sample": "Veertig miljoen gebruikers is het omgekeerde probleem.",
+    "not-significant": "Het resultaat is significant; daar ligt het probleem niet."
+   },
+   "labels": {
+    "% CLICKING": "% KLIKT",
+    "OLD": "OUD",
+    "NEW": "NIEUW"
+   }
+  },
+  "C29": {
+   "title": "Schermen en somberheid",
+   "field": "Psychologie",
+   "text": "Bij 300.000 tieners ging meer schermtijd samen met minder welbevinden (p < 0,0001). Schermen schaden een hele generatie.",
+   "why": "Een piepkleine p-waarde in een enorme steekproef kan uit een correlatie van bijna nul komen. Hoeveel het welbevinden met schermtijd varieert, telt meer, en het design kan geen oorzaak aantonen.",
+   "traps": {
+    "small-sample": "300.000 is een zeer grote steekproef.",
+    "ecological": "De data gaan over individuele tieners."
+   },
+   "labels": {
+    "SCREEN HOURS": "UREN SCHERMTIJD",
+    "WELLBEING": "WELBEVINDEN"
+   }
+  },
+  "C30": {
+   "title": "Tumor door nachtwerk",
+   "field": "Arbeidsgezondheid",
+   "text": "Kop: nachtwerk verhoogt het risico op een zeldzame tumor met 50%!",
+   "why": "50% meer van een zeldzame tumor kan 3 gevallen per 100.000 betekenen in plaats van 2. Zonder de absolute aantallen valt de kop niet te beoordelen.",
+   "traps": {
+    "trivial-effect": "Je kunt de grootte pas beoordelen als je het uitgangsrisico kent; benoem de ontbrekende absolute aantallen.",
+    "base-rate": "Er wordt geen testuitslag geïnterpreteerd; vraag naar het absolute risico."
+   },
+   "labels": {
+    "NIGHT SHIFTS": "NACHTDIENSTEN",
+    "+50%": "+50%",
+    "TUMOUR RISK": "TUMORRISICO"
+   }
+  },
+  "C31": {
+   "title": "Screening halveert sterfte",
+   "field": "Screening",
+   "text": "Ons screeningsprogramma halveert je risico om aan kanker X te overlijden! (Tienjarige trial.)",
+   "why": "Een halvering van 2 naar 1 op 1.000 voorkomt over tien jaar één sterfgeval aan kanker X per 1.000 gescreenden. Het relatieve cijfer alleen verkoopt het te mooi.",
+   "traps": {
+    "lead-time": "De trial telt sterfgevallen, niet overleving na diagnose, dus lead time speelt niet.",
+    "chart-distortion": "De as begint bij nul en de staven zijn eerlijk; de slogan niet."
+   },
+   "labels": {
+    "DEATHS / 1,000": "DODEN / 1.000",
+    "NOT SCREENED": "NIET GESCREEND",
+    "SCREENED": "GESCREEND"
+   }
+  },
+  "C32": {
+   "title": "Steun schiet omhoog",
+   "field": "Politiek",
+   "text": "De steun voor het beleid is sterk gestegen sinds onze campagne begon.",
+   "why": "De as begint bij 48%, dus een verandering van drie punten lijkt een verviervoudiging. Binnen de gewone peilingsmarge bewoog de steun nauwelijks.",
+   "traps": {
+    "regression-mean": "Niets werd gekozen om een extreme waarde."
+   },
+   "labels": {
+    "% SUPPORT": "% STEUN",
+    "MAY": "MEI",
+    "JUNE": "JUNI",
+    "JULY": "JULI"
+   }
+  },
+  "C33": {
+   "title": "Ommekeer op de arbeidsmarkt",
+   "field": "Economie",
+   "text": "Sinds maart is de werkloosheid elke maand gedaald. Het nieuwe werkgelegenheidsbeleid werkt.",
+   "why": "Vijf maanden op een afgeknipte as verbergen wat ervoor kwam: was maart een piek? Zet de langere reeks uit en vergelijk met plaatsen zonder het beleid.",
+   "traps": {
+    "small-sample": "De cijfers komen uit een grote arbeidskrachtenenquête; het venster is het probleem.",
+    "changed-yardstick": "Er wordt geen gewijzigde definitie vermeld."
+   },
+   "labels": {
+    "MAR – JUL": "MRT – JUL",
+    "%": "%",
+    "UNEMPLOYED %": "WERKLOOS %"
+   }
+  },
+  "C34": {
+   "title": "Verkiezingsorakel",
+   "field": "Politicologie",
+   "text": "Ons model gebruikt 200 variabelen en voorspelde vorig jaar 149 van de 150 districten juist. Het zal de volgende verkiezing even goed voorspellen.",
+   "why": "Met meer variabelen dan gevallen kan een model het verleden uit het hoofd leren. Alleen voorspellingen voor verkiezingen die het nooit zag, tonen zijn echte nauwkeurigheid.",
+   "traps": {
+    "base-rate": "Er wordt niet op een zeldzame aandoening getest.",
+    "small-sample": "Het gaat niet om toevallige schommelingen in een kleine groep, maar om 200 variabelen gefit op 150 gevallen."
+   },
+   "labels": {
+    "99% FIT": "99% FIT"
+   }
+  },
+  "C35": {
+   "title": "Winnende regel",
+   "field": "Financiën",
+   "text": "We testten 10.000 handelsregels op 20 jaar koersen. De beste versloeg de markt in de backtest elk jaar opnieuw. Beleg ermee.",
+   "why": "De beste van 10.000 regels die op dezelfde geschiedenis gefit zijn, ziet er door toeval briljant uit. Test hem op latere data waarop hij nooit is afgesteld.",
+   "traps": {
+    "base-rate": "Er wordt geen testuitslag geïnterpreteerd; de regel werd op ruis gefit."
+   },
+   "labels": {
+    "YEARS": "JAREN",
+    "VALUE": "WAARDE",
+    "BACK-TEST": "BACKTEST"
+   }
+  },
+  "C36": {
+   "title": "Warme kop, warm hart",
+   "field": "Psychologie",
+   "text": "Na het uitsluiten van uitschieters en correctie voor leeftijd en stemming vonden mensen met een warme kop in de hand een vreemde vriendelijker (p = 0,048). Fysieke warmte doet ons anderen warmer zien.",
+   "why": "Regels voor uitschieters en covariaten die na het zien van de data gekozen zijn, en een p-waarde net onder 0,05, wijzen op een forking path. Was deze analyse gepreregistreerd?",
+   "traps": {
+    "not-significant": "Het resultaat is (net) significant; de zorg is hoe het zover kwam.",
+    "trivial-effect": "We kennen de effectgrootte niet; de analysekeuzes zijn de rode vlag."
+   },
+   "labels": {
+    "p = 0.048": "p = 0,048"
+   }
+  },
+  "C37": {
+   "title": "Tomaten en migraine",
+   "field": "Voeding",
+   "text": "We toetsten 40 voedingsmiddelen op samenhang met 12 ziekten. Tomaten eten hing samen met minder migraine (p = 0,03). Tomaten helpen migraine voorkomen.",
+   "why": "480 toetsen bij p < 0,05 zouden zo'n 24 'treffers' geven als niets echt was. Eén daarvan is geen nieuws.",
+   "traps": {
+    "small-sample": "De steekproefgrootte wordt niet gegeven; 480 toetsen is het probleem.",
+    "trivial-effect": "We kennen de grootte niet; de treffer zelf kan ruis zijn."
+   },
+   "labels": {
+    "1 HIT IN 480 TESTS": "1 TREFFER IN 480 TOETSEN"
+   }
+  },
+  "C38": {
+   "title": "Vrouwen boven 65",
+   "field": "Geneeskunde",
+   "text": "In totaal voorkwam het middel geen beroertes. Maar bij vrouwen boven 65 verminderde het beroertes met 40% (p = 0,02). Het moet voor hen worden toegelaten.",
+   "why": "Was deze subgroep gepland, en doorstaat ze een interactietoets? Een losse subgroepbevinding in een negatieve trial is meestal toeval.",
+   "traps": {
+    "simpsons": "Het totale en het subgroepresultaat keren niet om; één deelgroep springt eruit.",
+    "weird": "De subgroep is achteraf gekozen; dat is het probleem, niet hoe breed de steekproef is."
+   },
+   "labels": {}
+  },
+  "C39": {
+   "title": "Hersentraining",
+   "field": "Cognitiewetenschap",
+   "text": "Een meta-analyse van 25 gepubliceerde studies concludeert dat hersentrainingsspelletjes het IQ met 5 punten verhogen.",
+   "why": "Als studies zonder resultaat in de la bleven, overschat het poolen van de gepubliceerde studies het effect. Controleer registers en funnelplots.",
+   "traps": {
+    "single-study": "Ze poolt 25 studies; de vraag is welke studies gepubliceerd werden.",
+    "model-to-human": "De studies zijn bij mensen gedaan."
+   },
+   "labels": {}
+  },
+  "C40": {
+   "title": "Sta op om te onthouden",
+   "field": "Onderwijs",
+   "text": "Een nieuwe studie bij 40 studenten vond dat staand studeren het geheugen met 20% verbetert. Scholen moeten sta-bureaus kopen.",
+   "why": "Eén kleine, nieuwe studie is een aanwijzing, geen basis voor beleid. Wacht op replicaties.",
+   "traps": {
+    "publication-bias": "Er wordt maar één studie aangehaald; er is nog geen literatuur die vertekend kan zijn.",
+    "model-to-human": "De deelnemers waren mensen."
+   },
+   "labels": {
+    "STAND UP": "STA OP",
+    "REMEMBER": "ONTHOUD",
+    "MORE": "MEER"
+   }
+  },
+  "C41": {
+   "title": "Goede cholesterol",
+   "field": "Cardiologie",
+   "text": "Ons middel verhoogde de 'goede' HDL-cholesterol met 70% in een grote trial. Het zal hartinfarcten voorkomen.",
+   "why": "Een marker verhogen is niet hetzelfde als de uitkomst voorkomen. Een middel uit deze klasse verhoogde HDL en deed sterfte en cardiovasculaire events toenemen.",
+   "traps": {
+    "relative-risk": "De 70% is een verandering in een bloedwaarde, geen risico.",
+    "correlation-causation": "Het middel veroorzaakte de HDL-stijging wel; de sprong is die van marker naar uitkomst."
+   },
+   "labels": {
+    "HDL MG/DL": "HDL MG/DL",
+    "BEFORE": "VOOR",
+    "AFTER": "NA"
+   }
+  },
+  "C42": {
+   "title": "Overleving schiet omhoog",
+   "field": "Oncologie",
+   "text": "Sinds de screening begon, steeg de vijfjaarsoverleving bij prostaatkanker van 70% naar 98%. Screening redt levens.",
+   "why": "Screening stelt de diagnose vroeger en vindt trage tumoren, dus de overleving vanaf diagnose stijgt, ook als niemand langer leeft. Sterfte is de toets.",
+   "traps": {
+    "relative-risk": "Er wordt geen relatief risico genoemd; de maat zelf misleidt.",
+    "regression-mean": "Geen enkele groep werd gekozen om een extreme waarde."
+   },
+   "labels": {
+    "YEAR": "JAAR",
+    "5-YR SURVIVAL": "5-JR OVERLEVING",
+    "DEATHS": "STERFTE"
+   }
+  },
+  "C43": {
+   "title": "ADHD-epidemie",
+   "field": "Psychiatrie",
+   "text": "Het aantal geregistreerde ADHD-diagnoses verdubbelde in tien jaar, een periode met een nieuwe editie van het diagnostisch handboek. We staan voor een epidemie.",
+   "why": "Nieuwe criteria, meer bewustzijn en meer voorzieningen veranderen hoeveel gevallen geregistreerd worden. Meer diagnoses betekent niet dat de aandoening vaker voorkomt.",
+   "traps": {
+    "small-sample": "Geregistreerde diagnoses dekken de hele bevolking.",
+    "regression-mean": "De stijging is gestaag, geen terugveren na een extreem jaar.",
+    "shared-trend": "Er is hier maar één reeks."
+   },
+   "labels": {
+    "YEAR": "JAAR",
+    "%": "%",
+    "DIAGNOSED %": "GEDIAGNOSTICEERD %"
+   }
+  },
+  "C44": {
+   "title": "Haatmisdrijven verviervoudigd",
+   "field": "Criminologie",
+   "text": "Het aantal door de politie geregistreerde haatmisdrijven is verviervoudigd in een decennium waarin korpsen de opdracht kregen hun registratie te verbeteren. Vooroordelen nemen sterk toe.",
+   "why": "Betere registratie, en meer mensen die aangifte doen, verhogen het aantal zonder meer misdaad. Slachtofferenquêtes meten het elk jaar op dezelfde manier.",
+   "traps": {
+    "shared-trend": "Er is hier maar één reeks.",
+    "small-sample": "Dit zijn nationale aantallen."
+   },
+   "labels": {
+    "YEAR": "JAAR",
+    "THOUSANDS": "DUIZENDEN",
+    "RECORDED": "GEREGISTREERD"
+   }
+  },
+  "C45": {
+   "title": "Meer politie, meer misdaad",
+   "field": "Criminologie",
+   "text": "Steden met meer politieagenten per inwoner hebben meer misdaad. Aanwezigheid van politie veroorzaakt misdaad.",
+   "why": "Steden nemen meer politie aan omdat ze meer misdaad hebben. De pijl loopt het meest plausibel van misdaad naar politie.",
+   "traps": {
+    "simpsons": "Er worden geen subgroepen gerapporteerd.",
+    "small-sample": "Het gaat om veel steden met grote aantallen; de pijl is het probleem."
+   },
+   "labels": {
+    "POLICE / 1,000": "POLITIE / 1.000",
+    "CRIMES / 1,000": "MISDRIJVEN / 1.000"
+   }
+  },
+  "C46": {
+   "title": "Vaccintrial",
+   "field": "Geneeskunde",
+   "text": "In een gepreregistreerde trial kregen 8.000 volwassenen door loting het vaccin of een placebo. Infecties: 0,4% tegenover 2,0% (verschil 1,6 procentpunt, 95%-BI 1,1 tot 2,1). Het vaccin voorkwam zo'n 16 infecties per 1.000 gevaccineerden.",
+   "why": "Gerandomiseerde toewijzing, een geregistreerd plan, absolute risico's en een betrouwbaarheidsinterval: de bewering zegt niet meer dan de trial toont.",
+   "traps": {
+    "correlation-causation": "Randomisatie verdeelt bekende en onbekende factoren gelijk, dus een causale conclusie is gerechtvaardigd.",
+    "relative-risk": "De absolute aantallen staan erbij.",
+    "small-sample": "8.000 mensen geven een smal interval."
+   },
+   "labels": {
+    "% INFECTED": "% GEÏNFECTEERD",
+    "VACCINE": "VACCIN",
+    "PLACEBO": "PLACEBO"
+   }
+  },
+  "C47": {
+   "title": "Twaalf trials",
+   "field": "Geneeskunde",
+   "text": "Een review van alle 12 geregistreerde trials, waaronder drie waarvan de resultaten uit trialregisters kwamen, vond dat het middel de sterfte door beroerte verlaagde, met consistente resultaten.",
+   "why": "Registers doorzoeken haalt de studies uit de la, en consistentie over 12 trials maakt toeval onwaarschijnlijk.",
+   "traps": {
+    "publication-bias": "Ongepubliceerde resultaten werden uit registers opgehaald.",
+    "single-study": "Twaalf trials zijn het eens."
+   },
+   "labels": {
+    "4 OF 12 TRIALS SHOWN": "4 VAN 12 TRIALS GETOOND"
+   }
+  },
+  "C48": {
+   "title": "Screeningstrial",
+   "field": "Screening",
+   "text": "In een gerandomiseerde trial met 50.000 mensen, 15 jaar gevolgd, stierf 0,9% van de gescreenden en 1,2% van de niet-gescreenden aan darmkanker. Screening voorkwam zo'n 3 zulke sterfgevallen per 1.000.",
+   "why": "Sterfte vergelijken tussen gerandomiseerde groepen is ongevoelig voor lead time en overdiagnose, en het absolute verschil wordt vermeld.",
+   "traps": {
+    "lead-time": "De uitkomst is sterfte onder iedereen die gerandomiseerd werd, niet overleving na diagnose.",
+    "relative-risk": "De absolute risico's staan erbij."
+   },
+   "labels": {
+    "% DIED": "% OVERLEDEN",
+    "SCREENED": "GESCREEND",
+    "NOT SCREENED": "NIET GESCREEND"
+   }
+  },
+  "C49": {
+   "title": "Positief, en dan?",
+   "field": "Screening",
+   "text": "Van 10.000 geteste mensen hebben er zo'n 100 de ziekte. De test markeert er 95 van, en 495 van de gezonden. Een positieve uitslag betekent dus ongeveer 1 kans op 6 op ziekte.",
+   "why": "Natuurlijke frequenties maken de redenering doorzichtig: 95 terecht-positieven op 590 positieven is ongeveer 16%.",
+   "traps": {
+    "base-rate": "De basisfrequentie wordt correct gebruikt: 95 van de 590 positieven zijn terecht.",
+    "inverse-probability": "De kans is in de juiste richting berekend."
+   },
+   "labels": {
+    "95 / 590": "95 / 590"
+   }
+  },
+  "C50": {
+   "title": "Precieze nulbevinding",
+   "field": "Geneeskunde",
+   "text": "Een trial bij 20.000 ouderen vond dat het supplement het fractuurrisico met −0,2 punt veranderde (95%-BI −0,6 tot +0,2). Het protocol legde 1 punt vast als kleinste klinisch relevante effect, en het interval sluit dat uit.",
+   "why": "De bewering wordt getoetst aan een vooraf vastgelegde effectgrootte, en het hele interval ligt daaronder: bewijs dat er geen zinvol effect is, niet alleen een gebrek aan significantie.",
+   "traps": {
+    "not-significant": "De bewering steunt op een smal interval dat relevante effecten uitsluit, niet op p > 0,05.",
+    "small-sample": "20.000 mensen is veel."
+   },
+   "labels": {
+    "CHANGE (POINTS)": "VERANDERING (PUNTEN)"
+   }
+  },
+  "C51": {
+   "title": "Beide groepen daalden",
+   "field": "Cardiologie",
+   "text": "In een trial bij 600 mensen met hoge bloeddrukmetingen, gerandomiseerd naar coaching of gebruikelijke zorg, daalde de bloeddruk in beide groepen, maar in de coachinggroep 6 mmHg meer (95%-BI 3 tot 9).",
+   "why": "Een gerandomiseerde controlegroep ondergaat dezelfde regressie naar het gemiddelde, dus het verschil tussen de groepen is een eerlijke schatting.",
+   "traps": {
+    "regression-mean": "Beide groepen regrederen evenveel; de extra daling van 6 mmHg is het effect.",
+    "surrogate": "Bloeddruk is hiervoor een goed gevalideerde uitkomst, en de bewering gaat alleen over bloeddruk."
+   },
+   "labels": {
+    "BEFORE – AFTER": "VOOR – NA",
+    "MMHG": "MMHG",
+    "USUAL CARE": "GEBRUIKELIJKE ZORG",
+    "PROGRAMME": "PROGRAMMA"
+   }
+  },
+  "C52": {
+   "title": "Gevalideerd model",
+   "field": "Gezondheidszorg",
+   "text": "Een heropnamemodel, gebouwd op data uit 2015–19 van één ziekenhuis, werd in 2021 getest op 40.000 patiënten in vijf andere ziekenhuizen (C = 0,78). Het heeft een redelijk discriminerend vermogen in ziekenhuizen zoals deze.",
+   "why": "Externe, temporele validatie is de juiste toets voor een predictiemodel. Een C-statistiek van 0,78 betekent dat in 78% van de paren de heropgenomen patiënt het hogere risico kreeg: redelijk, zoals beweerd.",
+   "traps": {
+    "overfitting": "De prestaties worden gerapporteerd op nieuwe ziekenhuizen en een later jaar.",
+    "extrapolation": "De testdata dekken de setting waarover de bewering gaat."
+   },
+   "labels": {
+    "C = 0.78": "C = 0,78"
+   }
+  },
+  "C53": {
+   "title": "Elke school",
+   "field": "Onderwijs",
+   "text": "In een trial die 120 klassen binnen 14 scholen randomiseerde, deed de nieuwe methode het beter dan de oude in elke school en in totaal (verschil 7 punten, 95%-BI 4 tot 10).",
+   "why": "Randomisatie binnen scholen en een consistent effect in alle scholen maken de totale bewering betrouwbaar.",
+   "traps": {
+    "simpsons": "Het effect is in elke school en in totaal hetzelfde, dus poolen verbergt niets.",
+    "ecological": "Klassen werden gerandomiseerd en uitkomsten bij leerlingen gemeten."
+   },
+   "labels": {
+    "MEAN SCORE": "GEMIDDELDE SCORE",
+    "NEW": "NIEUW",
+    "OLD": "OUD"
+   }
+  },
+  "C54": {
+   "title": "Oudere Nederlanders",
+   "field": "Geriatrie",
+   "text": "In een gerandomiseerde trial bij 2.000 Nederlanders boven 70 verminderden evenwichtslessen het aandeel dat in een jaar viel van 30% naar 24%. De auteurs bevelen ze aan voor ouderen in vergelijkbare settings.",
+   "why": "Een gerandomiseerde trial met een bewering die binnen de onderzochte populatie blijft, en absolute cijfers in de grafiek.",
+   "traps": {
+    "weird": "De bewering is beperkt tot vergelijkbare ouderen, de onderzochte populatie.",
+    "relative-risk": "De grafiek geeft de absolute percentages."
+   },
+   "labels": {
+    "% WHO FELL": "% VIEL",
+    "CLASSES": "LESSEN",
+    "CONTROL": "CONTROLE"
+   }
+  },
+  "C55": {
+   "title": "Rookverbod",
+   "field": "Volksgezondheid",
+   "text": "Nadat een regio roken in cafés verbood, daalden de opnames voor hartinfarcten met 12% ten opzichte van buurregio's zonder verbod; die waren de vijf jaar ervoor gelijk opgelopen.",
+   "why": "Een vergelijkingsgroep met parallelle pretrends is een sterk design voor beleid dat niet gerandomiseerd kan worden.",
+   "traps": {
+    "shared-trend": "De vergelijkingsregio's delen dezelfde trends; de daling verschijnt pas na het verbod.",
+    "regression-mean": "De regio werd niet gekozen om een extreem jaar; de periode ervoor was stabiel."
+   },
+   "labels": {
+    "YEAR": "JAAR",
+    "INDEX": "INDEX",
+    "BAN": "VERBOD",
+    "NO BAN": "GEEN VERBOD"
+   }
+  },
+  "C56": {
+   "title": "Veiliger fietsen",
+   "field": "Verkeer",
+   "text": "Het aantal verkeersdoden onder fietsers per miljard gefietste km was gemiddeld 30 in 2008–12 en 15 in 2018–22 (van 60 naar 45 doden per jaar, terwijl het fietsen groeide van 2 naar 3 miljard km). Het risico per km is gehalveerd.",
+   "why": "De doden worden uitgedrukt per gefietste afstand, dus met meer fietsen is rekening gehouden, en de grafiek is eerlijk.",
+   "traps": {
+    "chart-distortion": "De as begint bij nul.",
+    "relative-risk": "De bewering gaat over een cijfer per km, en beide cijfers worden gegeven.",
+    "regression-mean": "Vijfjaarsgemiddelden, geen enkel slecht jaar, en het cijfer is per gefietste afstand."
+   },
+   "labels": {
+    "DEATHS / BN KM": "DODEN / MLD KM",
+    "2008–12": "2008–12",
+    "2018–22": "2018–22"
+   }
+  },
+  "C57": {
+   "title": "Roken en kanker",
+   "field": "Epidemiologie",
+   "text": "Honderden studies in tientallen landen leggen een verband tussen roken en longkanker, met een risico dat stijgt met de dosis en roken dat jaren voor de diagnose werd vastgelegd. Roken veroorzaakt longkanker.",
+   "why": "Sterkte, consistentie, dosis-respons en temporaliteit: het klassieke geval waarin observationeel bewijs een oorzaak ondersteunt.",
+   "traps": {
+    "correlation-causation": "Consistentie, dosis-respons en timing samen rechtvaardigen een causale lezing.",
+    "reverse-causation": "Roken werd jaren voor de diagnose vastgelegd.",
+    "single-study": "Honderden studies zijn het eens."
+   },
+   "labels": {
+    "CIGARETTES / DAY": "SIGARETTEN / DAG",
+    "RELATIVE RISK": "RELATIEF RISICO",
+    "RISK": "RISICO"
+   }
+  },
+  "C58": {
+   "title": "Geplande subgroep",
+   "field": "Nefrologie",
+   "text": "Het middel hielp patiënten met een slechte nierfunctie meer, een subgroep die in het geregistreerde protocol stond, met een significante interactietoets, bevestigd in een tweede trial.",
+   "why": "Beweringen over subgroepen zijn geloofwaardig als ze gepland, weinig talrijk, als interactie getoetst en gerepliceerd zijn. Deze is dat.",
+   "traps": {
+    "subgroup": "Vooraf vastgelegd, als interactie getoetst en gerepliceerd: dit subgroepeffect voldoet aan de geloofwaardigheidscriteria.",
+    "multiple-tests": "Eén geplande subgroep, geen sleepnet."
+   },
+   "labels": {}
+  },
+  "C59": {
+   "title": "Echte vooruitgang",
+   "field": "Onderwijs",
+   "text": "In een gerandomiseerde trial bij 3.000 leerlingen verhoogde het leesprogramma de leesscores met 0,2 standaarddeviatie (95%-BI 0,12 tot 0,28), ruwweg drie maanden extra vooruitgang.",
+   "why": "Een gerandomiseerd design, een grote steekproef en een effectgrootte vertaald naar maanden vooruitgang.",
+   "traps": {
+    "trivial-effect": "De grootte wordt in betekenisvolle eenheden gegeven, en ze is aanzienlijk.",
+    "surrogate": "Leesscores zijn de uitkomst waarop het programma mikt."
+   },
+   "labels": {
+    "SD GAIN": "WINST IN SD",
+    "PROGRAMME": "PROGRAMMA",
+    "CONTROL": "CONTROLE"
+   }
+  },
+  "C60": {
+   "title": "Alle fondsen",
+   "field": "Financiën",
+   "text": "Wie alle 412 fondsen telt die sinds 2005 zijn gestart, inclusief de 180 die later sloten, ziet dat actieve fondsen jaarlijks 1,2 procentpunt minder opbrachten dan de index.",
+   "why": "Door de gesloten fondsen mee te tellen verdwijnt de survivorship bias, en de bewering beschrijft alleen wat er gebeurde.",
+   "traps": {
+    "survivorship": "Gesloten fondsen zijn meegeteld.",
+    "small-sample": "412 fondsen over vele jaren is een stevige basis voor een gemiddelde."
+   },
+   "labels": {
+    "% A YEAR": "% PER JAAR",
+    "FUNDS": "FONDSEN",
+    "INDEX": "INDEX"
+   }
+  }
+ },
+ "flags": {
+  "correlation-causation": {
+   "name": "Correlatie als causaliteit",
+   "short": "Twee dingen gaan samen, dus het ene zou het andere veroorzaken.",
+   "text": "Een verband alleen kan oorzaak niet onderscheiden van toeval, een gemeenschappelijke oorzaak of omgekeerde causaliteit. Een causale claim vraagt een design of analyse die die uitsluit.",
+   "example": "Matthews (2000): in 17 Europese landen correleerde het aantal ooievaarsparen met het geboortecijfer (r ≈ 0,62, p = 0,008)."
+  },
+  "confounding": {
+   "name": "Verborgen derde factor",
+   "short": "Iets anders stuurt zowel de vermeende oorzaak als de uitkomst.",
+   "text": "Een confounder veroorzaakt zowel de blootstelling als de uitkomst, dus die twee bewegen samen, ook als de ene geen effect heeft op de andere.",
+   "example": "HST leek in observationele studies het hart te beschermen; de WHI-trial (2002) vond een hoger coronair risico (HR 1,29)."
+  },
+  "reverse-causation": {
+   "name": "Omgekeerde causaliteit",
+   "short": "De uitkomst veroorzaakt misschien de vermeende oorzaak.",
+   "text": "Als blootstelling en uitkomst tegelijk gemeten worden, kan de pijl de andere kant op wijzen: ziekte verandert gewoonten, slechte resultaten veranderen beleid.",
+   "example": "Shaper et al. (1988): de hogere sterfte bij niet-drinkers weerspiegelde deels zieke mannen die gestopt waren met drinken."
+  },
+  "shared-trend": {
+   "name": "Twee trends, één klok",
+   "short": "Twee reeksen die allebei in de tijd verschuiven, correleren, of ze nu verband houden of niet.",
+   "text": "Alles wat over de jaren gestaag stijgt of daalt, correleert met al het andere dat dat ook doet. Vergelijk veranderingen van jaar tot jaar, niet niveaus.",
+   "example": "Yule (1926): huwelijken in de Church of England en sterfte in Engeland en Wales, 1866–1911, correleerden met r = 0,95."
+  },
+  "collider": {
+   "name": "Colliderbias",
+   "short": "Selecteren op een gemeenschappelijk gevolg schept, verbergt of keert een verband om.",
+   "text": "Als alleen gevallen met een gemeenschappelijk gevolg bestudeerd worden (ziekenhuispatiënten, gepubliceerde artikelen, baby's met een laag geboortegewicht), lijken twee ongerelateerde oorzaken ervan verbonden.",
+   "example": "Geboortegewichtparadox: bij baby's met een laag geboortegewicht leek roken door de moeder te beschermen (Hernández-Díaz et al. 2006)."
+  },
+  "immortal-time": {
+   "name": "Immortal time",
+   "short": "Een groep is bepaald door iets van later, dus haar leden moesten overleven om erbij te horen.",
+   "text": "De tijd voordat iemand 'blootgesteld' raakt als blootgestelde tijd tellen, geeft die groep een overlevingsvoorsprong die ze niet verdiend heeft.",
+   "example": "Oscarwinnaars leken 3,9 jaar langer te leven; correct geteld was het verschil zo'n 1 jaar en niet significant (Sylvestre et al. 2006)."
+  },
+  "extrapolation": {
+   "name": "Buiten de data",
+   "short": "Een trend wordt ver voorbij het bereik waarin ze werd waargenomen doorgetrokken.",
+   "text": "Een patroon binnen één bereik van doses, leeftijden of jaren hoeft daarbuiten niet te gelden. Rechte lijnen blijven zelden recht.",
+   "example": "Tatem et al. (2004) trokken de Olympische trends op de 100 m door en voorspelden dat vrouwen in 2156 sneller zouden lopen dan mannen."
+  },
+  "model-to-human": {
+   "name": "Van muis naar mens",
+   "short": "Een resultaat in cellen, dieren of simulaties zou ook voor mensen gelden.",
+   "text": "In modellen beginnen hypothesen. Veel effecten uit cellen of dieren krimpen, verdwijnen of keren om in trials bij mensen.",
+   "example": "TGN1412 (2006): een dosis van 1/500 van wat bij apen veilig was, gaf alle zes vrijwilligers een ernstige ontstekingsreactie."
+  },
+  "ecological": {
+   "name": "Ecologische fout",
+   "short": "Een patroon tussen groepen wordt gelezen als waar voor de individuen erin.",
+   "text": "Landen, regio's of scholen kunnen een correlatie tonen die bij de mensen erbinnen de andere kant op loopt, of helemaal ontbreekt.",
+   "example": "VS, 1930: staten met meer immigranten hadden minder analfabetisme (r ≈ −0,53), terwijl immigranten iets vaker analfabeet waren."
+  },
+  "survivorship": {
+   "name": "Survivorship bias",
+   "short": "Alleen de gevallen die het gehaald hebben, worden bekeken.",
+   "text": "Failliete bedrijven, gesloten fondsen, uitgevallen patiënten en verloren vliegtuigen laten geen data na. De overlevers bestuderen toont hoe overleven eruitziet, niet wat het veroorzaakt.",
+   "example": "WOII: Wald gebruikte de schade aan teruggekeerde bommenwerpers om de kwetsbaarheid te schatten; plekken die bij overlevers zelden geraakt waren, waren waarschijnlijk het dodelijkst."
+  },
+  "unrepresentative": {
+   "name": "Niet-representatieve steekproef",
+   "short": "Wie antwoordde, verschilt van de mensen over wie de bewering gaat.",
+   "text": "Een enorme steekproef maakt een scheve steekproef niet goed. Vrijwilligers, onlinepanels en lezers van één tijdschrift zijn niet de populatie.",
+   "example": "Literary Digest, 1936: zo'n 2,4 miljoen teruggestuurde stembiljetten voorspelden Landon; Roosevelt behaalde een verpletterende overwinning."
+  },
+  "weird": {
+   "name": "Smalle steekproef, algemene bewering",
+   "short": "Eén soort deelnemer, een bewering over alle mensen.",
+   "text": "Resultaten van studenten, één land of één cultuur worden gepresenteerd als feiten over mensen in het algemeen.",
+   "example": "Henrich et al. (2010): 96% van de psychologische steekproeven kwam uit landen met 12% van de wereldbevolking."
+  },
+  "simpsons": {
+   "name": "Simpsons paradox",
+   "short": "Een trend in de gepoolde data keert om of verdwijnt binnen subgroepen.",
+   "text": "Als groepen verschillen in omvang en uitgangsniveau, kan optellen een vergelijking omkeren. Het juiste niveau hangt af van de causale vraag.",
+   "example": "Berkeley, 1973: 44% van de mannen tegenover 35% van de vrouwen toegelaten; per vakgroep weinig bias, eerder in het voordeel van vrouwen."
+  },
+  "regression-mean": {
+   "name": "Regressie naar het gemiddelde",
+   "short": "Extreme waarden schuiven vanzelf terug naar het gemiddelde.",
+   "text": "Alles wat gekozen is omdat het uitzonderlijk hoog of laag was, is de volgende keer meestal minder extreem, met of zonder behandeling.",
+   "example": "Galton (1886): kinderen van heel lange of heel kleine ouders zaten gemiddeld dichter bij de gemiddelde lengte."
+  },
+  "small-sample": {
+   "name": "Kleine aantallen, grote uitschieters",
+   "short": "Kleine groepen geven door toeval extreme resultaten, aan beide kanten.",
+   "text": "Hoe minder gevallen, hoe meer een cijfer heen en weer springt. De beste en slechtste van een ranglijst zijn vaak gewoon de kleinste.",
+   "example": "Wainer (2007): de Amerikaanse county's met de laagste nierkankercijfers waren vooral klein en landelijk, en die met de hoogste ook."
+  },
+  "base-rate": {
+   "name": "Basisfrequentie negeren",
+   "short": "Hoe zeldzaam de aandoening is, wordt genegeerd.",
+   "text": "Als iets zeldzaam is, geeft zelfs een nauwkeurige test of detector vooral vals alarm. De basisfrequentie bepaalt wat een positieve uitslag betekent.",
+   "example": "Casscells et al. (1978): het meest gegeven antwoord van 60 artsen en studenten van Harvard was 95%; het juiste is ongeveer 2%."
+  },
+  "inverse-probability": {
+   "name": "Verwisselde voorwaardelijke kans",
+   "short": "De kans op de data gegeven een hypothese wordt gelezen als de kans op de hypothese.",
+   "text": "P(bewijs | onschuldig) is niet P(onschuldig | bewijs), en p = 0,01 is geen 1% kans dat het effect toeval is.",
+   "example": "Proces tegen Sally Clark: de pers bracht '1 op 73 miljoen' als de kans dat de twee sterfgevallen een ongeluk waren (RSS, 2002)."
+  },
+  "not-significant": {
+   "name": "Niet significant, geen effect",
+   "short": "Een niet-significant resultaat wordt gebracht als bewijs dat er geen effect is.",
+   "text": "Geen bewijs voor een effect is geen bewijs dat het ontbreekt. Een breed betrouwbaarheidsinterval dat nul bevat, kan ook effecten bevatten die ertoe doen.",
+   "example": "Amrhein et al. (2019): een relatief risico van 1,2 met P = 0,091 werd gerapporteerd als 'geen verband'."
+  },
+  "trivial-effect": {
+   "name": "Significant maar triviaal",
+   "short": "Een piepklein effect wordt als belangrijk verkocht omdat p klein is.",
+   "text": "Met een steekproef die groot genoeg is is bijna elk verschil 'significant'. Statistische significantie zegt niets over grootte of belang.",
+   "example": "Kramer et al. (2014): bij 689.003 Facebookgebruikers waren effecten van slechts d = 0,001 statistisch significant."
+  },
+  "relative-risk": {
+   "name": "Alleen relatief risico",
+   "short": "'Verdubbelt het risico', zonder te zeggen op wat, en vanaf hoeveel.",
+   "text": "Een stijging van 100% vanaf 1 op 7.000 is 1 extra geval op 7.000. Zonder de absolute aantallen valt een relatieve verandering niet te beoordelen.",
+   "example": "VK 1995: na een waarschuwing dat nieuwere pillen het tromboserisico verdubbelden (van ongeveer 1 naar 2 op 7.000) volgden zo'n 13.000 extra abortussen."
+  },
+  "chart-distortion": {
+   "name": "Vertekende grafiek",
+   "short": "Het beeld overdrijft wat de cijfers zeggen.",
+   "text": "Een afgeknipte as, twee verschillende schalen of een opgerekt tijdvenster kunnen een kleine verandering dramatisch laten lijken, of een grote laten verdwijnen.",
+   "example": "Een grafiek bij een hoorzitting van het Amerikaanse Huis (2015) gebruikte twee schalen zonder label, zodat ~327.000 abortussen ~935.000 kankerscreenings leken in te halen."
+  },
+  "overfitting": {
+   "name": "Overfitting",
+   "short": "Een model past nauw op het verleden en voorspelt de toekomst slecht.",
+   "text": "Veel predictoren en weinig gevallen laten een model de ruis leren. Alleen prestaties op nieuwe data tonen wat het echt weet.",
+   "example": "Google Flu Trends overschatte griep in 100 van 108 weken vanaf augustus 2011, in februari 2013 met meer dan het dubbele (Lazer et al. 2014)."
+  },
+  "p-hacking": {
+   "name": "Forking paths",
+   "short": "De analyse werd gekozen na het zien van de data.",
+   "text": "Andere uitkomsten, covariaten, exclusies of stopmomenten proberen tot p < 0,05 maakt fout-positieven waarschijnlijk, ook zonder kwade opzet.",
+   "example": "Simmons et al. (2011): flexibele analyse 'toonde' dat luisteren naar een Beatlesnummer mensen bijna 18 maanden jonger maakte."
+  },
+  "multiple-tests": {
+   "name": "Veel toetsen, één treffer",
+   "short": "Uit veel vergelijkingen wordt de ene gerapporteerd die significant uitviel.",
+   "text": "Toets 20 ware nulhypothesen bij p < 0,05 en verwacht één treffer. Zonder correctie is één significant resultaat tussen vele waarschijnlijk ruis.",
+   "example": "Bennett et al. (2009): ongecorrigeerde fMRI-toetsen vonden 'actieve' voxels in een dode zalm die foto's van mensen te zien kreeg."
+  },
+  "subgroup": {
+   "name": "Verrassende subgroep",
+   "short": "Het effect zou gelden voor één subgroep die achteraf gevonden is.",
+   "text": "Snijd een trial op genoeg manieren in plakjes en een plakje wijkt door toeval af. Geloofwaardige subgroepeffecten zijn er weinig, vooraf vastgelegd en als interactie getoetst.",
+   "example": "ISIS-2 (1988): aspirine hielp na een hartinfarct, behalve, zo leek het, bij patiënten geboren onder Tweelingen of Weegschaal."
+  },
+  "publication-bias": {
+   "name": "In de la",
+   "short": "De gepubliceerde studies zijn die welke werkten.",
+   "text": "Nulresultaten blijven ongepubliceerd (publicatiebias), dus de literatuur, en elke review ervan, overschat het effect.",
+   "example": "Turner et al. (2008): 94% van de gepubliceerde trials met antidepressiva leek positief; volgens de FDA-beoordeling was dat 51%."
+  },
+  "single-study": {
+   "name": "Eén studie, uitgemaakte zaak",
+   "short": "Eén opvallende studie wordt als vaststaand feit behandeld.",
+   "text": "Een eerste resultaat, zeker een klein en verrassend, is een spoor om verder te onderzoeken. Veel blijken niet repliceerbaar.",
+   "example": "Power posing (2010, 42 mensen) meldde hormoonveranderingen; een replicatie bij 200 mensen vond er geen (Ranehill et al. 2015)."
+  },
+  "surrogate": {
+   "name": "Surrogaateindpunt",
+   "short": "Een marker verbeterde, dus mensen zouden er beter van worden.",
+   "text": "Bloedwaarden, toetsscores en klikken staan in voor wat ertoe doet. De marker veranderen hoeft de uitkomst niet te veranderen, en kan haar verslechteren.",
+   "example": "CAST (1991): middelen onderdrukten onregelmatige hartslagen, maar 63 patiënten stierven onder het middel tegenover 26 onder placebo."
+  },
+  "lead-time": {
+   "name": "Schijnbare overlevingswinst",
+   "short": "Een vroegere diagnose kan de overleving verlengen zonder de dood uit te stellen.",
+   "text": "Screening start de klok eerder en vindt onschuldige gevallen, dus de overleving na diagnose stijgt, ook als niemand langer leeft. Kijk naar de sterfte.",
+   "example": "Zuid-Korea: screening deed het aantal diagnoses van schildklierkanker tot 2011 vervijftienvoudigen, terwijl de sterfte gelijk bleef (Ahn et al. 2014)."
+  },
+  "changed-yardstick": {
+   "name": "Andere meetlat",
+   "short": "Het aantal steeg omdat de definitie of de telling veranderde.",
+   "text": "Nieuwe criteria, meer testen of betere registratie kunnen de cijfers doen stijgen of dalen zonder dat er in de wereld iets verandert.",
+   "example": "Denemarken: zo'n 60% van de stijging in autismediagnoses werd verklaard door gewijzigde criteria en registratie (Hansen et al. 2015)."
+  }
+ },
+ "checks": {
+  "denominator": {
+   "name": "Vraag naar de noemer",
+   "short": "Op hoeveel? Zet aantallen en percentages om in natuurlijke frequenties.",
+   "text": "Vraag hoe vaak het überhaupt voorkomt, en op hoeveel de cijfers betrekking hebben. Basisfrequenties, absolute risico's en de omgekeerde kans volgen uit één 2×2-tabel."
+  },
+  "comparison": {
+   "name": "Vergeleken met wat?",
+   "short": "Vraag naar de groep die het niet kreeg, over dezelfde periode.",
+   "text": "Een verandering of verband betekent weinig zonder eerlijke vergelijking: een controlegroep, dezelfde mensen ervoor, of vergelijkbare plaatsen die geen interventie kregen."
+  },
+  "causal-diagram": {
+   "name": "Teken het causale diagram",
+   "short": "Schets wat wat veroorzaakt, en zoek dan backdoorpaden en colliders.",
+   "text": "Teken pijlen tussen blootstelling, uitkomst en alles wat die beïnvloedt. Paden via een gemeenschappelijke oorzaak vragen correctie; op een gemeenschappelijk gevolg mag je niet selecteren."
+  },
+  "timeline": {
+   "name": "Controleer de tijdlijn",
+   "short": "Wat kwam eerst, en wanneer begon ieders klok?",
+   "text": "Zet op een rij wanneer blootstelling, diagnose, follow-up en uitkomst plaatsvonden. Oorzaken komen eerst; de follow-up start voor elke groep op hetzelfde moment."
+  },
+  "over-time": {
+   "name": "Zet het uit in de tijd",
+   "short": "Bekijk de hele reeks, niet twee punten of één stuk.",
+   "text": "Een langere reeks toont trends, terugveren naar normaal en breuken waar een definitie veranderde. Vergelijk veranderingen van jaar tot jaar, niet niveaus."
+  },
+  "split": {
+   "name": "Splits per subgroep",
+   "short": "Splits het totaal op naar de variabele die tussen de groepen verschilt.",
+   "text": "Kijk binnen vakgroepen, ziekenhuizen, leeftijdsgroepen of ernstniveaus. Keert de vergelijking om, beslis dan welk niveau de vraag beantwoordt."
+  },
+  "individuals": {
+   "name": "Vraag om individuele data",
+   "short": "Hebben dezelfde mensen beide kenmerken, of alleen dezelfde plaatsen?",
+   "text": "Een bewering over mensen vraagt data over mensen. Groepsgemiddelden kunnen niet tonen wie binnen de groep de blootstelling en de uitkomst heeft."
+  },
+  "missing": {
+   "name": "Zoek wie ontbreekt",
+   "short": "Wie viel uit, mislukte, antwoordde niet of kwam er nooit in?",
+   "text": "Ga na hoe gevallen in de dataset terechtkwamen. Overlevers, respondenten, opgenomen patiënten en gepubliceerde studies zijn gefilterd, en de filter kan het resultaat scheppen."
+  },
+  "range": {
+   "name": "Ga na wie en wat onderzocht is",
+   "short": "Welke mensen, soorten, doses en jaren dekt het bewijs?",
+   "text": "Vergelijk het bereik van de bewering met dat van de data. Buiten de onderzochte populatie, dosis of periode is het resultaat een hypothese."
+  },
+  "prereg": {
+   "name": "Zoek de preregistratie",
+   "short": "Waren deze uitkomst en analyse gepland voordat de data binnenkwamen?",
+   "text": "Zoek een trialregistratie of gepreregistreerd plan en vergelijk het met het artikel. Gewisselde uitkomsten en ongeplande subgroepen zijn verkennend."
+  },
+  "replicate": {
+   "name": "Zoek de andere studies",
+   "short": "Is het gerepliceerd? Wat tonen registers en reviews?",
+   "text": "Zoek replicaties, systematische reviews en geregistreerde trials, ook ongepubliceerde. Eén resultaat is een aanwijzing; een geheel van bewijs is een bevinding."
+  },
+  "interval": {
+   "name": "Lees het betrouwbaarheidsinterval",
+   "short": "Kijk naar het bereik van effecten dat de data toelaten, niet alleen naar de p-waarde.",
+   "text": "Een breed interval betekent dat de data verenigbaar zijn met grote effecten in beide richtingen, of met geen. Kleine steekproeven geven brede intervallen."
+  },
+  "effect-size": {
+   "name": "Vraag hoe groot",
+   "short": "Hoe groot is het effect, in eenheden die voor mensen tellen?",
+   "text": "Vraag naar het absolute verschil, het number needed to treat of het effect in echte eenheden, en vergelijk het met wat in de praktijk zou tellen."
+  },
+  "outcome": {
+   "name": "Vraag wat er gemeten is",
+   "short": "Is de uitkomst wat ertoe doet, en overal op dezelfde manier gemeten?",
+   "text": "Ga na of het resultaat een marker is of het echte eindpunt, en of definities, tests of screening tijdens de studie veranderden."
+  },
+  "new-data": {
+   "name": "Test het op nieuwe data",
+   "short": "Hoe goed voorspelt het gevallen die het nooit gezien heeft?",
+   "text": "Vraag naar prestaties op achtergehouden of latere data, of een externe validatie. De fit op de data waarmee een model gebouwd is, valt altijd te gunstig uit."
+  },
+  "axis": {
+   "name": "Lees de assen",
+   "short": "Waar begint elke as, en zijn de schalen gelijk?",
+   "text": "Controleer het begin van de as, de eenheden, de schaal en het tijdvenster. Teken opnieuw vanaf nul, of op één schaal, en kijk of het verhaal overeind blijft."
+  }
+ }
+}

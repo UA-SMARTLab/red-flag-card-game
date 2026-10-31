@@ -53,9 +53,16 @@ the Python standard library is needed. Design choices and sources are in [`DESIG
 
 ## Languages
 
-English is the source. The kit's translation system is in place (`i18n/`, as in Methodical): add a language to
-`i18n/languages.json`, copy `i18n/en/ui.json` and `i18n/en/cards.json` to `i18n/<code>/`, translate the values and
-rebuild. Anything missing falls back to English. French, Dutch, German and Arabic are planned.
+Red Flag plays in English, French, Dutch, German and Arabic: the app has a language picker, and each language has its
+own app page and print deck, `app/<code>/` and `print/<code>/` (English is `app/` and `print/`). English is the source;
+the kit's translation system is the same as Methodical's (`i18n/`). To add a language, add it to `i18n/languages.json`,
+copy `i18n/en/ui.json` and `i18n/en/cards.json` to `i18n/<code>/`, translate the values and rebuild. Anything missing
+falls back to English.
+
+Each translation uses the same terms as Methodical's for shared concepts, was checked by an independent
+methodologist review, and fits every card. Each `i18n/<code>/GLOSSARY.md` records the term choices, their sources and
+the questions a native-speaking methodologist should still settle. In Arabic, mixed labels on the card pictures are
+wrapped in invisible direction marks so numbers and Latin letters read in the right order.
 
 ## Status
 

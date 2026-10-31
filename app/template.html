@@ -44,6 +44,10 @@ a { color: var(--accent); }
 header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 20px; position: relative; }
 .kit-link { display: inline-block; padding: 4px 0; margin-bottom: 4px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .kit-link:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+/* Signed scores read left to right in every language; in Arabic, "-2" would otherwise show as "2-". */
+.pts, .stat b, .badge bdi { direction: ltr; unicode-bidi: isolate; }
+/* Narrow screens: the picker takes its own row above the kit link instead of floating over it. */
+@media (max-width: 640px) { header .brand + .lang-pick { position: static; order: -1; flex-basis: 100%; justify-content: flex-end; } }
 .brand h1 a { color: inherit; text-decoration: none; }
 .brand h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 800; letter-spacing: -.02em; line-height: .95; display: flex; align-items: center; gap: 10px; }
 .brand h1 svg { width: .8em; height: .8em; flex: none; }
@@ -593,7 +597,7 @@ function renderPanel() {
   html += `<div class="pick-wrap"><div class="pick-cards">${choices.map(id => {
     const t = tierOf(q, id), mine = id === picked;
     return `<div class="pick-slot"><button class="pick res res-${t}${mine ? " chosen" : ""}" disabled aria-label="${mine ? tr("play.your_pick_aria", { card: esc(nameOf(id)), tier: badge[t] }) : `${esc(nameOf(id))}: ${badge[t]}`}">${cardOf(id)}</button>
-      ${lens(id)}<span class="badge b-${t}">${mine ? (pts > 0 ? "+" + pts + " " : pts < 0 ? pts + " " : "") : ""}${badge[t]}</span>${mine ? `<span class="mine">${tr("play.your_pick")}</span>` : ""}${refLink(id)}</div>`;
+      ${lens(id)}<span class="badge b-${t}">${mine && pts ? `<bdi>${pts > 0 ? "+" : ""}${pts}</bdi> ` : ""}${badge[t]}</span>${mine ? `<span class="mine">${tr("play.your_pick")}</span>` : ""}${refLink(id)}</div>`;
   }).join("")}</div></div>`;
   html += `<span class="label" style="display:block;margin-top:16px">${tr("play.verdict_on", { card: esc(nameOf(picked)) })}</span>
     <div class="verdict v-${tier}"><span class="pts">${pts > 0 ? "+" : ""}${pts}</span>${tr("verdict." + tier)}</div>`;
