@@ -2,7 +2,7 @@
 
 **Spot the reasoning error in a research claim, or call it sound.**
 
-A card game for researchers, part of the **SMART-Lab Science Game Kit** (SMART-Lab, Universiteit Antwerpen). A Claim
+A card game for researchers, part of the **[SMART-Lab Science Game Kit](https://ua-smartlab.github.io/science-game-kit/)** (SMART-Lab, Universiteit Antwerpen). A Claim
 card shows a headline, an abstract sentence or a small chart. Players play the Flag that names its reasoning error
 (correlation as causation, Simpson's paradox, base-rate neglect, forking paths and 26 more) or the Sound card. About
 one claim in four is sound, and a false alarm costs as much as a missed flaw: the game rewards calibrated scepticism,
@@ -21,7 +21,8 @@ not cynicism.
 
 ## Start here
 
-- **Play on screen:** double-click `play-windows.bat` (Windows), `play-mac.command` (Mac) or run `play-ubuntu.sh`
+- **Play online:** **[ua-smartlab.github.io/red-flag-card-game/app](https://ua-smartlab.github.io/red-flag-card-game/app/)**. Nothing to install.
+- **Play offline:** double-click `play-windows.bat` (Windows), `play-mac.command` (Mac) or run `play-ubuntu.sh`
   (Ubuntu). Or open `app/index.html` in a browser. Everything works offline except the web fonts.
 - **Print a deck:** open `print/cards.html` in Chrome and print at 100% on A4 with background graphics on; 115 cards in
   poker size, 9 per page. `print/backs.html` has the card back. Keep `print/answer-key.html` apart.

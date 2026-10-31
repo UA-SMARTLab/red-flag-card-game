@@ -2,6 +2,7 @@
  "ui": {
   "_comment": "English source. Keys never change; translate the values. {name} placeholders are filled in by the app; keep them. Keys ending in _html may contain simple HTML tags such as <em>.",
   "brand.tagline": "A card game for scientists. Read the research claim, then flag its reasoning error, or call it sound.",
+  "kit.link": "← SMART-Lab Science Game Kit",
   "lang.label": "Language",
   "footer": "Red Flag v{version}, part of the SMART-Lab Science Game Kit. Claim cards are constructed teaching examples; the real cases are on the Flag cards, each with its source. The key has three tiers because reasonable readers disagree: argue with it.",
   "stats.points": "Points",
