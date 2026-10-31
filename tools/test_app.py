@@ -26,10 +26,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const out = { errors: [], fails: [], played: 0, sound: 0 };
 const fr = document.getElementById("app");
 async function run() {
-  const w = fr.contentWindow, d = fr.contentDocument;
+  let w = fr.contentWindow, d = fr.contentDocument;
   w.addEventListener("error", e => out.errors.push(String(e.message)));
   const $ = s => d.querySelector(s), $$ = s => [...d.querySelectorAll(s)];
   const fail = m => out.fails.push(m);
+  const reload = async () => {
+    await new Promise(r => { fr.addEventListener("load", r, { once: true }); w.location.reload(); });
+    await sleep(400); w = fr.contentWindow; d = fr.contentDocument; w.addEventListener("error", e => out.errors.push(String(e.message)));
+  };
   // Home
   if ($$("#hero-fan .tcg").length !== 5) fail("home: the fan should show 5 cards");
   if ($$("#home-counts .count").length !== 3) fail("home: 3 deck counts expected");
@@ -103,6 +107,22 @@ async function run() {
   if (!(await goBack()) || $(".viewer:not(.out)") || $("#view-play").hidden) fail("back did not close the full-screen card on the Play page");
   if (!(await goBack()) || $("#view-home").hidden) fail("back from Play did not return to Home");
   out.back = true;
+  // A round in progress survives leaving the game: the same claim and choices come back, on the Play page, and a
+  // finished round is not scored twice.
+  $("#tab-play").click(); await sleep(50);
+  w.eval("nextClaim()"); await sleep(30);
+  const cid = w.eval("q.id"), ch = w.eval("choices.join()");
+  await reload();
+  if ($("#view-play").hidden || w.eval("q.id") !== cid || w.eval("choices.join()") !== ch || w.eval("phase") !== "choose")
+    fail(`leaving mid-claim: came back to ${w.eval("q.id")} (${w.eval("phase")}) on ${$("#view-play").hidden ? "another page" : "Play"}, expected ${cid}`);
+  $("#panel [data-pick]").click(); await sleep(400); $(".viewer .v-pick").click(); await sleep(60);
+  const pickedId = w.eval("picked"), key = w.eval("q.check");
+  $(`#review [data-k="${key}"]`).click(); await sleep(20);
+  const scoreAfter = w.eval("stats.score");
+  await reload();
+  if (w.eval("phase") !== "result" || w.eval("picked") !== pickedId || !$("#panel .result-head")) fail("leaving after answering: the result did not come back");
+  if (w.eval("review && review.answer") !== key) fail("leaving after the Check round: its answer did not come back");
+  if (w.eval("stats.score") !== scoreAfter) fail(`leaving after answering: the score changed from ${scoreAfter} to ${w.eval("stats.score")}`);
   // Decks
   $("#tab-decks").click(); await sleep(50);
   const counts = {};

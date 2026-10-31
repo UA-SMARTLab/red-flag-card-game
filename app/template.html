@@ -431,6 +431,31 @@ function trapReason(c, id) {
 // ---------- state
 let q = null, picked = null, phase = "choose", queue = [], choices = [], review = null;
 
+// The round in progress is kept in this browser, so leaving the game (the phone's back button, a reload, a closed tab)
+// does not lose it: the same claim, choices, answer and Check round come back, on the page the player was on.
+const ROUND = KEY + "-round";
+let restoring = false;
+function saveRound() {
+  if (!q) return;
+  const r = { q: q.id, choices, picked, phase, view: current, review: review && { opts: review.opts.map(k => k.id), answer: review.answer } };
+  try { localStorage.setItem(ROUND, JSON.stringify(r)); } catch (e) {}
+}
+function restoreRound() {
+  let r = null;
+  try { r = JSON.parse(localStorage.getItem(ROUND)); } catch (e) {}
+  const c = r && claims.find(x => x.id === r.q), valid = id => id === SOUND || F[id];
+  if (!c || !Array.isArray(r.choices) || r.choices.length !== 4 || !r.choices.every(valid)) return null;
+  q = c; choices = r.choices; picked = valid(r.picked) ? r.picked : null;
+  phase = r.phase === "result" && picked ? "result" : "choose";
+  review = phase === "result" && r.review && r.review.opts.every(id => K[id])
+    ? { ...buildReview(), opts: r.review.opts.map(id => K[id]), answer: K[r.review.answer] ? r.review.answer : null } : null;
+  restoring = true;
+  renderClaim(); renderPanel();
+  restoring = false;
+  $("b-new").classList.toggle("nudge", phase === "result");
+  return r.view || "home";
+}
+
 function filtered() {
   const diff = +$("f-diff").value;
   return claims.filter(x => !diff || x.difficulty === diff);
@@ -460,7 +485,7 @@ function nextClaim() {
   picked = null; phase = "choose"; review = null;
   $("b-new").classList.remove("nudge");
   choices = dealChoices(q);
-  renderClaim(); renderPanel();
+  renderClaim(); renderPanel(); saveRound();
 }
 
 function renderClaim() {
@@ -625,7 +650,7 @@ function renderPanel() {
   p.querySelectorAll(".pick.res").forEach(b => magnify(b));
   p.querySelectorAll(".pick-slot [data-lens]").forEach(b => b.onclick = () => openViewer(b.closest(".pick-slot")));
   const mine = p.querySelector(".pick.chosen");
-  if (mine && tier === "best") setTimeout(() => confetti(mine), reduceMotion ? 0 : 250);
+  if (mine && tier === "best" && !restoring) setTimeout(() => confetti(mine), reduceMotion ? 0 : 250);
 }
 
 // ---------- bonus round: which Check card exposes the flag (or confirms a sound claim)?
@@ -658,7 +683,7 @@ function renderReview() {
 function answerReview(id) {
   review.answer = id;
   if (review.right.has(id)) { stats.score += SC.check; save(); renderStats(); }
-  renderReview();
+  renderReview(); saveRound();
 }
 
 function submit() {
@@ -669,7 +694,7 @@ function submit() {
   stats.score += SC[tier]; stats.answered += 1;
   if (tier === "best") { stats.bestHits += 1; stats.streak += 1; } else stats.streak = 0;
   stats.seen[q.id] = tier; save(); renderStats();
-  renderPanel();
+  renderPanel(); saveRound();
   $("panel").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
 }
 function scrollToTop() { $("qslot").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); }
@@ -873,11 +898,13 @@ function show(view, fromHistory) {
   if (view === "home" && $("view-home").hidden) { renderFan(); countUp(); }
   for (const v of ["home", "play", "decks"]) { $("view-" + v).hidden = v !== view; $("tab-" + v).setAttribute("aria-selected", v === view); }
   if (view === "decks") renderDecks();
+  saveRound();
 }
 addEventListener("popstate", e => {
   const open = document.querySelector(".viewer:not(.out)");
   if (open) return open.dismiss();
-  const view = e.state?.view || "home";
+  if (!e.state) return;  // a link to #... on the page, not one of the game's own steps
+  const view = e.state.view || "home";
   if (view !== current) show(view, true);
 });
 document.querySelectorAll("nav button").forEach(b => b.onclick = () => show(b.dataset.view));
@@ -896,5 +923,8 @@ if ((LANG.langs || []).length > 1) {
 /*__FIT__*/
 new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes) if (n.nodeType === 1 && (n.matches(".tcg") || n.querySelector(".tcg"))) fitCards(n); })
   .observe(document.body, { childList: true, subtree: true });
-renderStats(); nextClaim(); renderHome(); show("home");
+renderStats();
+const resumeView = restoreRound();
+if (!resumeView) nextClaim();
+renderHome(); show(resumeView === "play" ? "play" : "home");
 </script>
