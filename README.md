@@ -8,6 +8,8 @@ card shows a headline, an abstract sentence or a small chart. Players play the F
 one claim in four is sound, and a false alarm costs as much as a missed flaw: the game rewards calibrated scepticism,
 not cynicism.
 
+![The card back, the claim 'Choose hospital A', the flag 'Simpson's paradox' and the check 'Split by subgroup'](print/preview.png)
+
 ## What's in the box
 
 | | |
