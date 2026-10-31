@@ -378,7 +378,15 @@ const SC = meta.scoring;
 const SOUND = "sound";
 const isSound = c => c.best.length === 1 && c.best[0] === SOUND;
 const nameOf = id => id === SOUND ? trt("card.sound_name") : F[id].name;
-const cardOf = id => id === SOUND ? DATA.cards.sound : DATA.cards.flags[id];
+// Each card picture defines its SVG gradients by id, and the same card can be on the page twice (the hidden home fan
+// and the table, say). Chrome won't paint a gradient whose first definition sits in a hidden part of the page, so
+// every copy of a card gets its own ids.
+let copies = 0;
+const fresh = h => { const n = ++copies; return h.replace(/(id="|url\(#)([gdr][a-z]-[^")]+)/g, `$1$2-${n}`); };
+const freshDeck = deck => new Proxy(deck, { get: (t, k) => typeof t[k] === "string" ? fresh(t[k]) : t[k] });
+const CARDS = { claims: freshDeck(DATA.cards.claims), flags: freshDeck(DATA.cards.flags), checks: freshDeck(DATA.cards.checks),
+  get sound() { return fresh(DATA.cards.sound); }, get back() { return fresh(DATA.cards.back); } };
+const cardOf = id => id === SOUND ? CARDS.sound : CARDS.flags[id];
 
 // Every flag carries the paper that defines it. The "?" opens it in a new tab.
 const refLink = id => { const x = F[id]; return x ? `<a class="ref" href="${esc(x.ref.url)}" target="_blank" rel="noopener" title="${tr("ref.title", { cite: esc(x.ref.cite) })}" aria-label="${tr("ref.aria", { name: esc(x.name) })}">?</a>` : ""; };
@@ -449,7 +457,7 @@ function nextClaim() {
 }
 
 function renderClaim() {
-  $("qslot").innerHTML = `<div class="qwrap deal" role="group" aria-label="${tr("play.claim_card")}">${DATA.cards.claims[q.id]}${lens("q")}</div>`;
+  $("qslot").innerHTML = `<div class="qwrap deal" role="group" aria-label="${tr("play.claim_card")}">${CARDS.claims[q.id]}${lens("q")}</div>`;
   $("qslot").querySelector("[data-lens]").onclick = () => openViewer($("qslot").querySelector(".tcg"));
   magnify($("qslot").querySelector(".tcg"), 1.25);
 }
@@ -711,13 +719,13 @@ document.addEventListener("pointerdown", e => {
 });
 function cardHTML(kind, x) {
   if (kind === "claims") {
-    const card = DATA.cards.claims[x.id];
+    const card = CARDS.claims[x.id];
     const okLine = isSound(x) ? "" : `<br>🥈 ${x.ok.map(i => esc(nameOf(i))).join(", ") || "–"}`;
     return `<figure>${card}<details><summary>${tr("decks.answer")}</summary><p>🥇 ${x.best.map(i => esc(nameOf(i))).join(", ")}${okLine}</p><p>${esc(x.why)}</p><p>🔍 ${esc(K[x.check].name)}</p></details></figure>`;
   }
-  if (kind === "flags") return `<figure><div class="pick-slot">${DATA.cards.flags[x.id]}${refLink(x.id)}</div><details><summary>${tr("decks.example")}</summary><p>${esc(x.text)}</p><p><i>${esc(x.example)}</i> <a href="${esc(x.example_url)}" target="_blank" rel="noopener">${tr("play.source")}</a></p><p>📄 ${refLine(x)}</p></details></figure>`;
-  if (kind === "checks") return `<figure>${DATA.cards.checks[x.id]}<details><summary>${tr("decks.more")}</summary><p>${esc(x.text)}</p><p>🚩 ${DATA.exposes[x.id].map(i => esc(F[i].name)).join(", ")}</p></details></figure>`;
-  return `<figure>${DATA.cards.sound}<details><summary>${tr("decks.more")}</summary><p>${tr("tip.sound")}</p></details></figure>`;
+  if (kind === "flags") return `<figure><div class="pick-slot">${CARDS.flags[x.id]}${refLink(x.id)}</div><details><summary>${tr("decks.example")}</summary><p>${esc(x.text)}</p><p><i>${esc(x.example)}</i> <a href="${esc(x.example_url)}" target="_blank" rel="noopener">${tr("play.source")}</a></p><p>📄 ${refLine(x)}</p></details></figure>`;
+  if (kind === "checks") return `<figure>${CARDS.checks[x.id]}<details><summary>${tr("decks.more")}</summary><p>${esc(x.text)}</p><p>🚩 ${DATA.exposes[x.id].map(i => esc(F[i].name)).join(", ")}</p></details></figure>`;
+  return `<figure>${CARDS.sound}<details><summary>${tr("decks.more")}</summary><p>${tr("tip.sound")}</p></details></figure>`;
 }
 function renderDecks() {
   hideTip(true);
@@ -737,7 +745,7 @@ function fanCard(id, k, n) {
     <div class="bob" data-id="${id}" style="--d:${-k * .7}s">${fanHTML(id)}</div></div>`;
 }
 // The fan mixes the decks: flags around a claim in the middle, with a check and the Sound card.
-const fanHTML = id => id.startsWith("claim:") ? DATA.cards.claims[id.slice(6)] : id.startsWith("check:") ? DATA.cards.checks[id.slice(6)] : cardOf(id);
+const fanHTML = id => id.startsWith("claim:") ? CARDS.claims[id.slice(6)] : id.startsWith("check:") ? CARDS.checks[id.slice(6)] : cardOf(id);
 function renderFan() {
   const fl = shuffle(flags.map(f => f.id));
   const ids = [fl[0], "check:" + shuffle(checks)[0].id, "claim:" + shuffle(claims)[0].id, SOUND, fl[1]];
@@ -756,7 +764,7 @@ function cycleFan() {
   const shown = new Set([...$("hero-fan").querySelectorAll(".bob")].map(b => b.dataset.id));
   const id = shuffle(flags.map(f => f.id)).find(x => !shown.has(x));
   el.animate([{ transform: "rotateY(0)" }, { transform: "rotateY(90deg)" }], { duration: 260, easing: "ease-in" }).onfinish = () => {
-    el.dataset.id = id; el.innerHTML = DATA.cards.flags[id];
+    el.dataset.id = id; el.innerHTML = CARDS.flags[id];
     el.animate([{ transform: "rotateY(-90deg)" }, { transform: "rotateY(0)" }], { duration: 300, easing: "ease-out" });
   };
 }
@@ -801,7 +809,7 @@ function renderQuick() {
   const qq = claims[Math.floor(Math.random() * claims.length)];
   const opts = dealChoices(qq);
   $("quick").innerHTML = `<div style="position:relative"><div class="flip" id="quick-card" role="button" tabindex="0" aria-label="${tr("quick.flip_aria")}">
-      <div class="face front">${DATA.cards.claims[qq.id]}</div><div class="face back">${DATA.cards.back}</div></div><span class="tap" id="quick-tap">${tr("quick.tap")}</span></div>
+      <div class="face front">${CARDS.claims[qq.id]}</div><div class="face back">${CARDS.back}</div></div><span class="tap" id="quick-tap">${tr("quick.tap")}</span></div>
     <div class="panel" id="quick-panel"><span class="label">${tr("quick.kicker")}</span><h3>${tr("quick.title")}</h3>
       <p>${tr("quick.text")}</p></div>`;
   const flip = () => {
