@@ -66,7 +66,7 @@ wrapped in invisible direction marks so numbers and Latin letters read in the ri
 
 ## Status
 
-Version 0.1, a checked English prototype (2026-10-31). Local repository only; not yet published. See
+Version 0.1, a checked prototype in five languages (2026-10-31), public and playable online. See
 [`NIGHT-LOG.md`](NIGHT-LOG.md) for what was done and checked, and `DESIGN.md` §8 for next steps.
 
 ## Licence
