@@ -26,7 +26,8 @@ red flag and the kit mark. App accent #B42318 (dark theme #FF8A7A).
 
 ## Commands
 - `python tools/build.py`: validate and generate everything (app, print sheets, answer keys).
-- `python tools/check_cards.py`: no card overflows at print size (headless Chrome or Edge).
+- `python tools/check_cards.py`: no text box, name or picture label overflows at print size, in any language
+  (headless Chrome or Edge). The kit's shared check, the same file in every game.
 - `python tools/test_app.py [--shots <folder>]`: play every claim through the app; screenshots at 1280, 390 and 320 px,
   light and dark.
 - `python tools/check_refs.py`: every Flag's reference and example link against Crossref (online).

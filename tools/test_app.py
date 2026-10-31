@@ -17,7 +17,7 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from check_cards import browser  # noqa: E402
+from check_cards import chrome as browser  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -90,6 +90,19 @@ async function run() {
   $("#panel [data-pick]").click(); await sleep(60);
   d.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" })); w.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" })); await sleep(300);
   if ($(".viewer")) fail("Escape did not close the viewer");
+  // The phone's back button stays in the game: it closes a full-screen card first, then returns to the previous page.
+  // Back is only pressed when the game has a step of its own to go back to; otherwise it would leave this test page.
+  const goBack = async () => {
+    if (!(w.history.state?.depth > 0)) return false;
+    const p = new Promise(r => w.addEventListener("popstate", () => setTimeout(r, 50), { once: true }));
+    w.history.back(); await Promise.race([p, sleep(800)]); return true;
+  };
+  w.eval('show("home")'); $("#tab-play").click(); await sleep(50);
+  $("#panel [data-pick]").click(); await sleep(60);
+  if (!$(".viewer:not(.out)")) fail("back: the full-screen card did not open");
+  if (!(await goBack()) || $(".viewer:not(.out)") || $("#view-play").hidden) fail("back did not close the full-screen card on the Play page");
+  if (!(await goBack()) || $("#view-home").hidden) fail("back from Play did not return to Home");
+  out.back = true;
   // Decks
   $("#tab-decks").click(); await sleep(50);
   const counts = {};

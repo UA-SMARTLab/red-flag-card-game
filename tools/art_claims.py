@@ -9,7 +9,7 @@ import math
 from art import ACC, COOL, DIM, FAINT, HOT, INK, circle, doc, lcg, line, path, rect, text
 
 # The plotting area of every chart.
-X0, X1, Y0, Y1 = 34, 184, 34, 110
+X0, X1, Y0, Y1 = 34, 184, 42, 110
 SERIES = [ACC, COOL]
 
 
@@ -25,7 +25,7 @@ def _labels(c):
 def _frame(t, ylab="", xlab=""):
     out = line([(X0, Y0 - 4), (X0, Y1), (X1 + 4, Y1)], INK, 2.5)
     if ylab:
-        out += text(X0 - 6, 27, t(ylab), 10, DIM.replace(".38", ".8"), anchor="start")
+        out += text(X0 - 6, 30, t(ylab), 10, DIM.replace(".38", ".8"), anchor="start")
     if xlab:
         out += text((X0 + X1) / 2, 125, t(xlab), 10, DIM.replace(".38", ".8"))
     return out
@@ -166,14 +166,14 @@ def forest(c, p, t):
 
     def X(v):
         return 36 + 128 * (v - a) / (b - a)
-    out = line([(X(0), 28), (X(0), 116)], DIM, 2, dash="4 4")
+    out = line([(X(0), 32), (X(0), 116)], DIM, 2, dash="4 4")
     step = 80 / max(len(rows), 1)
     for i, (est, lo, hi) in enumerate(rows):
         y = 36 + step * (i + 0.5)
         out += line([(X(lo), y), (X(hi), y)], INK, 2.5) + rect(X(est) - 4, y - 4, 8, 8, ACC, "none", 0, rx=1)
     out += text(X(0), 127, t("NO EFFECT"), 9, DIM.replace(".38", ".8"))
     if p.get("label"):
-        out += text(36, 25, t(p["label"]), 10, DIM.replace(".38", ".8"), anchor="start")
+        out += text(36, 28, t(p["label"]), 10, DIM.replace(".38", ".8"), anchor="start")
     return out
 
 
