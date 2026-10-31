@@ -1,0 +1,12 @@
+{
+  "title": "Red Flag",
+  "tagline": "Spot the reasoning error in a research claim, or call it sound.",
+  "version": "0.1 (prototype)",
+  "families": [
+    {"id": "cause",    "name": "Cause",    "color": "#B45309", "text": "Errors in reading cause and effect from data."},
+    {"id": "sample",   "name": "Sample",   "color": "#0F766E", "text": "Errors about who or what was studied, and how far the result reaches."},
+    {"id": "numbers",  "name": "Numbers",  "color": "#1D4ED8", "text": "Errors in reading statistics, risks and charts."},
+    {"id": "practice", "name": "Practice", "color": "#7E22CE", "text": "Errors in how the research was analysed, measured and reported."}
+  ],
+  "scoring": {"best": 3, "ok": 1, "trap": -2, "unlisted": 0, "appeal_win": 1, "check": 1}
+}

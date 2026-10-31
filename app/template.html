@@ -1,0 +1,863 @@
+<title>Red Flag</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@500&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
+<!--__EXTRA_FONTS__-->
+<style>
+/* The SMART-Lab Science Game Kit app, as in Methodical: same layout, behaviour and tokens; Red Flag's own accent. */
+:root {
+  --bg: #F3F1F0; --grid: rgba(180, 35, 24, .06); --surface: #FFFFFF; --ink: #1A1614; --muted: #5F5853;
+  --line: #DED8D4; --accent: #B42318; --accent-ink: #FFFFFF;
+  --gold: #946F00; --gold-bg: #FFF4CC; --silver: #5F6875; --silver-bg: #ECEEF1; --trap: #9F1239; --trap-bg: #FDE7EC;
+  --good: #137A3C; --shadow: 0 1px 2px rgba(20,25,34,.08), 0 8px 24px rgba(20,25,34,.08);
+  --f-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15110F; --grid: rgba(248, 113, 113, .05); --surface: #201A18; --ink: #EFE9E6; --muted: #ABA19B;
+  --line: #3A312D; --accent: #FF8A7A; --accent-ink: #1A1110;
+  --gold: #E8BC4A; --gold-bg: #3A3016; --silver: #B3BAC5; --silver-bg: #2A2D33; --trap: #FF7A9A; --trap-bg: #3D1922;
+  --good: #57D987; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #15110F; --grid: rgba(248, 113, 113, .05); --surface: #201A18; --ink: #EFE9E6; --muted: #ABA19B;
+  --line: #3A312D; --accent: #FF8A7A; --accent-ink: #1A1110;
+  --gold: #E8BC4A; --gold-bg: #3A3016; --silver: #B3BAC5; --silver-bg: #2A2D33; --trap: #FF7A9A; --trap-bg: #3D1922;
+  --good: #57D987; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--bg); color: var(--ink); font: 15px/1.5 var(--f-body);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 20px 120px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+.label { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+a { color: var(--accent); }
+
+/* header */
+header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 20px; position: relative; }
+.brand h1 a { color: inherit; text-decoration: none; }
+.brand h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 800; letter-spacing: -.02em; line-height: .95; display: flex; align-items: center; gap: 10px; }
+.brand h1 svg { width: .8em; height: .8em; flex: none; }
+.brand p { margin: 6px 0 0; color: var(--muted); max-width: 52ch; }
+.stats { display: flex; gap: 20px; font-variant-numeric: tabular-nums; }
+.stat b { display: block; font-family: var(--f-display); font-size: 26px; line-height: 1; }
+nav { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 20px; overflow-x: auto; }
+nav button { background: none; border: 0; padding: 10px 14px; border-bottom: 3px solid transparent; color: var(--muted); font-weight: 600; white-space: nowrap; }
+nav button[aria-selected="true"] { color: var(--ink); border-color: var(--accent); }
+
+/* bench */
+.bench { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 24px; align-items: start; margin-bottom: 28px; }
+@media (max-width: 760px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+select, .btn { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: inherit; font-size: 14px; color: var(--ink); min-height: 36px; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+/* Once a claim is answered, the deal button pulses: it is the next thing to press. */
+#b-new { transition: transform .15s, box-shadow .15s; }
+#b-new:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+#b-new.nudge { animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); } 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 0%, transparent); transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { #b-new.nudge { animation: none; outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; } }
+
+/*__CARD_CSS__*/
+/* the dealt card */
+.qwrap { --card-u: 5.2px; display: flex; justify-content: center; position: relative; }
+@media (max-width: 400px) { .qwrap { --card-u: 4.6px; } }
+.qwrap .tcg { box-shadow: 0 18px 40px rgba(0,0,0,.28); }
+.deal { animation: deal .45s cubic-bezier(.2,.8,.2,1); }
+@keyframes deal { from { transform: translateY(-14px) rotate(-3deg); opacity: .3; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .deal { animation: none; } }
+
+/* verdict panel */
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; min-width: 0; }
+.panel h3 { font-size: 22px; margin-bottom: 6px; }
+.panel p { margin: 0 0 10px; max-width: 70ch; }
+.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+.steps li { margin-bottom: 4px; }
+.verdict { display: inline-flex; align-items: center; gap: 10px; border-radius: 10px; padding: 8px 14px; font-weight: 600; margin-bottom: 12px; }
+.verdict .pts { font-family: var(--f-display); font-size: 24px; font-weight: 800; }
+.v-best { background: var(--gold-bg); color: var(--gold); }
+.v-ok { background: var(--silver-bg); color: var(--silver); }
+.v-trap { background: var(--trap-bg); color: var(--trap); }
+.v-unlisted { background: var(--silver-bg); color: var(--muted); }
+.key { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 12px; margin: 10px 0 14px; font-size: 14px; }
+.key dt { font-weight: 600; }
+.key dd { margin: 0; }
+.trapline { color: var(--trap); }
+.review { border-top: 1px dashed var(--line); margin-top: 16px; padding-top: 16px; }
+.flag-tag { display: inline-block; background: var(--trap-bg); color: var(--trap); border-radius: 6px; padding: 1px 8px; font-weight: 600; }
+.case { border-inline-start: 4px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 12px 0; }
+.case p { margin: 4px 0 0; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-top: 10px; }
+.opt { text-align: start; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.opt b { display: block; }
+.opt span { font-size: 13px; color: var(--muted); }
+.opt.right { border-color: var(--good); box-shadow: inset 0 0 0 1px var(--good); }
+.opt.wrong { border-color: var(--trap); opacity: .8; }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+/* decks */
+.deck-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.deck-tabs button { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 5px 12px; font-size: 14px; min-height: 32px; }
+.deck-tabs button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+#deck-search { width: min(100%, 320px); }
+.cards { --card-u: 3.9px; display: grid; grid-template-columns: repeat(auto-fill, minmax(calc(var(--card-u) * 63), 1fr)); gap: 18px 14px; margin-top: 14px; justify-items: center; }
+@media (max-width: 400px) { .cards { --card-u: 4.4px; } }
+.cards figure { margin: 0; display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.cards details { width: calc(var(--card-u) * 63); font-size: 13px; color: var(--muted); }
+.cards details summary { cursor: pointer; min-height: 24px; }
+.cards details p { margin: 4px 0 0; }
+footer { margin-top: 40px; color: var(--muted); font-size: 13px; }
+
+/* play: the four choices are whole cards */
+/* Four across when the panel is wide, two by two when it isn't; either way the cards grow to fill it. */
+.pick-wrap { container-type: inline-size; margin-top: 8px; }
+.pick-hint { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.pick-cards { --card-u: min(4.4px, calc((100cqw - 42px) / 252)); display: grid; grid-template-columns: repeat(4, max-content); gap: 14px; }
+@container (max-width: 700px) { .pick-cards { --card-u: min(4.4px, calc((100cqw - 14px) / 126)); grid-template-columns: repeat(2, max-content); } }
+.pick { background: none; border: 0; padding: 0; border-radius: calc(var(--card-u) * 3.2); transition: transform .18s, box-shadow .18s; }
+.pick:focus-visible { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 16px 30px rgba(0,0,0,.35); }
+/* Hover magnifier: the card grows to a readable size, toward the middle of the screen so it stays in view. */
+.zoomable { transition: transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s; transform-origin: var(--ox, center) var(--oy, center); }
+.zoomable.zoom { transform: scale(var(--z, 1.6)) !important; z-index: 30; position: relative;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55); animation: none !important; }
+/* magnifier button (shown on touch screens) and the full-screen viewer */
+.lens { display: none; position: absolute; z-index: 5; top: -9px; left: -9px; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--accent);
+  background: var(--surface); font-size: 16px; line-height: 1; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+@media (hover: none) { .lens { display: grid; place-items: center; } }
+.viewer { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; align-content: center; gap: 14px; padding: 16px;
+  background: rgba(8, 12, 20, .78); backdrop-filter: blur(3px); animation: vIn .2s ease both; cursor: zoom-out; }
+.viewer-card { --card-u: min(calc((100vw - 32px) / 63), calc((100vh - 90px) / 88), 6px); animation: vCard .28s cubic-bezier(.2,.9,.3,1.2) both; }
+.viewer-card .tcg { box-shadow: 0 24px 60px rgba(0,0,0,.6); }
+.viewer-hint { color: #CBD5E1; font: 600 13px var(--f-mono); letter-spacing: .06em; }
+.viewer.out { animation: vOut .18s ease both; }
+/* choosing: the four choices, one at a time, with a big green button to make it your answer */
+.viewer.choosing { cursor: default; touch-action: pinch-zoom; gap: 12px; padding-top: 68px; }
+.viewer.choosing .viewer-card { --card-u: min(calc((100vw - 32px) / 63), calc((100vh - 180px) / 88), 6px); }
+/* dvh: the height left between a phone's toolbars, so the green button is never hidden behind them */
+@supports (height: 100dvh) { .viewer.choosing .viewer-card { --card-u: min(calc((100vw - 32px) / 63), calc((100dvh - 180px) / 88), 6px); } }
+/* a phone held sideways: card on the left, controls beside it */
+@media (orientation: landscape) and (max-height: 520px) {
+  .viewer.choosing { padding-top: 16px; grid-template-columns: auto auto; justify-content: center; column-gap: 24px; }
+  .viewer.choosing .viewer-card { grid-row: span 2; --card-u: min(calc((100vh - 32px) / 88), 6px); }
+  @supports (height: 100dvh) { .viewer.choosing .viewer-card { --card-u: min(calc((100dvh - 32px) / 88), 6px); } }
+  .viewer.choosing .v-dots { align-self: end; } .viewer.choosing .v-bar { align-self: start; }
+}
+.v-dots { display: flex; gap: 7px; } .v-dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(203,213,225,.35); transition: background .2s; }
+.v-dots i.on { background: #F8FAFC; }
+.v-bar { display: flex; align-items: center; gap: 10px; }
+.v-nav, .v-close { width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(248,250,252,.14); color: #F8FAFC; font: 600 20px/1 var(--f-display);
+  padding: 0; display: grid; place-items: center; flex: none; }
+.v-nav:hover, .v-close:hover { background: rgba(248,250,252,.26); }
+.v-close { position: fixed; top: 12px; right: 12px; }
+[dir="rtl"] .v-close { right: auto; left: 12px; } [dir="rtl"] .v-nav { transform: scaleX(-1); }
+.v-pick { min-height: 52px; padding: 0 26px; border: 0; border-radius: 99px; background: #15803D; color: #fff; font: 800 18px var(--f-display);
+  box-shadow: 0 0 0 3px rgba(34,197,94,.35), 0 10px 26px rgba(0,0,0,.4); transition: transform .15s, background .15s; }
+.v-pick:hover { background: #166534; transform: translateY(-2px); }
+.v-pick:active { transform: scale(.97); }
+.v-pick:focus-visible, .v-nav:focus-visible, .v-close:focus-visible { outline: 3px solid #F8FAFC; outline-offset: 3px; }
+@keyframes vIn { from { opacity: 0; } } @keyframes vOut { to { opacity: 0; } }
+@keyframes vCard { from { transform: scale(.6) translateY(30px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .viewer, .viewer-card, .viewer.out { animation: none; } }
+.qwrap .zoomable.zoom { --z: 1.25; }
+@media (prefers-reduced-motion: reduce) { .pick { transition: none; } }
+
+/* "?" link to each flag's key reference */
+.pick-slot { position: relative; }
+.ref { position: absolute; z-index: 3; top: -9px; right: -9px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--surface); color: var(--accent); border: 2px solid var(--accent); font: 800 15px/1 var(--f-display); text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3); transition: transform .15s, background .15s; }
+.ref:hover, .ref:focus-visible { transform: scale(1.15); background: var(--accent); color: var(--accent-ink); }
+.cite { font-size: 13.5px; color: var(--muted); }
+
+/* deck explanation pop-up */
+.tip { position: fixed; z-index: 50; width: min(320px, calc(100vw - 24px)); display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: center;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.28); pointer-events: none; animation: tipIn .22s cubic-bezier(.2,.8,.2,1) both; }
+.tip.above { transform-origin: var(--ax) 100%; } .tip.below { transform-origin: var(--ax) 0; }
+.tip::before { content: ""; position: absolute; left: calc(var(--ax) - 7px); width: 12px; height: 12px; background: var(--surface); transform: rotate(45deg); }
+.tip.below::before { top: -9px; border-left: 4px solid var(--c); border-top: 4px solid var(--c); }
+.tip.above::before { bottom: -7px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.tip.out { animation: tipOut .15s ease-in both; }
+.tip b { font-family: var(--f-display); font-size: 15px; }
+.tip p { margin: 3px 0 0; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+@keyframes tipIn { from { opacity: 0; transform: translateY(6px) scale(.92); } }
+@keyframes tipOut { to { opacity: 0; transform: translateY(4px) scale(.96); } }
+.tip-fan { position: relative; width: 54px; height: 56px; }
+.tip-fan i { position: absolute; left: 13px; top: 4px; width: 30px; height: 44px; border-radius: 5px; background: var(--c); box-shadow: 0 0 0 2px var(--surface), 0 3px 8px rgba(0,0,0,.3);
+  display: grid; place-items: center; font-style: normal; font-size: 17px; animation: fan .5s cubic-bezier(.2,.8,.2,1) both; }
+.tip-fan i:nth-child(1) { --r: -18deg; --x: -9px; opacity: .55; }
+.tip-fan i:nth-child(2) { --r: 0deg; --x: 0px; opacity: .8; animation-delay: .05s; }
+.tip-fan i:nth-child(3) { --r: 16deg; --x: 9px; background: color-mix(in srgb, var(--c) 70%, #fff); animation: fan .5s .1s cubic-bezier(.2,.8,.2,1) both, wobble 2.4s .7s ease-in-out infinite; }
+@keyframes fan { from { transform: rotate(0) translateX(0) translateY(8px); } to { transform: rotate(var(--r)) translateX(var(--x)); } }
+@keyframes wobble { 50% { transform: rotate(calc(var(--r) - 6deg)) translateX(var(--x)) translateY(-3px); } 0%, 100% { transform: rotate(var(--r)) translateX(var(--x)); } }
+.count { cursor: help; border-radius: 8px; padding: 2px 4px; margin: -2px -4px; transition: background .15s; }
+.count:hover, .count:focus-visible { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+@media (prefers-reduced-motion: reduce) { .tip, .tip.out, .tip-fan i { animation: none; } .tip-fan i { transform: rotate(var(--r)) translateX(var(--x)); } }
+
+/* answer reveal: the four cards show what each was, and your pick reacts */
+.result-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-radius: 12px; margin-bottom: 18px;
+  animation: headIn .45s cubic-bezier(.2,.8,.2,1) both; }
+.result-head .big { font: 800 clamp(22px, 3vw, 30px)/1.1 var(--f-display); }
+.result-head .pts { font: 800 34px/1 var(--f-display); }
+.r-best { background: color-mix(in srgb, #16A34A 18%, var(--surface)); color: var(--good); }
+.r-ok { background: var(--silver-bg); color: var(--silver); }
+.r-trap { background: var(--trap-bg); color: var(--trap); }
+.r-unlisted { background: var(--silver-bg); color: var(--muted); }
+@keyframes headIn { from { opacity: 0; transform: translateY(-10px) scale(.96); } }
+.pick.res { cursor: default; transition: opacity .4s, filter .4s, transform .3s; }
+.pick.res:not(.chosen) { opacity: .5; filter: saturate(.4); }
+.pick.res:not(.chosen).res-best { opacity: 1; filter: none; box-shadow: 0 0 0 3px #16A34A; }
+.pick.chosen { z-index: 2; }
+.pick.chosen.res-best { animation: winPop .7s cubic-bezier(.2,.9,.3,1.4) both, winGlow 1.6s .7s ease-in-out infinite; }
+.pick.chosen.res-ok { box-shadow: 0 0 0 4px #94A3B8; animation: okNod .6s ease both; }
+.pick.chosen.res-trap { box-shadow: 0 0 0 4px #DC2626; animation: shake .5s ease both; }
+.pick.chosen.res-unlisted { box-shadow: 0 0 0 4px #94A3B8; animation: shake .5s ease both; }
+@keyframes winPop { 0% { transform: scale(1); } 45% { transform: scale(1.1) rotate(-2deg); } 100% { transform: scale(1.05); } }
+@keyframes winGlow { 0%, 100% { box-shadow: 0 0 0 4px #16A34A, 0 0 18px 4px rgba(22,163,74,.45); } 50% { box-shadow: 0 0 0 4px #16A34A, 0 0 34px 10px rgba(22,163,74,.6); } }
+@keyframes okNod { 40% { transform: translateY(-8px); } }
+@keyframes shake { 15%, 55% { transform: translateX(-9px) rotate(-2deg); } 35%, 75% { transform: translateX(9px) rotate(2deg); } }
+.pick-slot .badge { position: absolute; z-index: 4; left: 50%; top: -13px; transform: translateX(-50%); white-space: nowrap; padding: 4px 11px; border-radius: 99px;
+  font: 800 13px/1.2 var(--f-display); color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.3); animation: badgeIn .4s .15s cubic-bezier(.2,.9,.3,1.4) both; }
+.b-best { background: #15803D; } .b-ok { background: #475569; } .b-trap { background: #B91C1C; } .b-unlisted { background: #475569; }
+.pick-slot .mine { position: absolute; z-index: 4; left: 50%; bottom: -11px; transform: translateX(-50%); white-space: nowrap; padding: 2px 9px; border-radius: 99px;
+  font: 700 11px/1.3 var(--f-mono); letter-spacing: .08em; background: var(--accent); color: var(--accent-ink); }
+@keyframes badgeIn { from { opacity: 0; transform: translateX(-50%) translateY(8px) scale(.6); } }
+@media (prefers-reduced-motion: reduce) { .result-head, .pick.chosen, .pick-slot .badge { animation: none !important; } }
+
+/* language picker */
+.lang-pick { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.lang-pick select { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font: inherit; }
+.brand + .lang-pick { position: absolute; top: 4px; inset-inline-end: 0; }
+[dir="rtl"] .ref { right: auto; left: -9px; } [dir="rtl"] .lens { left: auto; right: -9px; }
+
+/* home */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px; align-items: center; min-height: 430px; margin-bottom: 26px; }
+@media (max-width: 860px) { .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; } }
+.hero-title { font-size: clamp(34px, 5.4vw, 60px); font-weight: 800; letter-spacing: -.03em; line-height: 1; margin: 8px 0 14px; }
+.hero-title em { font-style: normal; background: linear-gradient(90deg, var(--accent), #B45309, #047857, #0C4A6E, var(--accent)); background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 9s linear infinite; }
+@keyframes sheen { to { background-position: 300% 0; } }
+.hero-text p { color: var(--muted); font-size: 17px; max-width: 46ch; margin: 0 0 20px; }
+.btn.big { padding: 12px 20px; font-size: 16px; font-weight: 700; border-radius: 12px; transition: transform .15s, box-shadow .15s; }
+.btn.big:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.counts { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; }
+.counts div b { display: block; font: 800 30px/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.hero-fan { --card-u: 3.3px; position: relative; height: 400px; }
+@media (max-width: 860px) { .hero-fan { --card-u: 2.5px; height: 300px; } }
+.hero-fan .fc { position: absolute; left: 50%; top: 50%; }
+.hero-fan .fc > .bob { animation: bob 4.5s ease-in-out infinite; animation-delay: var(--d); }
+.hero-fan .fc .tcg { box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+@keyframes bob { 50% { translate: 0 -12px; } }
+.home-h { font-size: 24px; margin: 8px 0 12px; }
+.modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 30px; perspective: 900px; }
+.mode { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 8px;
+  transition: transform .15s ease-out, box-shadow .2s; }
+.mode::before { content: ""; position: absolute; inset: 0 0 auto; height: 5px; background: var(--c); }
+.mode::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .2s;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--c) 22%, transparent), transparent 60%); }
+.mode:hover { box-shadow: var(--shadow); } .mode:hover::after { opacity: 1; }
+.mode-ic { font-size: 30px; transition: transform .3s; } .mode:hover .mode-ic { transform: scale(1.2) rotate(-8deg); }
+.mode h3 { font-size: 21px; } .mode p { margin: 0; color: var(--muted); font-size: 14.5px; flex: 1; }
+.mode-go { display: flex; flex-wrap: wrap; gap: 6px; position: relative; z-index: 1; }
+.quick { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 22px; align-items: start; --card-u: 4.4px; }
+@media (max-width: 700px) { .quick { grid-template-columns: minmax(0, 1fr); justify-items: center; --card-u: 4.6px; } }
+@media (max-width: 360px) { .quick { --card-u: 4.2px; } }
+.quick .flip { cursor: pointer; }
+.quick .flip:not(.up):hover { transform: rotateY(14deg) translateY(-4px); }
+.quick .tap { position: absolute; inset: auto 0 18% 0; text-align: center; z-index: 2; font: 700 14px var(--f-mono); color: #FCA5A5; letter-spacing: .1em; pointer-events: none;
+  animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.quick .qopts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-top: 10px; }
+.quick .opt { transition: transform .15s, border-color .2s; } .quick .opt:not(:disabled):hover { transform: translateY(-2px); border-color: var(--accent); }
+.quick .opt.best { border-color: var(--good); box-shadow: inset 0 0 0 2px var(--good); }
+.quick .opt.trap { border-color: var(--trap); }
+.flip { position: relative; width: calc(var(--card-u) * 63); height: calc(var(--card-u) * 88); transform-style: preserve-3d; transition: transform .6s cubic-bezier(.3,.7,.2,1); }
+.flip.up { transform: rotateY(180deg); }
+.flip .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip .front { transform: rotateY(180deg); }
+.confetti { position: fixed; z-index: 40; width: 8px; height: 12px; pointer-events: none; border-radius: 2px; }
+@media (prefers-reduced-motion: reduce) { .hero-title em, .hero-fan .fc > .bob, .quick .tap { animation: none; } .mode { transition: none; } .flip { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <h1><a href="#" id="go-home" title="{{nav.home}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 22V3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M6 3.5c4-2 6 1.5 10 0v9c-4 1.5-6-2-10 0z" fill="var(--accent)"/></svg>Red Flag</a></h1>
+      <p>{{brand.tagline}}</p>
+    </div>
+    <label class="lang-pick" id="lang-wrap" hidden><span aria-hidden="true">🌐</span><select id="lang-pick" aria-label="{{lang.label}}"></select></label>
+    <div class="stats" aria-live="polite">
+      <div class="stat"><b id="s-score">0</b><span class="label">{{stats.points}}</span></div>
+      <div class="stat"><b id="s-acc">–</b><span class="label">{{stats.best}}</span></div>
+      <div class="stat"><b id="s-streak">0</b><span class="label">{{stats.streak}}</span></div>
+      <div class="stat"><b id="s-seen">0</b><span class="label">{{stats.seen}}</span></div>
+    </div>
+  </header>
+
+  <nav role="tablist">
+    <button role="tab" id="tab-home" aria-selected="true" data-view="home">{{nav.home}}</button>
+    <button role="tab" id="tab-play" aria-selected="false" data-view="play">{{nav.play}}</button>
+    <button role="tab" id="tab-decks" aria-selected="false" data-view="decks">{{nav.decks}}</button>
+  </nav>
+
+  <section id="view-home">
+    <div class="hero">
+      <div class="hero-text">
+        <span class="label">{{home.kicker}}</span>
+        <h2 class="hero-title">{{home.title_html}}</h2>
+        <p>{{home.lede}}</p>
+        <div class="counts" id="home-counts"></div>
+      </div>
+      <div class="hero-fan" id="hero-fan" aria-hidden="true"></div>
+    </div>
+
+    <h2 class="home-h">{{home.choose}}</h2>
+    <div class="modes" id="home-modes">
+      <div class="mode tilt" style="--c:#B42318">
+        <div class="mode-ic">🚩</div><h3>{{nav.play}}</h3>
+        <p>{{home.play.text}}</p>
+        <div class="mode-go"><button class="btn primary" data-go="play">{{home.play.go}}</button></div>
+      </div>
+      <div class="mode tilt" style="--c:#0C4A6E">
+        <div class="mode-ic">🃏</div><h3>{{nav.decks}}</h3>
+        <p>{{home.decks.text}}</p>
+        <div class="mode-go"><button class="btn" data-go="decks">{{home.decks.go}}</button></div>
+      </div>
+    </div>
+
+    <h2 class="home-h">{{home.quick}}</h2>
+    <div class="quick" id="quick"></div>
+  </section>
+
+  <section id="view-play" hidden>
+    <div class="filters">
+      <select id="f-diff" aria-label="{{play.diff_aria}}">
+        <option value="0">{{play.any_diff}}</option><option value="1">{{play.diff1}}</option><option value="2">{{play.diff2}}</option><option value="3">{{play.diff3}}</option>
+      </select>
+      <button class="btn primary" id="b-new">{{play.deal}}</button>
+    </div>
+    <div class="bench">
+      <div id="qslot"></div>
+      <div class="panel" id="panel"></div>
+    </div>
+  </section>
+
+  <section id="view-decks" hidden>
+    <div class="deck-tabs" id="deck-tabs"></div>
+    <input class="btn" id="deck-search" type="search" placeholder="{{decks.search}}" aria-label="{{decks.search}}">
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+// Interface strings for this page's language (i18n/<code>/ui.json, with English filling any gaps) and the language list.
+const UI = /*__UI__*/{};
+const LANG = /*__LANG__*/{};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = (s, vars) => s.replace(/\{(\w+)\}/g, (m, k) => k in vars ? vars[k] : m);
+// tr: for HTML (the string is escaped; vars are inserted as given, so escape them first). trt: for plain text.
+const tr = (key, vars = {}) => fmt(esc(UI[key] ?? key), vars);
+const trt = (key, vars = {}) => fmt(UI[key] ?? key, vars);
+document.documentElement.lang = LANG.code || "en";
+document.documentElement.dir = LANG.dir || "ltr";
+const { meta, claims, flags, checks } = DATA;
+const F = Object.fromEntries(flags.map(f => [f.id, f]));
+const K = Object.fromEntries(checks.map(k => [k.id, k]));
+const FAM = Object.fromEntries(meta.families.map(f => [f.id, f]));
+const SC = meta.scoring;
+const SOUND = "sound";
+const isSound = c => c.best.length === 1 && c.best[0] === SOUND;
+const nameOf = id => id === SOUND ? trt("card.sound_name") : F[id].name;
+const cardOf = id => id === SOUND ? DATA.cards.sound : DATA.cards.flags[id];
+
+// Every flag carries the paper that defines it. The "?" opens it in a new tab.
+const refLink = id => { const x = F[id]; return x ? `<a class="ref" href="${esc(x.ref.url)}" target="_blank" rel="noopener" title="${tr("ref.title", { cite: esc(x.ref.cite) })}" aria-label="${tr("ref.aria", { name: esc(x.name) })}">?</a>` : ""; };
+const refLine = x => `<a href="${esc(x.ref.url)}" target="_blank" rel="noopener">${esc(x.ref.cite)}</a>`;
+
+const $ = id => document.getElementById(id);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// ---------- persistent per-viewer stats (optional convenience)
+const KEY = "red-flag-v1";
+let stats = { score: 0, answered: 0, bestHits: 0, streak: 0, seen: {} };
+try { const raw = localStorage.getItem(KEY); if (raw) stats = Object.assign(stats, JSON.parse(raw)); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(stats)); } catch (e) {} };
+function renderStats() {
+  $("s-score").textContent = stats.score;
+  $("s-acc").textContent = stats.answered ? Math.round(100 * stats.bestHits / stats.answered) + "%" : "–";
+  $("s-streak").textContent = stats.streak;
+  $("s-seen").textContent = Object.keys(stats.seen).length + "/" + claims.length;
+}
+
+// ---------- scoring: the same rule as tools/build.py (tier_of)
+// Flagging a sound claim, or calling a flawed one sound, is a trap even when the key doesn't list it.
+function tierOf(c, id) {
+  if (c.best.includes(id)) return "best";
+  if (c.ok.includes(id)) return "ok";
+  if (id in c.traps || isSound(c) || id === SOUND) return "trap";
+  return "unlisted";
+}
+function trapReason(c, id) {
+  if (id in c.traps) return c.traps[id];
+  return isSound(c) ? trt("play.false_flag") : trt("play.missed");
+}
+
+// ---------- state
+let q = null, picked = null, phase = "choose", queue = [], choices = [], review = null;
+
+function filtered() {
+  const diff = +$("f-diff").value;
+  return claims.filter(x => !diff || x.difficulty === diff);
+}
+// Four choices, always including the Sound card, so its presence never gives the answer away.
+// A flawed claim: its best flag, a defensible one and a trap where the key has them, random flags for the rest.
+// A sound claim: the tempting flags its key lists as traps, then random flags.
+function dealChoices(c) {
+  const flagIds = flags.map(f => f.id);
+  const keyed = new Set([...c.best, ...c.ok, ...Object.keys(c.traps)]);
+  const others = shuffle(flagIds.filter(id => !keyed.has(id)));
+  const fl = isSound(c)
+    ? [...shuffle(Object.keys(c.traps)), ...others].slice(0, 3)
+    : [c.best[0], ...shuffle(c.ok).slice(0, 1), ...shuffle(Object.keys(c.traps)).slice(0, 1), ...others].slice(0, 3);
+  return shuffle([...fl, SOUND]);
+}
+function nextClaim() {
+  const pool = filtered();
+  if (!pool.length) return;
+  queue = queue.filter(id => pool.some(p => p.id === id));
+  if (!queue.length) {
+    const unseen = pool.filter(p => !stats.seen[p.id]);
+    queue = shuffle(unseen.length ? unseen : pool).map(p => p.id);
+  }
+  const id = queue.shift();
+  q = claims.find(x => x.id === id);
+  picked = null; phase = "choose"; review = null;
+  $("b-new").classList.remove("nudge");
+  choices = dealChoices(q);
+  renderClaim(); renderPanel();
+}
+
+function renderClaim() {
+  $("qslot").innerHTML = `<div class="qwrap deal" role="group" aria-label="${tr("play.claim_card")}">${DATA.cards.claims[q.id]}${lens("q")}</div>`;
+  $("qslot").querySelector("[data-lens]").onclick = () => openViewer($("qslot").querySelector(".tcg"));
+  magnify($("qslot").querySelector(".tcg"), 1.25);
+}
+
+// Grow a card on hover so its text is readable without zooming the page (mouse-like pointers only).
+// It grows only after the pointer rests on it briefly, shrinks at once on leaving, and only one card is enlarged at a time,
+// so sweeping the mouse across the cards can't set off a chain of grow-and-shrink.
+let zoomed = null, zoomTimer = 0;
+function unzoom() { clearTimeout(zoomTimer); if (zoomed) { zoomed.classList.remove("zoom"); zoomed = null; } }
+function magnify(el, max = 1.9, open = () => openViewer(el)) {
+  if (!el) return;
+  // Touch screens: press and hold the card, or use its magnifier button, to open it full screen.
+  let hold = 0, held = false;
+  el.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse") return;
+    held = false;
+    hold = setTimeout(() => { held = true; open(); }, 450);
+  });
+  for (const ev of ["pointerup", "pointercancel", "pointermove"]) el.addEventListener(ev, e => { if (ev !== "pointermove" || Math.abs(e.movementX) + Math.abs(e.movementY) > 6) clearTimeout(hold); });
+  el.addEventListener("click", e => { if (held) { e.preventDefault(); e.stopImmediatePropagation(); held = false; } }, true);
+  el.addEventListener("contextmenu", e => { if (held) e.preventDefault(); });
+  if (reduceMotion || !matchMedia("(hover: hover)").matches) return;
+  el.classList.add("zoomable");
+  el.addEventListener("pointerenter", e => {
+    if (e.pointerType !== "mouse") return;
+    clearTimeout(zoomTimer);
+    zoomTimer = setTimeout(() => {
+      if (zoomed && zoomed !== el) zoomed.classList.remove("zoom");
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--z", Math.max(1.1, Math.min(max, 400 / r.width, (innerHeight - 40) / r.height)));
+      el.style.setProperty("--ox", r.left + r.width / 2 < innerWidth / 3 ? "left" : r.left + r.width / 2 > innerWidth * 2 / 3 ? "right" : "center");
+      el.style.setProperty("--oy", r.top < innerHeight * .25 ? "top" : r.bottom > innerHeight * .75 ? "bottom" : "center");
+      el.classList.add("zoom"); zoomed = el;
+    }, 220);
+  });
+  el.addEventListener("pointerleave", () => { clearTimeout(zoomTimer); if (zoomed === el) unzoom(); });
+}
+
+// Full-screen card viewer, for phones (and the magnifier buttons). Tap anywhere or press Escape to close.
+// With `choose` ({ids, at, onPick}) it shows the answer choices one at a time instead: arrows, swipes or the arrow keys
+// move between them, and only the green button makes one your answer, so a stray tap can't.
+function openViewer(el, choose) {
+  unzoom();
+  const v = document.createElement("div");
+  v.className = "viewer" + (choose ? " choosing" : ""); v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true");
+  v.setAttribute("aria-label", trt("viewer.aria"));
+  const back = document.activeElement, rtl = document.documentElement.dir === "rtl";
+  const close = () => { v.classList.add("out"); setTimeout(() => v.remove(), reduceMotion ? 0 : 180); removeEventListener("keydown", key); };
+  const key = e => {
+    if (e.key === "Escape") { close(); back?.focus?.(); }
+    else if (choose && (e.key === "ArrowLeft" || e.key === "ArrowRight")) step((e.key === "ArrowRight") !== rtl ? 1 : -1);
+  };
+  addEventListener("keydown", key);
+  if (!choose) {
+    const card = (el.matches(".tcg") ? el : el.querySelector(".tcg")).outerHTML;
+    v.innerHTML = `<div class="viewer-card">${card}</div><span class="viewer-hint">${tr("viewer.hint")}</span>`;
+    v.onclick = close;
+    document.body.appendChild(v);
+    return;
+  }
+  const n = choose.ids.length;
+  let at = choose.at, shownAt = 0;
+  v.innerHTML = `<button class="v-close" type="button" aria-label="${tr("viewer.close")}">✕</button>
+    <div class="viewer-card" aria-live="polite"></div>
+    <div class="v-dots" aria-hidden="true">${"<i></i>".repeat(n)}</div>
+    <div class="v-bar"><button class="v-nav" type="button" data-step="-1" aria-label="${tr("viewer.prev")}"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="v-pick" type="button">✓ ${tr("viewer.pick")}</button>
+      <button class="v-nav" type="button" data-step="1" aria-label="${tr("viewer.next")}"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>`;
+  const slot = v.querySelector(".viewer-card");
+  function show(dir) {
+    slot.innerHTML = cardOf(choose.ids[at]);
+    v.querySelectorAll(".v-dots i").forEach((d, i) => d.classList.toggle("on", i === at));
+    shownAt = performance.now();
+    if (dir && !reduceMotion) slot.animate([{ transform: `translateX(${(rtl ? -dir : dir) * 48}px)`, opacity: 0 }, { transform: "none", opacity: 1 }],
+      { duration: 220, easing: "cubic-bezier(.2,.8,.2,1)" });
+  }
+  function step(d) { at = (at + d + n) % n; show(d); }
+  // Swipe sideways to move between the choices.
+  let sx = null, sy = 0, swiped = false;
+  v.addEventListener("pointerdown", e => { sx = e.clientX; sy = e.clientY; swiped = false; });
+  v.addEventListener("pointerup", e => {
+    if (sx === null) return;
+    const dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > 1.5 * Math.abs(dy)) { swiped = true; step((dx < 0) !== rtl ? 1 : -1); }
+  });
+  v.onclick = e => {
+    if (swiped) { swiped = false; return; }
+    const b = e.target.closest("button");
+    if (b?.dataset.step) step(+b.dataset.step);
+    else if (b?.classList.contains("v-pick")) {
+      // Ignore a press that lands within a moment of the card appearing (a double tap, or a held Enter key).
+      if (performance.now() - shownAt < 350) return;
+      close(); choose.onPick(choose.ids[at]);
+    }
+    else if (b || e.target === v) { close(); back?.focus?.(); }
+  };
+  show(0);
+  document.body.appendChild(v);
+  v.querySelector(".v-pick").focus({ preventScroll: true });
+}
+function lens(target) {
+  return `<button class="lens" type="button" aria-label="${tr("lens.aria")}" data-lens="${target}">🔍</button>`;
+}
+
+function renderPanel() {
+  const p = $("panel");
+  if (phase === "choose") {
+    p.innerHTML = `<span class="label">${tr("play.your_move")}</span><h3>${tr("play.which")}</h3>
+      <p class="pick-hint">${tr("play.tap_hint")}</p><div class="pick-wrap"><div class="pick-cards">${choices.map(id =>
+        `<div class="pick-slot"><button class="pick" data-pick="${id}" aria-label="${esc(nameOf(id))}" title="${esc(id === SOUND ? trt("card.sound_text") : F[id].short)}">${cardOf(id)}</button>${refLink(id)}</div>`).join("")}</div></div>
+      <ol class="steps" style="margin-top:14px">
+        <li><b>${tr("play.step1_b")}</b> ${tr("play.step1")}</li>
+        <li><b>${tr("play.step2_b")}</b> ${tr("play.step2")}</li>
+        <li><b>${tr("play.step3_b")}</b> ${tr("play.step3")}</li>
+      </ol>
+      <p class="label" style="margin-top:14px">${tr("play.scoring", { best: SC.best, ok: SC.ok, trap: SC.trap, unlisted: SC.unlisted })}</p>`;
+    // Tapping a choice opens it full size; the green button there makes it your answer.
+    p.querySelectorAll("[data-pick]").forEach((b, i) => {
+      const open = () => openViewer(b, { ids: choices, at: i, onPick: id => { picked = id; submit(); } });
+      b.onclick = open; magnify(b, 1.9, open);
+    });
+    return;
+  }
+  const tier = tierOf(q, picked);
+  const pts = SC[tier];
+  const names = ids => ids.map(i => esc(nameOf(i))).join(", ") || tr("play.none");
+  const badge = { best: tr("tier.best"), ok: tr("tier.ok"), trap: tr("tier.trap"), unlisted: tr("tier.unlisted") };
+  // The four cards stay on the table and show what each one was; the one you picked reacts.
+  let html = `<div class="result-head r-${tier}"><span class="big">${tr("head." + tier)}</span><span class="pts">${pts > 0 ? "+" : ""}${pts}</span></div>`;
+  html += `<div class="pick-wrap"><div class="pick-cards">${choices.map(id => {
+    const t = tierOf(q, id), mine = id === picked;
+    return `<div class="pick-slot"><button class="pick res res-${t}${mine ? " chosen" : ""}" disabled aria-label="${mine ? tr("play.your_pick_aria", { card: esc(nameOf(id)), tier: badge[t] }) : `${esc(nameOf(id))}: ${badge[t]}`}">${cardOf(id)}</button>
+      ${lens(id)}<span class="badge b-${t}">${mine ? (pts > 0 ? "+" + pts + " " : pts < 0 ? pts + " " : "") : ""}${badge[t]}</span>${mine ? `<span class="mine">${tr("play.your_pick")}</span>` : ""}${refLink(id)}</div>`;
+  }).join("")}</div></div>`;
+  html += `<span class="label" style="display:block;margin-top:16px">${tr("play.verdict_on", { card: esc(nameOf(picked)) })}</span>
+    <div class="verdict v-${tier}"><span class="pts">${pts > 0 ? "+" : ""}${pts}</span>${tr("verdict." + tier)}</div>`;
+  if (tier === "trap") html += `<p class="trapline"><b>${tr("play.why_fails")}</b> ${esc(trapReason(q, picked))}</p>`;
+  html += `<dl class="key"><dt>${tr("tier.best")}</dt><dd>${names(q.best)}</dd>`;
+  if (!isSound(q)) html += `<dt>${tr("tier.ok")}</dt><dd>${names(q.ok)}</dd>`;
+  for (const [id, r] of Object.entries(q.traps)) if (id !== picked) html += `<dt>${tr("tier.trap")}</dt><dd><b>${esc(nameOf(id))}</b>: ${esc(r)}</dd>`;
+  html += `</dl><p>${esc(q.why)}</p>`;
+  if (!isSound(q)) {
+    const f = F[q.best[0]];
+    html += `<div class="case"><span class="label">${tr("play.real_case", { flag: esc(f.name) })}</span><p>${esc(f.example)} <a href="${esc(f.example_url)}" target="_blank" rel="noopener">${tr("play.source")}</a></p></div>
+      <p class="cite">📄 ${tr("play.key_ref", { flag: esc(f.name) })} ${refLine(f)}</p>`;
+  }
+  html += `<div class="review" id="review"></div>`;
+  p.innerHTML = html;
+  renderReview();
+  p.querySelectorAll(".pick.res").forEach(b => magnify(b));
+  p.querySelectorAll(".pick-slot [data-lens]").forEach(b => b.onclick = () => openViewer(b.closest(".pick-slot")));
+  const mine = p.querySelector(".pick.chosen");
+  if (mine && tier === "best") setTimeout(() => confetti(mine), reduceMotion ? 0 : 250);
+}
+
+// ---------- bonus round: which Check card exposes the flag (or confirms a sound claim)?
+// Right answers: the claim's key check, plus any check listed on its best flag.
+function buildReview() {
+  const right = new Set([q.check, ...(isSound(q) ? [] : F[q.best[0]].checks)]);
+  const wrong = shuffle(checks.filter(k => !right.has(k.id))).slice(0, 3);
+  return { right, opts: shuffle([K[q.check], ...wrong]), answer: null };
+}
+function renderReview() {
+  if (!review) review = buildReview();
+  const { right, opts, answer } = review;
+  let html = `<span class="label">${tr("review.label")}</span>
+    <p style="margin-top:4px"><b>${isSound(q) ? tr("review.which_sound") : tr("review.which", { flag: `<span class="flag-tag">${esc(F[q.best[0]].name)}</span>` })}</b>
+    <span style="color:var(--muted)">${tr("review.bonus", { check: SC.check })}</span></p><div class="opts">`;
+  for (const k of opts) {
+    const cls = answer ? (right.has(k.id) ? "right" : answer === k.id ? "wrong" : "") : "";
+    html += `<button class="opt ${cls}" data-k="${k.id}" ${answer ? "disabled" : ""}><b>${esc(k.name)}</b><span>${esc(k.short)}</span></button>`;
+  }
+  html += `</div>`;
+  if (answer) {
+    html += `<p style="margin-top:12px">${right.has(answer) ? tr("review.right", { check: SC.check }) : tr("review.wrong")}
+      <b>${esc(K[q.check].name)}</b>: ${esc(K[q.check].text)}</p>`;
+    html += `<div class="row-actions"><button class="btn primary" id="b-next">${tr("review.next")}</button></div>`;
+  }
+  $("review").innerHTML = html;
+  $("review").querySelectorAll(".opt").forEach(b => b.onclick = () => answerReview(b.dataset.k));
+  const n = $("b-next"); if (n) n.onclick = () => { nextClaim(); scrollToTop(); };
+}
+function answerReview(id) {
+  review.answer = id;
+  if (review.right.has(id)) { stats.score += SC.check; save(); renderStats(); }
+  renderReview();
+}
+
+function submit() {
+  if (!picked || phase !== "choose") return;
+  $("b-new").classList.add("nudge");
+  phase = "result"; review = null;
+  const tier = tierOf(q, picked);
+  stats.score += SC[tier]; stats.answered += 1;
+  if (tier === "best") { stats.bestHits += 1; stats.streak += 1; } else stats.streak = 0;
+  stats.seen[q.id] = tier; save(); renderStats();
+  renderPanel();
+  $("panel").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+}
+function scrollToTop() { $("qslot").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); }
+
+// ---------- decks browser
+let deck = "claims";
+const DECKS = { claims: trt("deck.claims"), flags: trt("deck.flags"), checks: trt("deck.checks"), sound: trt("deck.sound") };
+const deckItems = k => k === "sound" ? [{ id: SOUND }] : DATA[k];
+
+// ---------- deck explanations: a small animated pop-up on hover, focus or tap
+const DECK_INFO = {
+  claims: { color: "#40402C", icon: "📰", text: trt("tip.claims") },
+  flags: { color: "#B42318", icon: "🚩", text: trt("tip.flags") },
+  checks: { color: "#0C4A6E", icon: "🔍", text: trt("tip.checks") },
+  sound: { color: "#047857", icon: "✅", text: trt("tip.sound") },
+};
+let tipEl = null, tipFor = null;
+function showTip(anchor) {
+  const k = anchor.dataset.tip, info = DECK_INFO[k];
+  if (!info || tipFor === anchor) return;
+  hideTip(true);
+  tipFor = anchor;
+  tipEl = document.createElement("div");
+  tipEl.className = "tip"; tipEl.setAttribute("role", "tooltip"); tipEl.id = "deck-tip";
+  tipEl.style.setProperty("--c", info.color);
+  tipEl.innerHTML = `<div class="tip-fan" aria-hidden="true"><i></i><i></i><i>${info.icon}</i></div>
+    <div><b>${tr("tip.count", { deck: esc(DECKS[k]), n: deckItems(k).length })}</b><p>${esc(info.text)}</p></div>`;
+  document.body.appendChild(tipEl);
+  anchor.setAttribute("aria-describedby", "deck-tip");
+  const a = anchor.getBoundingClientRect(), t = tipEl.getBoundingClientRect();
+  const left = Math.max(12, Math.min(innerWidth - t.width - 12, a.left + a.width / 2 - t.width / 2));
+  const below = a.bottom + t.height + 14 < innerHeight;
+  tipEl.style.left = left + "px";
+  tipEl.style.top = (below ? a.bottom + 10 : a.top - t.height - 10) + "px";
+  tipEl.style.setProperty("--ax", (a.left + a.width / 2 - left) + "px");
+  tipEl.classList.add(below ? "below" : "above");
+}
+function hideTip(now = false) {
+  if (!tipEl) return;
+  const el = tipEl;
+  tipFor?.removeAttribute("aria-describedby");
+  tipEl = null; tipFor = null;
+  if (now || reduceMotion) { el.remove(); return; }
+  el.classList.add("out");
+  setTimeout(() => el.remove(), 160);
+}
+function bindTips(root) {
+  root.querySelectorAll("[data-tip]").forEach(el => {
+    el.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") showTip(el); });
+    el.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hideTip(); });
+    el.addEventListener("focus", () => showTip(el));
+    el.addEventListener("blur", () => hideTip());
+  });
+}
+addEventListener("scroll", () => hideTip(true), { passive: true });
+addEventListener("keydown", e => { if (e.key === "Escape") hideTip(); });
+document.addEventListener("pointerdown", e => {
+  const t = e.target.closest("[data-tip]");
+  // On touch screens a tap shows the explanation; a second tap on the same name hides it.
+  if (t && e.pointerType !== "mouse") { if (tipFor === t) hideTip(); else showTip(t); }
+  else if (!t) hideTip();
+});
+function cardHTML(kind, x) {
+  if (kind === "claims") {
+    const card = DATA.cards.claims[x.id];
+    const okLine = isSound(x) ? "" : `<br>🥈 ${x.ok.map(i => esc(nameOf(i))).join(", ") || "–"}`;
+    return `<figure>${card}<details><summary>${tr("decks.answer")}</summary><p>🥇 ${x.best.map(i => esc(nameOf(i))).join(", ")}${okLine}</p><p>${esc(x.why)}</p><p>🔍 ${esc(K[x.check].name)}</p></details></figure>`;
+  }
+  if (kind === "flags") return `<figure><div class="pick-slot">${DATA.cards.flags[x.id]}${refLink(x.id)}</div><details><summary>${tr("decks.example")}</summary><p>${esc(x.text)}</p><p><i>${esc(x.example)}</i> <a href="${esc(x.example_url)}" target="_blank" rel="noopener">${tr("play.source")}</a></p><p>📄 ${refLine(x)}</p></details></figure>`;
+  if (kind === "checks") return `<figure>${DATA.cards.checks[x.id]}<details><summary>${tr("decks.more")}</summary><p>${esc(x.text)}</p><p>🚩 ${DATA.exposes[x.id].map(i => esc(F[i].name)).join(", ")}</p></details></figure>`;
+  return `<figure>${DATA.cards.sound}<details><summary>${tr("decks.more")}</summary><p>${tr("tip.sound")}</p></details></figure>`;
+}
+function renderDecks() {
+  hideTip(true);
+  $("deck-tabs").innerHTML = Object.entries(DECKS).map(([k, v]) => `<button data-deck="${k}" data-tip="${k}" aria-pressed="${deck === k}">${esc(v)} · ${deckItems(k).length}</button>`).join("");
+  bindTips($("deck-tabs"));
+  $("deck-tabs").querySelectorAll("button").forEach(b => b.onclick = () => { deck = b.dataset.deck; renderDecks(); });
+  const term = $("deck-search").value.trim().toLowerCase();
+  const items = deckItems(deck).filter(x => !term || deck === "sound" || JSON.stringify(x).toLowerCase().includes(term));
+  $("cards").innerHTML = items.map(x => cardHTML(deck, x)).join("") || `<p>${tr("decks.nomatch", { term: esc(term) })}</p>`;
+}
+
+// ---------- home
+let fanTimer = null;
+function fanCard(id, k, n) {
+  const spread = n > 1 ? (k - (n - 1) / 2) / ((n - 1) / 2) : 0;
+  return `<div class="fc" style="transform: translate(calc(-50% + ${spread * 34}%), calc(-50% + ${Math.abs(spread) * 7}%)) rotate(${spread * 16}deg); z-index:${k}">
+    <div class="bob" data-id="${id}" style="--d:${-k * .7}s">${fanHTML(id)}</div></div>`;
+}
+// The fan mixes the decks: flags around a claim in the middle, with a check and the Sound card.
+const fanHTML = id => id.startsWith("claim:") ? DATA.cards.claims[id.slice(6)] : id.startsWith("check:") ? DATA.cards.checks[id.slice(6)] : cardOf(id);
+function renderFan() {
+  const fl = shuffle(flags.map(f => f.id));
+  const ids = [fl[0], "check:" + shuffle(checks)[0].id, "claim:" + shuffle(claims)[0].id, SOUND, fl[1]];
+  $("hero-fan").innerHTML = ids.map((id, k) => fanCard(id, k, ids.length)).join("");
+  if (reduceMotion) return;
+  [...$("hero-fan").querySelectorAll(".bob")].forEach((el, k) => el.animate(
+    [{ transform: "translateY(160px) rotate(-25deg) scale(.6)", opacity: 0 }, { transform: "none", opacity: 1 }],
+    { duration: 750, delay: k * 120, easing: "cubic-bezier(.2,.8,.2,1)", fill: "backwards" }));
+}
+function cycleFan() {
+  // Flip one flag in the fan over to a new one every few seconds.
+  if ($("view-home").hidden || document.hidden) return;
+  const bobs = [...$("hero-fan").querySelectorAll(".bob")].filter(b => F[b.dataset.id]);
+  if (!bobs.length) return;
+  const el = bobs[Math.floor(Math.random() * bobs.length)];
+  const shown = new Set([...$("hero-fan").querySelectorAll(".bob")].map(b => b.dataset.id));
+  const id = shuffle(flags.map(f => f.id)).find(x => !shown.has(x));
+  el.animate([{ transform: "rotateY(0)" }, { transform: "rotateY(90deg)" }], { duration: 260, easing: "ease-in" }).onfinish = () => {
+    el.dataset.id = id; el.innerHTML = DATA.cards.flags[id];
+    el.animate([{ transform: "rotateY(-90deg)" }, { transform: "rotateY(0)" }], { duration: 300, easing: "ease-out" });
+  };
+}
+function countUp() {
+  const items = [["claims", claims.length], ["flags", flags.length], ["checks", checks.length]];
+  $("home-counts").innerHTML = items.map(([k]) => `<div class="count" data-tip="${k}" tabindex="0"><b>0</b><span class="label">${esc(DECKS[k])}</span></div>`).join("")
+    + `<div><b>${claims.filter(isSound).length}</b><span class="label">${tr("home.sound_count")}</span></div>`;
+  bindTips($("home-counts"));
+  const bs = $("home-counts").querySelectorAll(".count b"), t0 = performance.now(), dur = reduceMotion ? 1 : 1200;
+  const step = t => {
+    const f = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - f, 3);
+    bs.forEach((b, i) => b.textContent = Math.round(items[i][1] * e));
+    if (f < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+  setTimeout(() => bs.forEach((b, i) => b.textContent = items[i][1]), dur + 100);
+}
+function tilt(el) {
+  if (reduceMotion || !matchMedia("(hover: hover)").matches) return;
+  el.onpointermove = e => {
+    const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    el.style.transform = `rotateX(${(.5 - y) * 8}deg) rotateY(${(x - .5) * 10}deg) translateY(-4px)`;
+    el.style.setProperty("--mx", x * 100 + "%"); el.style.setProperty("--my", y * 100 + "%");
+  };
+  el.onpointerleave = () => { el.style.transform = ""; };
+}
+function confetti(fromEl) {
+  if (reduceMotion) return;
+  const r = fromEl.getBoundingClientRect(), colors = ["#FCA5A5", "#86EFAC", "#7DD3FC", "#FCD34D", "#C4B5FD"];
+  for (let i = 0; i < 28; i++) {
+    const c = document.createElement("i");
+    c.className = "confetti"; c.style.background = colors[i % colors.length];
+    c.style.left = r.left + r.width / 2 + "px"; c.style.top = r.top + r.height / 2 + "px";
+    document.body.appendChild(c);
+    const a = Math.random() * Math.PI * 2, d = 80 + Math.random() * 140;
+    c.animate([{ transform: "translate(0,0) rotate(0)", opacity: 1 },
+      { transform: `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d + 120}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }],
+      { duration: 1100 + Math.random() * 500, easing: "cubic-bezier(.2,.7,.4,1)" }).onfinish = () => c.remove();
+  }
+}
+function renderQuick() {
+  const qq = claims[Math.floor(Math.random() * claims.length)];
+  const opts = dealChoices(qq);
+  $("quick").innerHTML = `<div style="position:relative"><div class="flip" id="quick-card" role="button" tabindex="0" aria-label="${tr("quick.flip_aria")}">
+      <div class="face front">${DATA.cards.claims[qq.id]}</div><div class="face back">${DATA.cards.back}</div></div><span class="tap" id="quick-tap">${tr("quick.tap")}</span></div>
+    <div class="panel" id="quick-panel"><span class="label">${tr("quick.kicker")}</span><h3>${tr("quick.title")}</h3>
+      <p>${tr("quick.text")}</p></div>`;
+  const flip = () => {
+    const card = $("quick-card");
+    if (card.classList.contains("up")) return;
+    card.classList.add("up"); $("quick-tap").remove();
+    card.setAttribute("aria-label", trt("play.claim_card"));
+    $("quick-panel").innerHTML = `<span class="label">${tr("card.claim")} · ${"★".repeat(qq.difficulty)}</span><h3>${tr("quick.which")}</h3>
+      <div class="qopts">${opts.map(id => `<button class="opt" data-id="${id}"><b>${esc(nameOf(id))}</b><span>${esc(id === SOUND ? trt("card.sound_text") : F[id].short)}</span></button>`).join("")}</div><div id="quick-verdict" aria-live="polite"></div>`;
+    $("quick-panel").querySelectorAll(".opt").forEach(b => b.onclick = () => {
+      const id = b.dataset.id, tier = tierOf(qq, id);
+      $("quick-panel").querySelectorAll(".opt").forEach(o => {
+        o.disabled = true;
+        const t = tierOf(qq, o.dataset.id);
+        if (t === "best") o.classList.add("best"); else if (t === "trap" && o.dataset.id === id) o.classList.add("trap");
+      });
+      $("quick-verdict").innerHTML = `<p style="margin-top:12px"><b>${tr("quick." + tier)}</b> ${tier === "trap" ? esc(trapReason(qq, id)) + " " : ""}${esc(qq.why)}</p>
+        <div class="row-actions"><button class="btn primary" id="quick-next">${tr("quick.another")}</button></div>`;
+      $("quick-next").onclick = renderQuick;
+      if (tier === "best") confetti(b);
+    });
+  };
+  $("quick-card").onclick = flip;
+  $("quick-card").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } };
+}
+function renderHome() {
+  renderFan(); countUp(); renderQuick();
+  document.querySelectorAll("#view-home [data-go]").forEach(b => b.onclick = () => show(b.dataset.go));
+  document.querySelectorAll("#home-modes .tilt").forEach(tilt);
+  clearInterval(fanTimer);
+  if (!reduceMotion) fanTimer = setInterval(cycleFan, 3200);
+}
+
+function show(view) {
+  document.querySelector("header .stats").hidden = view !== "play";
+  document.querySelector(".brand p").hidden = view === "home";
+  document.querySelector("nav").hidden = view === "home";
+  if (view === "home" && $("view-home").hidden) { renderFan(); countUp(); }
+  for (const v of ["home", "play", "decks"]) { $("view-" + v).hidden = v !== view; $("tab-" + v).setAttribute("aria-selected", v === view); }
+  if (view === "decks") renderDecks();
+}
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => show(b.dataset.view));
+$("go-home").onclick = e => { e.preventDefault(); show("home"); };
+$("f-diff").onchange = () => { queue = []; nextClaim(); };
+$("b-new").onclick = nextClaim;
+$("deck-search").oninput = renderDecks;
+$("footer").innerHTML = tr("footer", { version: esc(meta.version) });
+// Language switcher: each language is its own page (app/, app/fr/, ...), so switching simply opens that page.
+if ((LANG.langs || []).length > 1) {
+  $("lang-pick").innerHTML = LANG.langs.map(l => `<option value="${esc(l.href)}"${l.current ? " selected" : ""} lang="${l.code}">${esc(l.name)}</option>`).join("");
+  $("lang-pick").onchange = e => { location.href = e.target.value; };
+  $("lang-wrap").hidden = false;
+}
+// Translations can run long: shrink text on newly drawn cards until it fits.
+/*__FIT__*/
+new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes) if (n.nodeType === 1 && (n.matches(".tcg") || n.querySelector(".tcg"))) fitCards(n); })
+  .observe(document.body, { childList: true, subtree: true });
+renderStats(); nextClaim(); renderHome(); show("home");
+</script>
