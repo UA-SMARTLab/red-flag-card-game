@@ -103,7 +103,7 @@ for c in claims:
         errors.append(f"{w}: unknown picture type {c['picture']['type']}")
     if c["difficulty"] not in (1, 2, 3):
         errors.append(f"{w}: difficulty must be 1, 2 or 3")
-    if len(c["text"]) > 215:
+    if len(c["text"]) > 230:
         warnings.append(f"{w}: text is {len(c['text'])} chars (may overflow card)")
     for b in c["best"]:
         best_count[b] += 1

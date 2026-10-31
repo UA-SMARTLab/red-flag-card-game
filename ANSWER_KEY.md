@@ -32,7 +32,7 @@ Family routine, income and parental time plausibly drive both breakfast and grad
 
 *Check:* **Draw the causal diagram**
 
-## C03 · Lazy and low (Psychology, ★★)
+## C03 · Still and low (Psychology, ★★)
 
 > In a one-off survey of 5,000 adults, the least active people were the most depressed. Inactivity causes depression.
 
@@ -51,7 +51,7 @@ Depression saps energy and motivation, so low activity may be a symptom rather t
 > From 2000 to 2020, smartphone ownership and short-sightedness in teenagers both rose year after year (r = 0.96). Phones are ruining children's eyes.
 
 - 🥇 **Best:** Two trends, one clock
-- 🥈 **Defensible:** Correlation as causation
+- 🥈 **Defensible:** Correlation as causation, Ecological fallacy
 - ⚠️ **Trap, Regression to the mean:** Nothing was chosen for being extreme; both series climb steadily.
 - ⚠️ **Trap, Small numbers, wild swings:** The flaw is not the number of years but that any two rising series correlate.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
@@ -80,8 +80,8 @@ Hospital admission is caused both by smoking-related illness and by severe infec
 
 - 🥇 **Best:** Collider bias
 - 🥈 **Defensible:** Unrepresentative sample
-- ⚠️ **Trap, No significance, no effect:** The study may be precise; the issue is that everyone was selected for being good.
 - ⚠️ **Trap, Ecological fallacy:** The data are on individual players.
+- ⚠️ **Trap, Reverse causation:** Scoring points doesn't make players taller.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 Players reach the league by being tall or by being exceptionally skilled. Selecting on that shared outcome hides height's effect among the selected.
@@ -93,9 +93,8 @@ Players reach the league by being tall or by being exceptionally skilled. Select
 > Counting from the day they joined the waiting list, patients who got a heart transplant lived far longer than those who never did. Transplants work.
 
 - 🥇 **Best:** Immortal time
-- 🥈 **Defensible:** Hidden third factor
+- 🥈 **Defensible:** Hidden third factor, Survivorship bias
 - ⚠️ **Trap, Regression to the mean:** Patients weren't picked for an extreme value that later fell back.
-- ⚠️ **Trap, Survivorship bias:** Close, but the precise error is counting waiting time as transplant time.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 To get a transplant you had to survive the wait, and that waiting time was credited to the transplant group. Time must be split at the day of surgery.
@@ -104,7 +103,7 @@ To get a transplant you had to survive the wait, and that waiting time was credi
 
 ## C08 · Statins and survival (Pharmacoepidemiology, ★★★)
 
-> Patients counted as statin users if they filled a prescription within two years of diagnosis; followed from diagnosis, users had 30% lower mortality.
+> Patients counted as statin users if they filled a prescription within two years of diagnosis; followed from diagnosis, users had 30% lower mortality. Statins cut deaths by 30%.
 
 - 🥇 **Best:** Immortal time
 - 🥈 **Defensible:** Hidden third factor
@@ -136,7 +135,7 @@ Exponential growth always saturates. A trend observed over six months says nothi
 
 - 🥇 **Best:** Beyond the data
 - 🥈 **Defensible:** none
-- ⚠️ **Trap, Surrogate endpoint:** Blood pressure is an accepted outcome here; the problem is the dose range.
+- ⚠️ **Trap, Surrogate endpoint:** Blood pressure is the outcome being claimed; the problem is the dose range.
 - ⚠️ **Trap, Mice to people:** The trial was in people.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
@@ -232,10 +231,10 @@ Students from one university in one country support a claim about them, not abou
 
 > Hospital A: 90% of surgical patients survive. Hospital B: 85%. Hospital B takes most of the region's high-risk cases. Choose A.
 
-- 🥇 **Best:** Simpson's paradox
-- 🥈 **Defensible:** Hidden third factor
+- 🥇 **Best:** Simpson's paradox, Hidden third factor
+- 🥈 **Defensible:** none
 - ⚠️ **Trap, Base-rate neglect:** No test or rare condition is being interpreted here.
-- ⚠️ **Trap, Distorted chart:** The axis starts at 80, but the bigger problem is comparing different case mixes.
+- ⚠️ **Trap, Distorted chart:** The chart is drawn honestly from zero; the problem is comparing different case mixes.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 When one hospital treats the riskiest patients, its overall rate can be lower even if it does better within every risk group. Compare within risk groups.
@@ -261,9 +260,8 @@ X was used mostly on harder, large stones. Within each stone size X wins; the po
 > The 20 schools with the worst test scores were given a coaching scheme. Next year their scores rose by 8 points. The scheme works.
 
 - 🥇 **Best:** Regression to the mean
-- 🥈 **Defensible:** none
+- 🥈 **Defensible:** Correlation as causation
 - ⚠️ **Trap, Survivorship bias:** All 20 schools are followed; none drop out.
-- ⚠️ **Trap, Correlation as causation:** Defensible in spirit, but the specific trap is choosing schools for an extreme low.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 Schools picked for an unusually bad year tend to do better next year anyway. Without comparable untreated schools, the rise can't be credited to coaching.
@@ -272,7 +270,7 @@ Schools picked for an unusually bad year tend to do better next year anyway. Wit
 
 ## C20 · Speed cameras (Transport, ★★)
 
-> Speed cameras were installed at the 50 sites with the most crashes last year. Crashes at those sites fell by 40% the year after.
+> Speed cameras were installed at the 50 sites with the most crashes last year. Crashes there fell by 40% the year after. The cameras cut crashes by 40%.
 
 - 🥇 **Best:** Regression to the mean
 - 🥈 **Defensible:** none
@@ -286,10 +284,10 @@ Sites chosen for a peak year would have fewer crashes next year even without cam
 
 ## C21 · Cancer village (Epidemiology, ★★)
 
-> The town with the highest rate of a rare cancer in the country has only 900 inhabitants. Something in that town must be causing it.
+> The town with the highest rate of a rare cancer in the country has only 900 inhabitants (2 cases). Something in that town must be causing it.
 
 - 🥇 **Best:** Small numbers, wild swings
-- 🥈 **Defensible:** Many tests, one hit
+- 🥈 **Defensible:** Many tests, one hit, Regression to the mean
 - ⚠️ **Trap, Ecological fallacy:** The claim is about the town itself, not about individuals inside it.
 - ⚠️ **Trap, Relative risk alone:** Absolute rates are given; the issue is how unstable they are in a tiny town.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
@@ -314,15 +312,15 @@ Small schools' averages swing more, so they crowd both the top and the bottom of
 
 ## C23 · Spot the terrorist (Security, ★★)
 
-> A new face-scanning system spots known suspects with 99% accuracy. So anyone it flags at the airport is almost certainly a suspect.
+> A face-scanning system flags 99% of known suspects and only 1% of other travellers. So anyone it flags at the airport is almost certainly a suspect.
 
 - 🥇 **Best:** Base-rate neglect
 - 🥈 **Defensible:** Transposed conditional
 - ⚠️ **Trap, Significant but trivial:** The accuracy is high; the trouble is how rare suspects are.
-- ⚠️ **Trap, Overfitting:** Perhaps, but even a perfectly validated 99% would mislead here.
+- ⚠️ **Trap, One study, settled:** Nothing here rests on one study; the error is ignoring how rare suspects are.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
-Among millions of travellers and a handful of suspects, 1% false alarms means thousands of innocent people flagged for every real suspect.
+Per million travellers, about 10,000 innocent people are flagged, against a handful of real suspects.
 
 *Check:* **Ask for the denominator**
 
@@ -345,7 +343,7 @@ Per 10,000 screened: 48 true positives and about 500 false ones. A positive resu
 > Our experiment gave p = 0.01, so there is only a 1% chance that the effect isn't real.
 
 - 🥇 **Best:** Transposed conditional
-- 🥈 **Defensible:** none
+- 🥈 **Defensible:** Base-rate neglect
 - ⚠️ **Trap, Significant but trivial:** We don't know the effect size; the error is in reading the p-value.
 - ⚠️ **Trap, No significance, no effect:** The result is significant; the misreading runs the other way.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
@@ -361,7 +359,7 @@ p is the probability of data this extreme if there were no effect, not the proba
 - 🥇 **Best:** Transposed conditional
 - 🥈 **Defensible:** Base-rate neglect
 - ⚠️ **Trap, Small numbers, wild swings:** The match probability isn't unstable; it's being turned inside out.
-- ⚠️ **Trap, Many tests, one hit:** Defensible only if a database was trawled; the core error is the transposed conditional.
+- ⚠️ **Trap, Significant but trivial:** The match is strong evidence; the error is in turning its probability around.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 In a city of 5 million, about five people would match by chance. P(match | innocent) is not P(innocent | match).
@@ -384,15 +382,15 @@ The interval runs from no effect to a large one. A small trial that can't rule o
 
 ## C28 · Clicks for the win (Technology, ★)
 
-> Across 2 million users, the new button colour raised clicks from 3.00% to 3.02% (p < 0.001). A major success for the design team.
+> Across 40 million users, the new button colour raised clicks from 3.00% to 3.02% (p < 0.001). A major success for the design team.
 
 - 🥇 **Best:** Significant but trivial
 - 🥈 **Defensible:** Distorted chart
-- ⚠️ **Trap, Small numbers, wild swings:** Two million users is the opposite problem.
+- ⚠️ **Trap, Small numbers, wild swings:** Forty million users is the opposite problem.
 - ⚠️ **Trap, No significance, no effect:** The result is significant; that's not the issue.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
-With millions of users, a difference of 0.02 percentage points is 'significant' but hardly matters. Ask how big, in units that count.
+With tens of millions of users, a difference of 0.02 percentage points is 'significant' but hardly matters. Ask how big, in units that count.
 
 *Check:* **Ask how big**
 
@@ -401,7 +399,7 @@ With millions of users, a difference of 0.02 percentage points is 'significant' 
 > In 300,000 teenagers, more screen time went with lower wellbeing (p < 0.0001). Screens are harming a generation.
 
 - 🥇 **Best:** Significant but trivial
-- 🥈 **Defensible:** Correlation as causation, Reverse causation
+- 🥈 **Defensible:** Correlation as causation, Reverse causation, Hidden third factor
 - ⚠️ **Trap, Small numbers, wild swings:** 300,000 is a very large sample.
 - ⚠️ **Trap, Ecological fallacy:** The data are on individual teenagers.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
@@ -416,7 +414,7 @@ A tiny p-value in a huge sample can come from a correlation near zero. How much 
 
 - 🥇 **Best:** Relative risk alone
 - 🥈 **Defensible:** Correlation as causation
-- ⚠️ **Trap, Significant but trivial:** Close, but you can't judge size until you know the starting risk.
+- ⚠️ **Trap, Significant but trivial:** You can't judge the size until you know the starting risk; name the missing absolute numbers.
 - ⚠️ **Trap, Base-rate neglect:** No test result is being interpreted; ask for the absolute risk.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
@@ -434,7 +432,7 @@ A tiny p-value in a huge sample can come from a correlation near zero. How much 
 - ⚠️ **Trap, Distorted chart:** The axis starts at zero and the bars are honest; the slogan isn't.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
-Halving 2 in 1,000 to 1 in 1,000 saves one person per 1,000 screened over ten years. The relative figure alone oversells it.
+Halving 2 in 1,000 to 1 in 1,000 prevents one cancer-X death per 1,000 screened over ten years. The relative figure alone oversells it.
 
 *Check:* **Ask how big**
 
@@ -443,9 +441,8 @@ Halving 2 in 1,000 to 1 in 1,000 saves one person per 1,000 screened over ten ye
 > Support for the policy has surged since our campaign began.
 
 - 🥇 **Best:** Distorted chart
-- 🥈 **Defensible:** Significant but trivial
+- 🥈 **Defensible:** Significant but trivial, Correlation as causation
 - ⚠️ **Trap, Regression to the mean:** Nothing was selected for an extreme value.
-- ⚠️ **Trap, Correlation as causation:** Defensible, but first notice how small the change is.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 The axis starts at 48%, so a three-point change looks like a fourfold rise. Within normal polling error, support barely moved.
@@ -456,8 +453,8 @@ The axis starts at 48%, so a three-point change looks like a fourfold rise. With
 
 > Since March, unemployment has fallen every month. The new jobs policy is working.
 
-- 🥇 **Best:** Distorted chart
-- 🥈 **Defensible:** Regression to the mean, Correlation as causation
+- 🥇 **Best:** Distorted chart, Correlation as causation
+- 🥈 **Defensible:** Regression to the mean
 - ⚠️ **Trap, Small numbers, wild swings:** The numbers come from a large labour survey; the window is the problem.
 - ⚠️ **Trap, Changed yardstick:** No change in definition is mentioned.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
@@ -473,7 +470,7 @@ Five months on a cropped axis hide what came before: was March a spike? Plot the
 - 🥇 **Best:** Overfitting
 - 🥈 **Defensible:** Beyond the data
 - ⚠️ **Trap, Base-rate neglect:** No rare condition is being tested for.
-- ⚠️ **Trap, Small numbers, wild swings:** Close, but the giveaway is 200 variables fitted to 150 cases.
+- ⚠️ **Trap, Small numbers, wild swings:** The issue isn't chance swings in a small group but 200 variables fitted to 150 cases.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 With more variables than cases, a model can memorise the past. Only predictions for elections it hasn't seen show its real accuracy.
@@ -485,9 +482,8 @@ With more variables than cases, a model can memorise the past. Only predictions 
 > We tested 10,000 trading rules on 20 years of prices. The best one beat the market every single year in the back-test. Invest with it.
 
 - 🥇 **Best:** Overfitting
-- 🥈 **Defensible:** Many tests, one hit
-- ⚠️ **Trap, Survivorship bias:** Related, but the best of 10,000 tries is the core problem.
-- ⚠️ **Trap, Regression to the mean:** Expect future returns to fall back, but name the cause: the rule was fitted to noise.
+- 🥈 **Defensible:** Many tests, one hit, Regression to the mean, Forking paths
+- ⚠️ **Trap, Base-rate neglect:** No test result is being interpreted; the rule was fitted to noise.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 The best of 10,000 rules fitted to the same history will look brilliant by chance. Test it on later data it was never tuned on.
@@ -496,7 +492,7 @@ The best of 10,000 rules fitted to the same history will look brilliant by chanc
 
 ## C36 · Warm cup, warm heart (Psychology, ★★)
 
-> After excluding outliers and adjusting for age and mood, participants who held a warm cup rated a stranger as friendlier (p = 0.048).
+> After excluding outliers and adjusting for age and mood, people who held a warm cup rated a stranger as friendlier (p = 0.048). Physical warmth makes us see others as warmer.
 
 - 🥇 **Best:** Forking paths
 - 🥈 **Defensible:** One study, settled
@@ -510,7 +506,7 @@ Outlier rules and covariates chosen after seeing the data, and a p-value just un
 
 ## C37 · Tomatoes and migraine (Nutrition, ★★)
 
-> We tested 40 foods against 12 diseases. Eating tomatoes was linked to fewer migraines (p = 0.03).
+> We tested 40 foods against 12 diseases. Eating tomatoes was linked to fewer migraines (p = 0.03). Tomatoes help prevent migraine.
 
 - 🥇 **Best:** Many tests, one hit
 - 🥈 **Defensible:** Forking paths, Correlation as causation
@@ -543,7 +539,7 @@ Was this subgroup planned, and does it pass an interaction test? A lone subgroup
 - 🥇 **Best:** File drawer
 - 🥈 **Defensible:** Surrogate endpoint
 - ⚠️ **Trap, One study, settled:** It pools 25 studies; the question is which studies got published.
-- ⚠️ **Trap, Small numbers, wild swings:** Small studies may be the symptom; the missing ones are the cause.
+- ⚠️ **Trap, Mice to people:** The studies are in people.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 If studies that found nothing stayed in the file drawer, pooling the published ones overstates the effect. Check registries and funnel plots.
@@ -597,9 +593,10 @@ Screening diagnoses earlier and finds slow tumours, so survival from diagnosis r
 > Recorded diagnoses of ADHD doubled in ten years, a period that included a new edition of the diagnostic manual. We face an epidemic.
 
 - 🥇 **Best:** Changed yardstick
-- 🥈 **Defensible:** Two trends, one clock
+- 🥈 **Defensible:** none
 - ⚠️ **Trap, Small numbers, wild swings:** Recorded diagnoses cover the whole population.
 - ⚠️ **Trap, Regression to the mean:** The rise is steady, not a bounce from an extreme year.
+- ⚠️ **Trap, Two trends, one clock:** There's only one series here.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 New criteria, awareness and services change how many cases are recorded. A rise in diagnoses is not the same as a rise in the condition.
@@ -626,8 +623,8 @@ Better recording, and more people reporting, raise the count without more crime.
 
 - 🥇 **Best:** Reverse causation
 - 🥈 **Defensible:** Hidden third factor, Correlation as causation
-- ⚠️ **Trap, Ecological fallacy:** Defensible to note, but the claim is about cities, and the arrow is the real issue.
 - ⚠️ **Trap, Simpson's paradox:** No subgroups are reported.
+- ⚠️ **Trap, Small numbers, wild swings:** These are many cities with large counts; the arrow is the problem.
 - ⚠️ **Trap, Sound claim:** the claim has a flaw (see the best flag).
 
 Cities hire more police because they have more crime. The arrow most plausibly runs from crime to police.
@@ -636,7 +633,7 @@ Cities hire more police because they have more crime. The arrow most plausibly r
 
 ## C46 · Vaccine trial (Medicine, ★)
 
-> In a preregistered trial, 8,000 adults were randomly given the vaccine or a placebo. Confirmed infections: 0.4% vs 2.0% (difference 1.6 points, 95% CI 1.2 to 2.0).
+> In a preregistered trial, 8,000 adults were randomly given the vaccine or a placebo. Infections: 0.4% vs 2.0% (difference 1.6 points, 95% CI 1.1 to 2.1). The vaccine prevented about 16 infections per 1,000 vaccinated.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -663,7 +660,7 @@ Searching registries closes the file drawer, and consistency across 12 trials ma
 
 ## C48 · Screening trial (Screening, ★★)
 
-> In a randomised trial of 50,000 people followed for 15 years, 0.9% of the screened group and 1.2% of the unscreened group died of bowel cancer.
+> In a randomised trial of 50,000 people followed for 15 years, 0.9% of the screened and 1.2% of the unscreened died of bowel cancer. Screening prevented about 3 such deaths per 1,000.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -689,20 +686,20 @@ Natural frequencies make the reasoning transparent: 95 true positives among 590 
 
 ## C50 · Precise null (Medicine, ★★★)
 
-> A trial of 20,000 people found the supplement changed fracture risk by −0.2 points (95% CI −0.6 to +0.2). Any benefit is too small to matter.
+> A trial of 20,000 older adults found the supplement changed fracture risk by −0.2 points (95% CI −0.6 to +0.2). The protocol set 1 point as the smallest benefit worth having, and the interval rules that out.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
 - ⚠️ **Trap, No significance, no effect:** The claim rests on a narrow interval that rules out meaningful effects, not on p > 0.05.
 - ⚠️ **Trap, Small numbers, wild swings:** 20,000 people is large.
 
-A narrow interval around zero is evidence of absence of a meaningful effect, and the claim stays within it.
+The claim is judged against a benefit size fixed in advance, and the whole interval lies below it: evidence that no worthwhile effect exists, not just a lack of significance.
 
 *Check:* **Read the confidence interval**
 
 ## C51 · Both groups fell (Cardiology, ★★)
 
-> People with high blood-pressure readings were randomised to a coaching programme or usual care. Both groups' pressure fell, but the programme group's fell 6 mmHg more.
+> In a trial of 600 people with high blood-pressure readings, randomised to coaching or usual care, both groups' pressure fell, but the coaching group's fell 6 mmHg more (95% CI 3 to 9).
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -715,20 +712,20 @@ A randomised control group experiences the same regression to the mean, so the d
 
 ## C52 · Validated model (Health services, ★★★)
 
-> A readmission model built on 2015–19 data from one hospital was tested on 40,000 patients from five other hospitals in 2021. It ranked patients correctly 78% of the time.
+> A readmission model built on 2015–19 data from one hospital was tested on 40,000 patients in five other hospitals in 2021 (C = 0.78). It discriminates moderately well in hospitals like these.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
 - ⚠️ **Trap, Overfitting:** Performance is reported on new hospitals and a later year.
 - ⚠️ **Trap, Beyond the data:** The test data cover the setting the claim is about.
 
-External, temporal validation is the right test of a prediction model, and 78% is reported as modest, not perfect.
+External, temporal validation is the right test of a prediction model. A C-statistic of 0.78 means that in 78% of pairs, the readmitted patient got the higher risk: moderate, as claimed.
 
 *Check:* **Test it on new data**
 
 ## C53 · Every school (Education, ★★)
 
-> In a trial randomising classes within 14 schools, the new method beat the old one in every school and overall.
+> In a trial randomising 120 classes within 14 schools, the new method beat the old one in every school and overall (difference 7 points, 95% CI 4 to 10).
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -741,7 +738,7 @@ Randomisation within schools and a consistent effect across all of them make the
 
 ## C54 · Older Dutch adults (Geriatrics, ★★)
 
-> In a randomised trial of 2,000 Dutch adults over 70, balance classes cut falls by 20%. The authors recommend them for older adults in similar settings.
+> In a randomised trial of 2,000 Dutch adults over 70, balance classes cut the share who fell in a year from 30% to 24%. The authors recommend them for older adults in similar settings.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -767,12 +764,13 @@ A comparison group with parallel pre-trends is a strong design for a policy that
 
 ## C56 · Safer cycling (Transport, ★★)
 
-> Between 2010 and 2020, cyclist deaths per billion kilometres cycled in the city fell from 30 to 15. The risk per kilometre has halved.
+> Cyclist deaths per billion km cycled averaged 30 in 2008–12 and 15 in 2018–22 (60 deaths a year to 45, as cycling grew from 2 to 3 billion km). The risk per km has halved.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
 - ⚠️ **Trap, Distorted chart:** The axis starts at zero.
 - ⚠️ **Trap, Relative risk alone:** The claim is about a rate, and both rates are given.
+- ⚠️ **Trap, Regression to the mean:** Five-year averages, not a single bad year, and the rate is per distance cycled.
 
 Deaths are expressed per distance cycled, so more cycling is accounted for, and the chart is honest.
 
@@ -780,7 +778,7 @@ Deaths are expressed per distance cycled, so more cycling is accounted for, and 
 
 ## C57 · Smoking and cancer (Epidemiology, ★)
 
-> Hundreds of studies in dozens of countries link smoking to lung cancer, with risk rising with dose and smoking recorded years before diagnosis.
+> Hundreds of studies in dozens of countries link smoking to lung cancer, with risk rising with dose and smoking recorded years before diagnosis. Smoking causes lung cancer.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -807,7 +805,7 @@ Subgroup claims are credible when planned, few, tested as interactions and repli
 
 ## C59 · Real progress (Education, ★★)
 
-> In a randomised trial of 3,000 pupils, the reading programme raised reading scores by 0.4 standard deviations, roughly four months of extra progress.
+> In a randomised trial of 3,000 pupils, the reading programme raised reading scores by 0.2 standard deviations (95% CI 0.12 to 0.28), roughly three months of extra progress.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -820,7 +818,7 @@ A randomised design, a large sample and an effect size translated into months of
 
 ## C60 · All the funds (Finance, ★★)
 
-> Including all 412 funds launched since 2005, the 180 that closed among them, active funds returned 1.2% a year less than the index.
+> Counting all 412 funds launched since 2005, including the 180 that later closed, active funds returned 1.2 percentage points a year less than the index.
 
 - 🥇 **Best:** Sound claim
 - 🥈 **Defensible:** none
@@ -835,32 +833,32 @@ Counting the funds that closed removes survivorship bias, and the claim only des
 
 | Flag | Family | Exposed by | Best answer to | Example | Key reference |
 |---|---|---|---|---|---|
-| Correlation as causation | Cause | Compared with what?, Draw the causal diagram | C01 | [Matthews (2000): across 17 European countries, stork pairs correlated with birth rates (r ≈ 0.62, p = 0.008).](https://doi.org/10.1111/1467-9639.00013) | [Hill (1965). The environment and disease: association or causation? Proceedings of the Royal Society of Medicine.](https://doi.org/10.1177/003591576505800503) |
-| Hidden third factor | Cause | Draw the causal diagram, Compared with what? | C02 | [HRT looked heart-protective in observational studies; the WHI trial (2002) found a higher coronary risk (HR 1.29).](https://doi.org/10.1001/jama.288.3.321) | [Greenland, Pearl & Robins (1999). Causal diagrams for epidemiologic research. Epidemiology.](https://doi.org/10.1097/00001648-199901000-00008) |
+| Correlation as causation | Cause | Compared with what?, Draw the causal diagram | C01, C33 | [Matthews (2000): across 17 European countries, stork pairs correlated with birth rates (r ≈ 0.62, p = 0.008).](https://doi.org/10.1111/1467-9639.00013) | [Hill (1965). The environment and disease: association or causation? Proceedings of the Royal Society of Medicine.](https://doi.org/10.1177/003591576505800503) |
+| Hidden third factor | Cause | Draw the causal diagram, Compared with what? | C02, C17 | [HRT looked heart-protective in observational studies; the WHI trial (2002) found a higher coronary risk (HR 1.29).](https://doi.org/10.1001/jama.288.3.321) | [Greenland, Pearl & Robins (1999). Causal diagrams for epidemiologic research. Epidemiology.](https://doi.org/10.1097/00001648-199901000-00008) |
 | Reverse causation | Cause | Check the timeline, Draw the causal diagram | C03, C45 | [Shaper et al. (1988): non-drinkers' higher death rates partly reflected ill men who had stopped drinking.](https://doi.org/10.1016/S0140-6736(88)92890-5) | [Sattar & Preiss (2017). Reverse causality in cardiovascular epidemiological research: more common than imagined? Circulation.](https://doi.org/10.1161/CIRCULATIONAHA.117.028307) |
 | Two trends, one clock | Cause | Plot it over time, Compared with what? | C04 | [Yule (1926): Church of England marriages and mortality in England and Wales, 1866–1911, correlated at r = 0.95.](https://doi.org/10.2307/2341482) | [Yule (1926). Why do we sometimes get nonsense-correlations between time-series? Journal of the Royal Statistical Society.](https://doi.org/10.2307/2341482) |
 | Collider bias | Cause | Draw the causal diagram, Find who's missing | C05, C06 | [Birth-weight paradox: among low-birth-weight babies, maternal smoking looked protective (Hernández-Díaz et al. 2006).](https://doi.org/10.1093/aje/kwj275) | [Berkson (1946). Limitations of the application of fourfold table analysis to hospital data. Biometrics Bulletin.](https://doi.org/10.2307/3002000) |
-| Immortal time | Cause | Check the timeline | C07, C08 | [Oscar winners seemed to live 3.9 years longer; counted correctly, the gap shrank to about 1 year (Sylvestre et al. 2006).](https://doi.org/10.7326/0003-4819-145-5-200609050-00009) | [Suissa (2008). Immortal time bias in pharmacoepidemiology. American Journal of Epidemiology.](https://doi.org/10.1093/aje/kwm324) |
+| Immortal time | Cause | Check the timeline | C07, C08 | [Oscar winners seemed to live 3.9 years longer; counted correctly, the gap was about 1 year and not significant (Sylvestre et al. 2006).](https://doi.org/10.7326/0003-4819-145-5-200609050-00009) | [Suissa (2008). Immortal time bias in pharmacoepidemiology. American Journal of Epidemiology.](https://doi.org/10.1093/aje/kwm324) |
 | Beyond the data | Sample | Check who and what was studied | C09, C10 | [Tatem et al. (2004) extended Olympic 100 m trends to predict that women would outrun men in 2156.](https://doi.org/10.1038/431525a) | [Altman & Bland (1998). Generalisation and extrapolation. BMJ.](https://doi.org/10.1136/bmj.317.7155.409) |
 | Mice to people | Sample | Check who and what was studied | C11 | [TGN1412 (2006): a dose 1/500 of the level safe in monkeys gave all six volunteers a severe inflammatory reaction.](https://doi.org/10.1056/NEJMoa063842) | [Perel et al. (2007). Comparison of treatment effects between animal experiments and clinical trials: systematic review. BMJ.](https://doi.org/10.1136/bmj.39048.407928.BE) |
 | Ecological fallacy | Sample | Ask for individual data | C12 | [US 1930: states with more immigrants had less illiteracy (r ≈ −0.53), yet immigrants were slightly more often illiterate.](https://doi.org/10.2307/2087176) | [Robinson (1950). Ecological correlations and the behavior of individuals. American Sociological Review.](https://doi.org/10.2307/2087176) |
 | Survivorship bias | Sample | Find who's missing | C13, C14 | [WWII: Wald used damage on returning bombers to estimate vulnerability; places rarely hit on survivors were likely the deadliest.](https://doi.org/10.2307/2288257) | [Brown, Goetzmann, Ibbotson & Ross (1992). Survivorship bias in performance studies. Review of Financial Studies.](https://doi.org/10.1093/rfs/5.4.553) |
 | Unrepresentative sample | Sample | Find who's missing | C15 | [Literary Digest, 1936: about 2.4 million returned ballots predicted Landon; Roosevelt won in a landslide.](https://doi.org/10.1086/269085) | [Squire (1988). Why the 1936 Literary Digest poll failed. Public Opinion Quarterly.](https://doi.org/10.1086/269085) |
 | Narrow sample, universal claim | Sample | Check who and what was studied, Find who's missing | C16 | [Henrich et al. (2010): 96% of psychology samples came from countries with 12% of the world's population.](https://doi.org/10.1017/S0140525X0999152X) | [Henrich, Heine & Norenzayan (2010). The weirdest people in the world? Behavioral and Brain Sciences.](https://doi.org/10.1017/S0140525X0999152X) |
-| Simpson's paradox | Sample | Split by subgroup | C17, C18 | [Berkeley, 1973: 44% of men vs 35% of women admitted, but department by department there was little bias.](https://doi.org/10.1126/science.187.4175.398) | [Simpson (1951). The interpretation of interaction in contingency tables. Journal of the Royal Statistical Society B.](https://doi.org/10.1111/j.2517-6161.1951.tb00088.x) |
+| Simpson's paradox | Sample | Split by subgroup, Draw the causal diagram | C17, C18 | [Berkeley, 1973: 44% of men vs 35% of women admitted; by department, little bias, if anything favouring women.](https://doi.org/10.1126/science.187.4175.398) | [Simpson (1951). The interpretation of interaction in contingency tables. Journal of the Royal Statistical Society B.](https://doi.org/10.1111/j.2517-6161.1951.tb00088.x) |
 | Regression to the mean | Numbers | Compared with what?, Plot it over time | C19, C20 | [Galton (1886): children of very tall or very short parents were, on average, closer to the mean height.](https://doi.org/10.2307/2841583) | [Barnett, van der Pols & Dobson (2004). Regression to the mean: what it is and how to deal with it. International Journal of Epidemiology.](https://doi.org/10.1093/ije/dyh299) |
 | Small numbers, wild swings | Numbers | Read the confidence interval | C21, C22 | [Wainer (2007): US counties with the lowest kidney-cancer rates were mostly small and rural, and so were the highest.](https://doi.org/10.1511/2007.65.1026) | [Tversky & Kahneman (1971). Belief in the law of small numbers. Psychological Bulletin.](https://doi.org/10.1037/h0031322) |
-| Base-rate neglect | Numbers | Ask for the denominator | C23, C24 | [Casscells et al. (1978): most Harvard clinicians put a positive test at 95% likely true; at 1-in-1,000 prevalence it is about 2%.](https://doi.org/10.1056/NEJM197811022991808) | [Bar-Hillel (1980). The base-rate fallacy in probability judgments. Acta Psychologica.](https://doi.org/10.1016/0001-6918(80)90046-3) |
+| Base-rate neglect | Numbers | Ask for the denominator | C23, C24 | [Casscells et al. (1978): the commonest answer from 60 Harvard doctors and students was 95%; the right one is about 2%.](https://doi.org/10.1056/NEJM197811022991808) | [Bar-Hillel (1980). The base-rate fallacy in probability judgments. Acta Psychologica.](https://doi.org/10.1016/0001-6918(80)90046-3) |
 | Transposed conditional | Numbers | Ask for the denominator | C25, C26 | [Sally Clark trial: press reported '1 in 73 million' as the chance the two deaths were accidental (RSS, 2002).](https://www.rss.org.uk/RSS/media/File-library/Membership/Sections/2020/Sally-Clark-RSS-letter-2002.pdf) | [Thompson & Schumann (1987). Interpretation of statistical evidence in criminal trials: the prosecutor's fallacy and the defense attorney's fallacy. Law and Human Behavior.](https://doi.org/10.1007/BF01044641) |
 | No significance, no effect | Numbers | Read the confidence interval | C27 | [Amrhein et al. (2019): a risk ratio of 1.2 with P = 0.091 was reported as 'no association'.](https://doi.org/10.1038/d41586-019-00857-9) | [Altman & Bland (1995). Absence of evidence is not evidence of absence. BMJ.](https://doi.org/10.1136/bmj.311.7003.485) |
 | Significant but trivial | Numbers | Ask how big | C28, C29 | [Kramer et al. (2014): with 689,003 Facebook users, effects as small as d = 0.001 were statistically significant.](https://doi.org/10.1073/pnas.1320040111) | [Sullivan & Feinn (2012). Using effect size, or why the P value is not enough. Journal of Graduate Medical Education.](https://doi.org/10.4300/JGME-D-12-00156.1) |
 | Relative risk alone | Numbers | Ask for the denominator, Ask how big | C30, C31 | [UK 1995: a warning that newer pills doubled clot risk (about 1 to 2 in 7,000) was followed by some 13,000 extra abortions.](https://pmc.ncbi.nlm.nih.gov/articles/PMC2733256/) | [Gigerenzer et al. (2007). Helping doctors and patients make sense of health statistics. Psychological Science in the Public Interest.](https://doi.org/10.1111/j.1539-6053.2008.00033.x) |
 | Distorted chart | Numbers | Read the axes, Plot it over time | C32, C33 | [A 2015 US House hearing chart used two unlabelled scales, so ~327,000 abortions seemed to overtake ~935,000 cancer screenings.](https://www.politifact.com/factchecks/2015/oct/01/jason-chaffetz/chart-shown-planned-parenthood-hearing-misleading/) | [Pandey et al. (2015). How deceptive are deceptive visualizations? An empirical analysis of common distortion techniques. CHI '15.](https://doi.org/10.1145/2702123.2702608) |
 | Overfitting | Numbers | Test it on new data | C34, C35 | [Google Flu Trends overestimated flu in 100 of 108 weeks from August 2011, more than double in February 2013 (Lazer et al. 2014).](https://doi.org/10.1126/science.1248506) | [Babyak (2004). What you see may not be what you get: a brief, nontechnical introduction to overfitting in regression-type models. Psychosomatic Medicine.](https://doi.org/10.1097/01.psy.0000127692.23278.a9) |
-| Forking paths | Practice | Find the preregistration | C36 | [Simmons et al. (2011): flexible analysis 'showed' that hearing a Beatles song made people nearly 18 months younger.](https://doi.org/10.1177/0956797611417632) | [Gelman & Loken (2014). The statistical crisis in science. American Scientist.](https://doi.org/10.1511/2014.111.460) |
+| Forking paths | Practice | Find the preregistration, Look for the other studies | C36 | [Simmons et al. (2011): flexible analysis 'showed' that hearing a Beatles song made people nearly 18 months younger.](https://doi.org/10.1177/0956797611417632) | [Gelman & Loken (2014). The statistical crisis in science. American Scientist.](https://doi.org/10.1511/2014.111.460) |
 | Many tests, one hit | Practice | Find the preregistration, Look for the other studies | C37 | [Bennett et al. (2009): uncorrected fMRI tests found 'active' voxels in a dead salmon shown photos of people.](https://doi.org/10.1016/S1053-8119(09)71202-9) | [Bender & Lange (2001). Adjusting for multiple testing: when and how? Journal of Clinical Epidemiology.](https://doi.org/10.1016/S0895-4356(00)00314-0) |
-| Subgroup surprise | Practice | Find the preregistration, Split by subgroup | C38 | [ISIS-2 (1988): aspirin helped after heart attack, except, apparently, in patients born under Gemini or Libra.](https://doi.org/10.1016/S0140-6736(88)92833-4) | [Sun, Briel, Walter & Guyatt (2010). Is a subgroup effect believable? Updating criteria to evaluate the credibility of subgroup analyses. BMJ.](https://doi.org/10.1136/bmj.c117) |
-| File drawer | Practice | Look for the other studies | C39 | [Turner et al. (2008): 94% of published antidepressant trials looked positive; by FDA review, 51% were.](https://doi.org/10.1056/NEJMsa065779) | [Rosenthal (1979). The file drawer problem and tolerance for null results. Psychological Bulletin.](https://doi.org/10.1037/0033-2909.86.3.638) |
+| Subgroup surprise | Practice | Find the preregistration, Look for the other studies | C38 | [ISIS-2 (1988): aspirin helped after heart attack, except, apparently, in patients born under Gemini or Libra.](https://doi.org/10.1016/S0140-6736(88)92833-4) | [Sun, Briel, Walter & Guyatt (2010). Is a subgroup effect believable? Updating criteria to evaluate the credibility of subgroup analyses. BMJ.](https://doi.org/10.1136/bmj.c117) |
+| File drawer | Practice | Look for the other studies, Find who's missing | C39 | [Turner et al. (2008): 94% of published antidepressant trials looked positive; by FDA review, 51% were.](https://doi.org/10.1056/NEJMsa065779) | [Rosenthal (1979). The file drawer problem and tolerance for null results. Psychological Bulletin.](https://doi.org/10.1037/0033-2909.86.3.638) |
 | One study, settled | Practice | Look for the other studies | C40 | [Power posing (2010, 42 people) reported hormone changes; a 200-person replication found none (Ranehill et al. 2015).](https://doi.org/10.1177/0956797614553946) | [Open Science Collaboration (2015). Estimating the reproducibility of psychological science. Science.](https://doi.org/10.1126/science.aac4716) |
 | Surrogate endpoint | Practice | Ask what was measured | C41 | [CAST (1991): drugs suppressed irregular heartbeats, yet 63 patients died on drug vs 26 on placebo.](https://doi.org/10.1056/NEJM199103213241201) | [Fleming & DeMets (1996). Surrogate end points in clinical trials: are we being misled? Annals of Internal Medicine.](https://doi.org/10.7326/0003-4819-125-7-199610010-00011) |
 | Survival-time illusion | Practice | Ask what was measured, Check the timeline | C42 | [South Korea: screening raised thyroid-cancer diagnoses 15-fold by 2011 while deaths stayed flat (Ahn et al. 2014).](https://doi.org/10.1056/NEJMp1409841) | [Welch, Schwartz & Woloshin (2000). Are increasing 5-year survival rates evidence of success against cancer? JAMA.](https://doi.org/10.1001/jama.283.22.2975) |

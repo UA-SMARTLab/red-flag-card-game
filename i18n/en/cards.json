@@ -51,7 +51,7 @@
    }
   },
   "C03": {
-   "title": "Lazy and low",
+   "title": "Still and low",
    "field": "Psychology",
    "text": "In a one-off survey of 5,000 adults, the least active people were the most depressed. Inactivity causes depression.",
    "why": "Depression saps energy and motivation, so low activity may be a symptom rather than a cause. A snapshot can't tell which came first.",
@@ -101,8 +101,8 @@
    "text": "Among professional basketball players, taller players score no more points than shorter ones. Height doesn't matter in basketball.",
    "why": "Players reach the league by being tall or by being exceptionally skilled. Selecting on that shared outcome hides height's effect among the selected.",
    "traps": {
-    "not-significant": "The study may be precise; the issue is that everyone was selected for being good.",
-    "ecological": "The data are on individual players."
+    "ecological": "The data are on individual players.",
+    "reverse-causation": "Scoring points doesn't make players taller."
    },
    "labels": {
     "HEIGHT": "HEIGHT",
@@ -115,8 +115,7 @@
    "text": "Counting from the day they joined the waiting list, patients who got a heart transplant lived far longer than those who never did. Transplants work.",
    "why": "To get a transplant you had to survive the wait, and that waiting time was credited to the transplant group. Time must be split at the day of surgery.",
    "traps": {
-    "regression-mean": "Patients weren't picked for an extreme value that later fell back.",
-    "survivorship": "Close, but the precise error is counting waiting time as transplant time."
+    "regression-mean": "Patients weren't picked for an extreme value that later fell back."
    },
    "labels": {
     "MONTHS ALIVE": "MONTHS ALIVE",
@@ -127,7 +126,7 @@
   "C08": {
    "title": "Statins and survival",
    "field": "Pharmacoepidemiology",
-   "text": "Patients counted as statin users if they filled a prescription within two years of diagnosis; followed from diagnosis, users had 30% lower mortality.",
+   "text": "Patients counted as statin users if they filled a prescription within two years of diagnosis; followed from diagnosis, users had 30% lower mortality. Statins cut deaths by 30%.",
    "why": "Anyone who died before filling a prescription was automatically a non-user. Users were guaranteed to survive until their first fill.",
    "traps": {
     "lead-time": "Diagnosis date is the same for both groups; the bias comes from how users were defined.",
@@ -161,7 +160,7 @@
    "text": "In a trial of doses from 10 to 40 mg, each extra 10 mg cut blood pressure by 4 mmHg. So a 100 mg dose should cut it by 40 mmHg.",
    "why": "Dose-response curves usually flatten and side effects rise. Beyond 40 mg there are no data at all.",
    "traps": {
-    "surrogate": "Blood pressure is an accepted outcome here; the problem is the dose range.",
+    "surrogate": "Blood pressure is the outcome being claimed; the problem is the dose range.",
     "model-to-human": "The trial was in people."
    },
    "labels": {
@@ -264,7 +263,7 @@
    "why": "When one hospital treats the riskiest patients, its overall rate can be lower even if it does better within every risk group. Compare within risk groups.",
    "traps": {
     "base-rate": "No test or rare condition is being interpreted here.",
-    "chart-distortion": "The axis starts at 80, but the bigger problem is comparing different case mixes."
+    "chart-distortion": "The chart is drawn honestly from zero; the problem is comparing different case mixes."
    },
    "labels": {
     "% SURVIVE": "% SURVIVE",
@@ -295,8 +294,7 @@
    "text": "The 20 schools with the worst test scores were given a coaching scheme. Next year their scores rose by 8 points. The scheme works.",
    "why": "Schools picked for an unusually bad year tend to do better next year anyway. Without comparable untreated schools, the rise can't be credited to coaching.",
    "traps": {
-    "survivorship": "All 20 schools are followed; none drop out.",
-    "correlation-causation": "Defensible in spirit, but the specific trap is choosing schools for an extreme low."
+    "survivorship": "All 20 schools are followed; none drop out."
    },
    "labels": {
     "YEAR": "YEAR",
@@ -307,7 +305,7 @@
   "C20": {
    "title": "Speed cameras",
    "field": "Transport",
-   "text": "Speed cameras were installed at the 50 sites with the most crashes last year. Crashes at those sites fell by 40% the year after.",
+   "text": "Speed cameras were installed at the 50 sites with the most crashes last year. Crashes there fell by 40% the year after. The cameras cut crashes by 40%.",
    "why": "Sites chosen for a peak year would have fewer crashes next year even without cameras. Part of the 40% is regression to the mean.",
    "traps": {
     "relative-risk": "The counts per site are shown; the problem is how the sites were picked.",
@@ -322,7 +320,7 @@
   "C21": {
    "title": "Cancer village",
    "field": "Epidemiology",
-   "text": "The town with the highest rate of a rare cancer in the country has only 900 inhabitants. Something in that town must be causing it.",
+   "text": "The town with the highest rate of a rare cancer in the country has only 900 inhabitants (2 cases). Something in that town must be causing it.",
    "why": "Two cases in 900 people give a rate of 220 per 100,000. Among thousands of small towns, some will top the table by chance.",
    "traps": {
     "ecological": "The claim is about the town itself, not about individuals inside it.",
@@ -350,11 +348,11 @@
   "C23": {
    "title": "Spot the terrorist",
    "field": "Security",
-   "text": "A new face-scanning system spots known suspects with 99% accuracy. So anyone it flags at the airport is almost certainly a suspect.",
-   "why": "Among millions of travellers and a handful of suspects, 1% false alarms means thousands of innocent people flagged for every real suspect.",
+   "text": "A face-scanning system flags 99% of known suspects and only 1% of other travellers. So anyone it flags at the airport is almost certainly a suspect.",
+   "why": "Per million travellers, about 10,000 innocent people are flagged, against a handful of real suspects.",
    "traps": {
     "trivial-effect": "The accuracy is high; the trouble is how rare suspects are.",
-    "overfitting": "Perhaps, but even a perfectly validated 99% would mislead here."
+    "single-study": "Nothing here rests on one study; the error is ignoring how rare suspects are."
    },
    "labels": {
     "99% ACCURATE": "99% ACCURATE"
@@ -393,7 +391,7 @@
    "why": "In a city of 5 million, about five people would match by chance. P(match | innocent) is not P(innocent | match).",
    "traps": {
     "small-sample": "The match probability isn't unstable; it's being turned inside out.",
-    "multiple-tests": "Defensible only if a database was trawled; the core error is the transposed conditional."
+    "trivial-effect": "The match is strong evidence; the error is in turning its probability around."
    },
    "labels": {
     "1 IN 1,000,000": "1 IN 1,000,000"
@@ -415,10 +413,10 @@
   "C28": {
    "title": "Clicks for the win",
    "field": "Technology",
-   "text": "Across 2 million users, the new button colour raised clicks from 3.00% to 3.02% (p < 0.001). A major success for the design team.",
-   "why": "With millions of users, a difference of 0.02 percentage points is 'significant' but hardly matters. Ask how big, in units that count.",
+   "text": "Across 40 million users, the new button colour raised clicks from 3.00% to 3.02% (p < 0.001). A major success for the design team.",
+   "why": "With tens of millions of users, a difference of 0.02 percentage points is 'significant' but hardly matters. Ask how big, in units that count.",
    "traps": {
-    "small-sample": "Two million users is the opposite problem.",
+    "small-sample": "Forty million users is the opposite problem.",
     "not-significant": "The result is significant; that's not the issue."
    },
    "labels": {
@@ -447,7 +445,7 @@
    "text": "Headline: night-shift work raises the risk of a rare tumour by 50%!",
    "why": "50% more of a rare tumour may mean 3 cases per 100,000 instead of 2. Without the absolute numbers the headline can't be judged.",
    "traps": {
-    "trivial-effect": "Close, but you can't judge size until you know the starting risk.",
+    "trivial-effect": "You can't judge the size until you know the starting risk; name the missing absolute numbers.",
     "base-rate": "No test result is being interpreted; ask for the absolute risk."
    },
    "labels": {
@@ -460,7 +458,7 @@
    "title": "Screening halves deaths",
    "field": "Screening",
    "text": "Our screening programme halves your risk of dying from cancer X! (Ten-year trial.)",
-   "why": "Halving 2 in 1,000 to 1 in 1,000 saves one person per 1,000 screened over ten years. The relative figure alone oversells it.",
+   "why": "Halving 2 in 1,000 to 1 in 1,000 prevents one cancer-X death per 1,000 screened over ten years. The relative figure alone oversells it.",
    "traps": {
     "lead-time": "The trial counts deaths, not survival after diagnosis, so lead time doesn't apply.",
     "chart-distortion": "The axis starts at zero and the bars are honest; the slogan isn't."
@@ -477,8 +475,7 @@
    "text": "Support for the policy has surged since our campaign began.",
    "why": "The axis starts at 48%, so a three-point change looks like a fourfold rise. Within normal polling error, support barely moved.",
    "traps": {
-    "regression-mean": "Nothing was selected for an extreme value.",
-    "correlation-causation": "Defensible, but first notice how small the change is."
+    "regression-mean": "Nothing was selected for an extreme value."
    },
    "labels": {
     "% SUPPORT": "% SUPPORT",
@@ -509,7 +506,7 @@
    "why": "With more variables than cases, a model can memorise the past. Only predictions for elections it hasn't seen show its real accuracy.",
    "traps": {
     "base-rate": "No rare condition is being tested for.",
-    "small-sample": "Close, but the giveaway is 200 variables fitted to 150 cases."
+    "small-sample": "The issue isn't chance swings in a small group but 200 variables fitted to 150 cases."
    },
    "labels": {
     "99% FIT": "99% FIT"
@@ -521,8 +518,7 @@
    "text": "We tested 10,000 trading rules on 20 years of prices. The best one beat the market every single year in the back-test. Invest with it.",
    "why": "The best of 10,000 rules fitted to the same history will look brilliant by chance. Test it on later data it was never tuned on.",
    "traps": {
-    "survivorship": "Related, but the best of 10,000 tries is the core problem.",
-    "regression-mean": "Expect future returns to fall back, but name the cause: the rule was fitted to noise."
+    "base-rate": "No test result is being interpreted; the rule was fitted to noise."
    },
    "labels": {
     "YEARS": "YEARS",
@@ -533,7 +529,7 @@
   "C36": {
    "title": "Warm cup, warm heart",
    "field": "Psychology",
-   "text": "After excluding outliers and adjusting for age and mood, participants who held a warm cup rated a stranger as friendlier (p = 0.048).",
+   "text": "After excluding outliers and adjusting for age and mood, people who held a warm cup rated a stranger as friendlier (p = 0.048). Physical warmth makes us see others as warmer.",
    "why": "Outlier rules and covariates chosen after seeing the data, and a p-value just under 0.05, suggest a forking path. Was this analysis preregistered?",
    "traps": {
     "not-significant": "The result is (just) significant; the worry is how it got there.",
@@ -546,13 +542,15 @@
   "C37": {
    "title": "Tomatoes and migraine",
    "field": "Nutrition",
-   "text": "We tested 40 foods against 12 diseases. Eating tomatoes was linked to fewer migraines (p = 0.03).",
+   "text": "We tested 40 foods against 12 diseases. Eating tomatoes was linked to fewer migraines (p = 0.03). Tomatoes help prevent migraine.",
    "why": "480 tests at p < 0.05 would give about 24 'hits' if nothing were real. One of them is not news.",
    "traps": {
     "small-sample": "The sample size isn't given; 480 tests is the problem.",
     "trivial-effect": "We don't know the size; the hit itself may be noise."
    },
-   "labels": {}
+   "labels": {
+    "1 HIT IN 480 TESTS": "1 HIT IN 480 TESTS"
+   }
   },
   "C38": {
    "title": "Women over 65",
@@ -572,7 +570,7 @@
    "why": "If studies that found nothing stayed in the file drawer, pooling the published ones overstates the effect. Check registries and funnel plots.",
    "traps": {
     "single-study": "It pools 25 studies; the question is which studies got published.",
-    "small-sample": "Small studies may be the symptom; the missing ones are the cause."
+    "model-to-human": "The studies are in people."
    },
    "labels": {}
   },
@@ -628,7 +626,8 @@
    "why": "New criteria, awareness and services change how many cases are recorded. A rise in diagnoses is not the same as a rise in the condition.",
    "traps": {
     "small-sample": "Recorded diagnoses cover the whole population.",
-    "regression-mean": "The rise is steady, not a bounce from an extreme year."
+    "regression-mean": "The rise is steady, not a bounce from an extreme year.",
+    "shared-trend": "There's only one series here."
    },
    "labels": {
     "YEAR": "YEAR",
@@ -657,8 +656,8 @@
    "text": "Cities with more police officers per resident have more crime. Police presence causes crime.",
    "why": "Cities hire more police because they have more crime. The arrow most plausibly runs from crime to police.",
    "traps": {
-    "ecological": "Defensible to note, but the claim is about cities, and the arrow is the real issue.",
-    "simpsons": "No subgroups are reported."
+    "simpsons": "No subgroups are reported.",
+    "small-sample": "These are many cities with large counts; the arrow is the problem."
    },
    "labels": {
     "POLICE / 1,000": "POLICE / 1,000",
@@ -668,7 +667,7 @@
   "C46": {
    "title": "Vaccine trial",
    "field": "Medicine",
-   "text": "In a preregistered trial, 8,000 adults were randomly given the vaccine or a placebo. Confirmed infections: 0.4% vs 2.0% (difference 1.6 points, 95% CI 1.2 to 2.0).",
+   "text": "In a preregistered trial, 8,000 adults were randomly given the vaccine or a placebo. Infections: 0.4% vs 2.0% (difference 1.6 points, 95% CI 1.1 to 2.1). The vaccine prevented about 16 infections per 1,000 vaccinated.",
    "why": "Random allocation, a registered plan, absolute risks and a confidence interval: the claim says no more than the trial shows.",
    "traps": {
     "correlation-causation": "Randomisation balances known and unknown factors, so cause is warranted.",
@@ -690,12 +689,14 @@
     "publication-bias": "Unpublished results were retrieved from registries.",
     "single-study": "Twelve trials agree."
    },
-   "labels": {}
+   "labels": {
+    "4 OF 12 TRIALS SHOWN": "4 OF 12 TRIALS SHOWN"
+   }
   },
   "C48": {
    "title": "Screening trial",
    "field": "Screening",
-   "text": "In a randomised trial of 50,000 people followed for 15 years, 0.9% of the screened group and 1.2% of the unscreened group died of bowel cancer.",
+   "text": "In a randomised trial of 50,000 people followed for 15 years, 0.9% of the screened and 1.2% of the unscreened died of bowel cancer. Screening prevented about 3 such deaths per 1,000.",
    "why": "Comparing mortality between randomised groups is immune to lead time and overdiagnosis, and the absolute difference is stated.",
    "traps": {
     "lead-time": "The outcome is deaths among everyone randomised, not survival after diagnosis.",
@@ -723,8 +724,8 @@
   "C50": {
    "title": "Precise null",
    "field": "Medicine",
-   "text": "A trial of 20,000 people found the supplement changed fracture risk by −0.2 points (95% CI −0.6 to +0.2). Any benefit is too small to matter.",
-   "why": "A narrow interval around zero is evidence of absence of a meaningful effect, and the claim stays within it.",
+   "text": "A trial of 20,000 older adults found the supplement changed fracture risk by −0.2 points (95% CI −0.6 to +0.2). The protocol set 1 point as the smallest benefit worth having, and the interval rules that out.",
+   "why": "The claim is judged against a benefit size fixed in advance, and the whole interval lies below it: evidence that no worthwhile effect exists, not just a lack of significance.",
    "traps": {
     "not-significant": "The claim rests on a narrow interval that rules out meaningful effects, not on p > 0.05.",
     "small-sample": "20,000 people is large."
@@ -736,7 +737,7 @@
   "C51": {
    "title": "Both groups fell",
    "field": "Cardiology",
-   "text": "People with high blood-pressure readings were randomised to a coaching programme or usual care. Both groups' pressure fell, but the programme group's fell 6 mmHg more.",
+   "text": "In a trial of 600 people with high blood-pressure readings, randomised to coaching or usual care, both groups' pressure fell, but the coaching group's fell 6 mmHg more (95% CI 3 to 9).",
    "why": "A randomised control group experiences the same regression to the mean, so the difference between groups is a fair estimate.",
    "traps": {
     "regression-mean": "Both groups regress equally; the 6 mmHg extra drop is the effect.",
@@ -752,8 +753,8 @@
   "C52": {
    "title": "Validated model",
    "field": "Health services",
-   "text": "A readmission model built on 2015–19 data from one hospital was tested on 40,000 patients from five other hospitals in 2021. It ranked patients correctly 78% of the time.",
-   "why": "External, temporal validation is the right test of a prediction model, and 78% is reported as modest, not perfect.",
+   "text": "A readmission model built on 2015–19 data from one hospital was tested on 40,000 patients in five other hospitals in 2021 (C = 0.78). It discriminates moderately well in hospitals like these.",
+   "why": "External, temporal validation is the right test of a prediction model. A C-statistic of 0.78 means that in 78% of pairs, the readmitted patient got the higher risk: moderate, as claimed.",
    "traps": {
     "overfitting": "Performance is reported on new hospitals and a later year.",
     "extrapolation": "The test data cover the setting the claim is about."
@@ -765,7 +766,7 @@
   "C53": {
    "title": "Every school",
    "field": "Education",
-   "text": "In a trial randomising classes within 14 schools, the new method beat the old one in every school and overall.",
+   "text": "In a trial randomising 120 classes within 14 schools, the new method beat the old one in every school and overall (difference 7 points, 95% CI 4 to 10).",
    "why": "Randomisation within schools and a consistent effect across all of them make the overall claim trustworthy.",
    "traps": {
     "simpsons": "The effect is the same in every school and overall, so pooling hides nothing.",
@@ -780,7 +781,7 @@
   "C54": {
    "title": "Older Dutch adults",
    "field": "Geriatrics",
-   "text": "In a randomised trial of 2,000 Dutch adults over 70, balance classes cut falls by 20%. The authors recommend them for older adults in similar settings.",
+   "text": "In a randomised trial of 2,000 Dutch adults over 70, balance classes cut the share who fell in a year from 30% to 24%. The authors recommend them for older adults in similar settings.",
    "why": "A randomised trial with a claim that stays within the population studied, and absolute figures on the chart.",
    "traps": {
     "weird": "The claim is limited to similar older adults, the population studied.",
@@ -811,22 +812,23 @@
   "C56": {
    "title": "Safer cycling",
    "field": "Transport",
-   "text": "Between 2010 and 2020, cyclist deaths per billion kilometres cycled in the city fell from 30 to 15. The risk per kilometre has halved.",
+   "text": "Cyclist deaths per billion km cycled averaged 30 in 2008–12 and 15 in 2018–22 (60 deaths a year to 45, as cycling grew from 2 to 3 billion km). The risk per km has halved.",
    "why": "Deaths are expressed per distance cycled, so more cycling is accounted for, and the chart is honest.",
    "traps": {
     "chart-distortion": "The axis starts at zero.",
-    "relative-risk": "The claim is about a rate, and both rates are given."
+    "relative-risk": "The claim is about a rate, and both rates are given.",
+    "regression-mean": "Five-year averages, not a single bad year, and the rate is per distance cycled."
    },
    "labels": {
     "DEATHS / BN KM": "DEATHS / BN KM",
-    "2010": "2010",
-    "2020": "2020"
+    "2008–12": "2008–12",
+    "2018–22": "2018–22"
    }
   },
   "C57": {
    "title": "Smoking and cancer",
    "field": "Epidemiology",
-   "text": "Hundreds of studies in dozens of countries link smoking to lung cancer, with risk rising with dose and smoking recorded years before diagnosis.",
+   "text": "Hundreds of studies in dozens of countries link smoking to lung cancer, with risk rising with dose and smoking recorded years before diagnosis. Smoking causes lung cancer.",
    "why": "Strength, consistency, dose-response and temporality: the classic case where observational evidence supports cause.",
    "traps": {
     "correlation-causation": "Consistency, dose-response and timing together make a causal reading justified.",
@@ -853,7 +855,7 @@
   "C59": {
    "title": "Real progress",
    "field": "Education",
-   "text": "In a randomised trial of 3,000 pupils, the reading programme raised reading scores by 0.4 standard deviations, roughly four months of extra progress.",
+   "text": "In a randomised trial of 3,000 pupils, the reading programme raised reading scores by 0.2 standard deviations (95% CI 0.12 to 0.28), roughly three months of extra progress.",
    "why": "A randomised design, a large sample and an effect size translated into months of progress.",
    "traps": {
     "trivial-effect": "The size is given in meaningful units, and it is substantial.",
@@ -868,7 +870,7 @@
   "C60": {
    "title": "All the funds",
    "field": "Finance",
-   "text": "Including all 412 funds launched since 2005, the 180 that closed among them, active funds returned 1.2% a year less than the index.",
+   "text": "Counting all 412 funds launched since 2005, including the 180 that later closed, active funds returned 1.2 percentage points a year less than the index.",
    "why": "Counting the funds that closed removes survivorship bias, and the claim only describes what happened.",
    "traps": {
     "survivorship": "Closed funds are included.",
@@ -908,7 +910,7 @@
   },
   "collider": {
    "name": "Collider bias",
-   "short": "Selecting on a shared consequence creates a link that isn't there.",
+   "short": "Selecting on a shared consequence creates, hides or flips a link.",
    "text": "If only cases with a common effect are studied (hospital patients, published papers, low-weight babies), two unrelated causes of it appear linked.",
    "example": "Birth-weight paradox: among low-birth-weight babies, maternal smoking looked protective (Hernández-Díaz et al. 2006)."
   },
@@ -916,7 +918,7 @@
    "name": "Immortal time",
    "short": "A group is defined by something later, so its members had to survive to join it.",
    "text": "Counting the time before someone becomes 'exposed' as exposed time gives that group a head start in survival it did not earn.",
-   "example": "Oscar winners seemed to live 3.9 years longer; counted correctly, the gap shrank to about 1 year (Sylvestre et al. 2006)."
+   "example": "Oscar winners seemed to live 3.9 years longer; counted correctly, the gap was about 1 year and not significant (Sylvestre et al. 2006)."
   },
   "extrapolation": {
    "name": "Beyond the data",
@@ -956,9 +958,9 @@
   },
   "simpsons": {
    "name": "Simpson's paradox",
-   "short": "A trend in the pooled data reverses or vanishes within every subgroup.",
+   "short": "A trend in the pooled data reverses or vanishes within subgroups.",
    "text": "When groups differ in size and baseline, adding them together can flip a comparison. The right level depends on the causal question.",
-   "example": "Berkeley, 1973: 44% of men vs 35% of women admitted, but department by department there was little bias."
+   "example": "Berkeley, 1973: 44% of men vs 35% of women admitted; by department, little bias, if anything favouring women."
   },
   "regression-mean": {
    "name": "Regression to the mean",
@@ -976,7 +978,7 @@
    "name": "Base-rate neglect",
    "short": "How rare the condition is gets ignored.",
    "text": "When something is rare, even an accurate test or detector produces mostly false alarms. The base rate decides what a positive result means.",
-   "example": "Casscells et al. (1978): most Harvard clinicians put a positive test at 95% likely true; at 1-in-1,000 prevalence it is about 2%."
+   "example": "Casscells et al. (1978): the commonest answer from 60 Harvard doctors and students was 95%; the right one is about 2%."
   },
   "inverse-probability": {
    "name": "Transposed conditional",
@@ -987,7 +989,7 @@
   "not-significant": {
    "name": "No significance, no effect",
    "short": "A non-significant result is reported as proof of no effect.",
-   "text": "Absence of evidence is not evidence of absence. A wide confidence interval that includes zero also includes effects worth caring about.",
+   "text": "Absence of evidence is not evidence of absence. A wide confidence interval that includes zero can also include effects worth caring about.",
    "example": "Amrhein et al. (2019): a risk ratio of 1.2 with P = 0.091 was reported as 'no association'."
   },
   "trivial-effect": {
@@ -1010,7 +1012,7 @@
   },
   "overfitting": {
    "name": "Overfitting",
-   "short": "A model fits the past perfectly and predicts the future badly.",
+   "short": "A model fits the past closely and predicts the future badly.",
    "text": "Many predictors and few cases let a model learn the noise. Only performance on new data shows what it really knows.",
    "example": "Google Flu Trends overestimated flu in 100 of 108 weeks from August 2011, more than double in February 2013 (Lazer et al. 2014)."
   },
@@ -1052,7 +1054,7 @@
   },
   "lead-time": {
    "name": "Survival-time illusion",
-   "short": "Earlier diagnosis lengthens survival without delaying death.",
+   "short": "Earlier diagnosis can lengthen survival without delaying death.",
    "text": "Screening starts the clock sooner and finds harmless cases, so survival after diagnosis rises even if no one lives longer. Look at mortality.",
    "example": "South Korea: screening raised thyroid-cancer diagnoses 15-fold by 2011 while deaths stayed flat (Ahn et al. 2014)."
   },

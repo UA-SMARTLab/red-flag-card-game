@@ -155,7 +155,7 @@ def grid(c, p, t):
         for j in range(cols):
             on = (i, j) == hit
             out += rect(x0 + j * (size + gap), y0 + i * (size + gap), size, size, HOT if on else FAINT, "none" if not on else INK, 1.5 if on else 0, rx=2)
-    out += text(100, 126, t("ONE HIT IN MANY TESTS"), 10, DIM.replace(".38", ".8"))
+    out += text(100, 126, t(p.get("label", "ONE HIT IN MANY TESTS")), 10, DIM.replace(".38", ".8"))
     return out
 
 
@@ -172,6 +172,8 @@ def forest(c, p, t):
         y = 36 + step * (i + 0.5)
         out += line([(X(lo), y), (X(hi), y)], INK, 2.5) + rect(X(est) - 4, y - 4, 8, 8, ACC, "none", 0, rx=1)
     out += text(X(0), 127, t("NO EFFECT"), 9, DIM.replace(".38", ".8"))
+    if p.get("label"):
+        out += text(36, 25, t(p["label"]), 10, DIM.replace(".38", ".8"), anchor="start")
     return out
 
 
@@ -198,7 +200,7 @@ FIXED_LABELS = ["THE DAILY CLAIM", "ABSTRACT", "ONE HIT IN MANY TESTS", "NO EFFE
 
 def labels_of(p):
     """Every label a picture draws (for translation)."""
-    out = [p.get(k) for k in ("x", "y", "stat") if p.get(k)]
+    out = [p.get(k) for k in ("x", "y", "stat", "label") if p.get(k)]
     out += [lab for lab, _ in p.get("bars", [])] + p.get("names", []) + p.get("words", [])
     return out
 
