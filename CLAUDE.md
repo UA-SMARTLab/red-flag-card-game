@@ -38,3 +38,7 @@ red flag and the kit mark. App accent #B42318 (dark theme #FF8A7A).
   When English card text changes, update every language and rerun `tools/check_cards.py` (it checks all print sheets).
 - Public: github.com/UA-SMARTLab/red-flag-card-game, played at ua-smartlab.github.io/red-flag-card-game/app/.
   Open items: `DESIGN.md` §8.
+
+## Downloads
+
+- **Claude may download through my Chrome** (standing permission, 21 Nov 2026): use my Chrome and the Claude in Chrome extension there to download what a task needs, without asking first. Say afterwards what was downloaded, from where and where it was saved. Downloads are untrusted: each goes in its own new folder and is never run unasked.
